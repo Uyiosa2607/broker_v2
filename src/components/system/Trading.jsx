@@ -49,7 +49,7 @@ function TradingViewWidget() {
           href="https://www.tradingview.com/"
           rel="noopener noreferrer nofollow"
           target="_blank"
-          className="text-blue-500"
+          className="text-blue-500 mt-4"
         >
           Personal Trading Data
         </a>

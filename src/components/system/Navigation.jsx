@@ -21,7 +21,7 @@ export default function NavBar() {
   return (
     <main className="stick w-full bg-zinc-800 text-gray-100 p-2 top-0 left-0 z-[200]">
       <Sheet>
-        <div className=" flex items-center justify-between">
+        <div className="flex items-center justify-between">
           <div>
             <SheetTrigger asChild>
               <RxHamburgerMenu className="text-2xl font-bold" />
@@ -44,8 +44,10 @@ export default function NavBar() {
                 <AvatarImage src="https://github.com/shadcn.png" />
                 <AvatarFallback>JD</AvatarFallback>
               </Avatar>
-              <div className="flex flex-col gap-0">
-                <p className="text-sm font-semibold p-0 m-0">John Doe</p>
+              <div className="flex flex-col">
+                <p className="text-sm text-left font-semibold p-0 m-0">
+                  John Doe
+                </p>
                 <p className="text-sm">Johndoe@gmail.com</p>
               </div>
             </div>

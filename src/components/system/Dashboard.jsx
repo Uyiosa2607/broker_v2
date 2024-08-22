@@ -4,6 +4,7 @@ import { FaCreditCard } from "react-icons/fa";
 import { MdSavings } from "react-icons/md";
 import { IoMdCash } from "react-icons/io";
 import TradingViewWidget from "./Trading";
+import Footer from "./Footer";
 
 export default function Dashboard() {
   useEffect(() => {
@@ -72,7 +73,7 @@ export default function Dashboard() {
       <section className="w-[98%] p-2 bg-white rounded-lg mb-4 mt-4 mx-auto">
         <div>
           <p className="font-medium mb-2 pl-4">Referal Link</p>
-          <p className="text-gray-400 pl-5">
+          <p className="text-gray-400 text-sm pl-5">
             Get Bonus when someone register on Invex Capitals with your referral
             link
           </p>
@@ -85,6 +86,7 @@ export default function Dashboard() {
         </div>
         <TradingViewWidget />
       </section>
+      <Footer />
     </main>
   );
 }
