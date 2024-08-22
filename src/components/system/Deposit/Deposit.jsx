@@ -9,7 +9,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogTrigger,
+  AlertDialogAction,
+} from "@/components/ui/alert-dialog";
 import { FaCheckCircle } from "react-icons/fa";
 
 export default function Deposit() {
@@ -22,7 +27,7 @@ export default function Deposit() {
           <div className="my-5">
             <Select>
               <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Select Deposit Method" />
+                <SelectValue placeholder="Select Method" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="BITCOIN">Bitcoin</SelectItem>
@@ -37,13 +42,13 @@ export default function Deposit() {
             avaliable balance :{" "}
             <span className="font-semibold capitalize">{"$404,432.00"}</span>
           </p>
-          <Dialog>
-            <DialogTrigger>
+          <AlertDialog>
+            <AlertDialogTrigger>
               <Button className="capitalize font-semibold bg-green-500 rounded-md">
                 proceed
               </Button>
-            </DialogTrigger>
-            <DialogContent>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
               <div className="p-4">
                 <FaCheckCircle className="h-[70px] w-[70px] text-green-600 " />
                 <span>generated</span>
@@ -61,8 +66,9 @@ export default function Deposit() {
                 <Input type="file" />
                 <Button>Submit payment</Button>
               </div>
-            </DialogContent>
-          </Dialog>
+              <AlertDialogAction>Upload</AlertDialogAction>
+            </AlertDialogContent>
+          </AlertDialog>
         </div>
       </section>
       <Footer />
