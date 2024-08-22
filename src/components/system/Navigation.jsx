@@ -19,7 +19,7 @@ import { AiFillMessage } from "react-icons/ai";
 
 export default function NavBar() {
   return (
-    <main className="stick w-full bg-zinc-800 text-gray-100 p-2 top-0 left-0 z-[200]">
+    <main className="sticky w-full bg-zinc-800 text-gray-100 p-2 top-0 left-0 z-[900]">
       <Sheet>
         <div className="flex items-center justify-between">
           <div>
@@ -37,7 +37,7 @@ export default function NavBar() {
             </Avatar>
           </div>
         </div>
-        <SheetContent className="p-0 overflow-y-scroll" side="left">
+        <SheetContent className="p-0 overflow-y-scroll z-[9999]" side="left">
           <SheetHeader className="mb-4">
             <div className="flex items-center px-4 gap-1">
               <Avatar>
