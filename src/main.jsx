@@ -2,15 +2,16 @@ import * as React from "react";
 import { createRoot } from "react-dom/client";
 // import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./index.css";
 import Home from "./components/system/Home.jsx";
 import Dashboard from "./components/system/Dashboard.jsx";
 import Plans from "./components/system/Plans.jsx";
-import Deposit from "./components/system/Deposit/Deposit.jsx";
+import Deposit from "./components/system/Deposit.jsx";
 import Withdraw from "./components/system/Withdraw";
 import Profile from "./components/system/Profile";
 import Profit from "./components/system/Profit";
 import Transaction from "./components/system/Transactions";
+import Contact from "./components/system/Contact";
+import "./index.css";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
   {
     path: "/transactions",
     element: <Transaction />,
+  },
+  {
+    path: "/support",
+    element: <Contact />,
   },
 ]);
 

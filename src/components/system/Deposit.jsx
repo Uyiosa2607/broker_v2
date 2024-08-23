@@ -1,5 +1,5 @@
-import NavBar from "../Navigation";
-import Footer from "../Footer";
+import NavBar from "./Navigation";
+import Footer from "./Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
