@@ -18,9 +18,13 @@ import {
 import { AiFillMessage } from "react-icons/ai";
 import { Separator } from "../ui/separator";
 import { supabase } from "@/lib/supabase";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { useAtom } from "jotai";
+import { userAtom } from "@/lib/store";
 
 export default function NavBar() {
+  const [user] = useAtom(userAtom);
+
   const navigate = useNavigate();
 
   async function logOut() {
@@ -56,9 +60,9 @@ export default function NavBar() {
               </Avatar>
               <div className="flex flex-col">
                 <p className="text-sm text-left font-semibold p-0 m-0">
-                  John Doe
+                  {user.name}
                 </p>
-                <p className="text-sm">Johndoe@gmail.com</p>
+                <p className="text-sm">{user.email}</p>
               </div>
             </div>
           </SheetHeader>
@@ -70,64 +74,84 @@ export default function NavBar() {
               </p>
             </div>
             <div className="flex py-4 justify-between font-normal capitalize text-sm items-center">
-              <div className="flex items-center flex-col">
-                <IoMdPerson className="text-2xl mb-2" />
-                <p className="text-xs">Profile</p>
-              </div>
-              <div className="flex items-center flex-col">
-                <MdGroups2 className="text-2xl mb-2" />
-                <p className="text-xs">referals</p>
-              </div>
-              <div className="flex items-center flex-col">
-                <BsPersonFillLock className="text-2xl mb-2" />
-                <p className="text-xs">change password</p>
-              </div>
-              <div className="flex items-center flex-col">
-                <MdSavings className="text-2xl mb-2" />
-                <p className="text-xs">plans</p>
-              </div>
+              <Link to="/profile">
+                <div className="flex items-center flex-col">
+                  <IoMdPerson className="text-2xl mb-2" />
+                  <p className="text-xs">Profile</p>
+                </div>
+              </Link>
+              <Link to="/#">
+                <div className="flex items-center flex-col">
+                  <MdGroups2 className="text-2xl mb-2" />
+                  <p className="text-xs">referals</p>
+                </div>
+              </Link>
+              <Link to="/Profile">
+                <div className="flex items-center flex-col">
+                  <BsPersonFillLock className="text-2xl mb-2" />
+                  <p className="text-xs">change password</p>
+                </div>
+              </Link>
+              <Link to="/plans">
+                <div className="flex items-center flex-col">
+                  <MdSavings className="text-2xl mb-2" />
+                  <p className="text-xs">plans</p>
+                </div>
+              </Link>
             </div>
           </div>
           <div className="px-4">
             <h1 className="text-base pt-3 text-gray-500 mb-5">Transactions</h1>
             <div className="flex flex-col gap-4">
-              <div className="flex cursor-pointer items-center gap-4">
-                <IoMdCash className="bg-zinc-800 text-4xl rounded-full p-1 text-white" />
-                <p>Deposit Funds</p>
-              </div>
+              <Link to="/deposit">
+                <div className="flex cursor-pointer items-center gap-4">
+                  <IoMdCash className="bg-zinc-800 text-4xl rounded-full p-1 text-white" />
+                  <p>Deposit Funds</p>
+                </div>
+              </Link>
               <Separator />
-              <div className="flex cursor-pointer items-center gap-4">
-                <MdSavings className="bg-zinc-800 text-4xl rounded-full p-1 text-white" />
-                <p>buy plans</p>
-              </div>
+              <Link to="/plans">
+                <div className="flex cursor-pointer items-center gap-4">
+                  <MdSavings className="bg-zinc-800 text-4xl rounded-full p-1 text-white" />
+                  <p>buy plans</p>
+                </div>
+              </Link>
               <Separator />
-              <div className="flex cursor-pointer items-center gap-4">
-                <FaCreditCard className="bg-zinc-800 text-4xl rounded-full p-1 text-white" />
-                <p>withdraw funds</p>
-              </div>
+              <Link to="/withdraw">
+                <div className="flex cursor-pointer items-center gap-4">
+                  <FaCreditCard className="bg-zinc-800 text-4xl rounded-full p-1 text-white" />
+                  <p>withdraw funds</p>
+                </div>
+              </Link>
               <Separator />
-              <div className="flex cursor-pointer items-center  gap-4">
-                <FaHistory className="bg-zinc-800 text-4xl rounded-full p-1 text-white" />
-                <p>transaction history</p>
-              </div>
+              <Link to="/transactions">
+                <div className="flex cursor-pointer items-center  gap-4">
+                  <FaHistory className="bg-zinc-800 text-4xl rounded-full p-1 text-white" />
+                  <p>transaction history</p>
+                </div>
+              </Link>
             </div>
           </div>
           <div className="px-4 mt-2">
             <h1 className="text-base pt-3 text-gray-500 mb-5">Investment</h1>
             <div className="flex flex-col gap-4">
-              <div className="flex cursor-pointer items-center gap-4">
-                <FaFunnelDollar className="bg-zinc-800 text-4xl rounded-full p-1 text-white" />
-                <p>Profit History</p>
-              </div>
+              <Link to="/profit">
+                <div className="flex cursor-pointer items-center gap-4">
+                  <FaFunnelDollar className="bg-zinc-800 text-4xl rounded-full p-1 text-white" />
+                  <p>Profit History</p>
+                </div>
+              </Link>
             </div>
           </div>
           <div className="px-4 mt-2">
             <h1 className="text-base pt-3 text-gray-500 mb-5">Support</h1>
             <div className="flex flex-col gap-4">
-              <div className="flex cursor-pointer items-center gap-4">
-                <AiFillMessage className="bg-zinc-800 text-4xl rounded-full p-1 text-white" />
-                <p>Open Support Ticket</p>
-              </div>
+              <Link to="/support">
+                <div className="flex cursor-pointer items-center gap-4">
+                  <AiFillMessage className="bg-zinc-800 text-4xl rounded-full p-1 text-white" />
+                  <p>Open Support Ticket</p>
+                </div>
+              </Link>
             </div>
           </div>
           <div className="px-4 mt-2">
