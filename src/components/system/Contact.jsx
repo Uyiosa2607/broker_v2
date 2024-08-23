@@ -1,6 +1,5 @@
 import NavBar from "./Navigation";
 import Footer from "./Footer";
-import { Select } from "../ui/select";
 import { Label } from "../ui/label";
 import { Textarea } from "../ui/textarea";
 import { Input } from "../ui/input";

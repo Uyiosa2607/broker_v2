@@ -11,12 +11,18 @@ import Profile from "./components/system/Profile";
 import Profit from "./components/system/Profit";
 import Transaction from "./components/system/Transactions";
 import Contact from "./components/system/Contact";
+import Login from "./components/system/Login.jsx";
+import Register from "./components/system/Register.jsx";
 import "./index.css";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
   {
     path: "/dashboard",
@@ -49,6 +55,10 @@ const router = createBrowserRouter([
   {
     path: "/support",
     element: <Contact />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
   },
 ]);
 
