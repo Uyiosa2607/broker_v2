@@ -1,13 +1,45 @@
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { Button } from "../ui/button";
+import { supabase } from "@/lib/supabase";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Loader2 } from "lucide-react";
 
 export default function Login() {
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+
+  async function handleLogin(event) {
+    event.preventDefault();
+    setLoading(true);
+    const formData = new FormData(event.currentTarget);
+
+    const email = formData.get("email");
+    const password = formData.get("password");
+
+    try {
+      const response = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (response.error) return;
+
+      navigate("/dashboard");
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  }
+
   return (
     <main className="bg-gray-200 w-screen">
       <section className="min-h-screen">
         <div className="w-[50%] relative top-[5vh] p-4 rounded-lg bg-white h-fit mx-auto">
-          <form className="w-[600px] mt-[2rem] mx-auto">
+          <form onSubmit={handleLogin} className="w-[600px] mt-[2rem] mx-auto">
             <div>
               <h4 className="capitalize text-center text-2xl mb-5 font-semibold">
                 welcome back
@@ -34,7 +66,15 @@ export default function Login() {
               />
             </div>
             <div className="flex items-center justify-between">
-              <Button className="font-semibold bg-green-600 my-5">Login</Button>
+              <Button
+                disabled={loading}
+                className="font-semibold bg-green-600 my-5"
+              >
+                Login
+                {loading ? (
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                ) : null}
+              </Button>
               <span className="text-sm">Don&apos;t have an account?</span>
             </div>
           </form>

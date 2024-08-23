@@ -1,8 +1,6 @@
 import * as React from "react";
 import { createRoot } from "react-dom/client";
-// import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./components/system/Home.jsx";
 import Dashboard from "./components/system/Dashboard.jsx";
 import Plans from "./components/system/Plans.jsx";
 import Deposit from "./components/system/Deposit.jsx";
@@ -13,52 +11,54 @@ import Transaction from "./components/system/Transactions";
 import Contact from "./components/system/Contact";
 import Login from "./components/system/Login.jsx";
 import Register from "./components/system/Register.jsx";
+import App from "./App.jsx";
+import PrivateRoute from "./lib/private-route.jsx";
 import "./index.css";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <App />,
   },
   {
     path: "/login",
     element: <Login />,
   },
   {
-    path: "/dashboard",
-    element: <Dashboard />,
-  },
-  {
-    path: "/plans",
-    element: <Plans />,
-  },
-  {
-    path: "/deposit",
-    element: <Deposit />,
-  },
-  {
-    path: "/withdraw",
-    element: <Withdraw />,
-  },
-  {
-    path: "/profile",
-    element: <Profile />,
-  },
-  {
-    path: "/profit",
-    element: <Profit />,
-  },
-  {
-    path: "/transactions",
-    element: <Transaction />,
-  },
-  {
-    path: "/support",
-    element: <Contact />,
-  },
-  {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/dashboard",
+    element: <PrivateRoute component={Dashboard} />,
+  },
+  {
+    path: "plans",
+    element: <PrivateRoute component={Plans} />,
+  },
+  {
+    path: "deposit",
+    element: <PrivateRoute component={Deposit} />,
+  },
+  {
+    path: "withdraw",
+    element: <PrivateRoute component={Withdraw} />,
+  },
+  {
+    path: "profile",
+    element: <PrivateRoute component={Profile} />,
+  },
+  {
+    path: "profit",
+    element: <PrivateRoute component={Profit} />,
+  },
+  {
+    path: "transactions",
+    element: <PrivateRoute component={Transaction} />,
+  },
+  {
+    path: "support",
+    element: <PrivateRoute component={Contact} />,
   },
 ]);
 

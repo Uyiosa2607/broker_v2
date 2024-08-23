@@ -17,8 +17,17 @@ import {
 } from "react-icons/fa";
 import { AiFillMessage } from "react-icons/ai";
 import { Separator } from "../ui/separator";
+import { supabase } from "@/lib/supabase";
+import { useNavigate } from "react-router-dom";
 
 export default function NavBar() {
+  const navigate = useNavigate();
+
+  async function logOut() {
+    await supabase.auth.signOut();
+    navigate("/login");
+  }
+
   return (
     <main className="sticky w-full bg-zinc-800 text-gray-100 p-2 top-0 left-0 z-[900]">
       <Sheet>
@@ -124,7 +133,10 @@ export default function NavBar() {
           <div className="px-4 mt-2">
             <h1 className="text-base pt-3 text-gray-500 mb-3">Session</h1>
             <div className="flex flex-col gap-4">
-              <div className="flex cursor-pointer items-center gap-4">
+              <div
+                onClick={logOut}
+                className="flex cursor-pointer items-center gap-4"
+              >
                 <FaSignOutAlt className="bg-zinc-800 text-4xl rounded-full p-1 text-white" />
                 <p>Sign Out</p>
               </div>

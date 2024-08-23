@@ -1,15 +1,14 @@
-import { supabase } from "@/lib/supabase";
-import { useEffect, useState } from "react";
+/* eslint-disable react/prop-types */
+import { supabase } from "./supabase";
+import { useNavigate } from "react-router-dom";
 import { useAtom } from "jotai";
-import Loading from "./components/system/Loading";
-import { userAtom, authStatus } from "@/lib/store";
-import Home from "./components/system/Home";
-import Dashboard from "./components/system/Dashboard";
+import { authStatus, userAtom } from "@/lib/store";
+import { useEffect } from "react";
 
-function App() {
-  const [user, setUser] = useAtom(userAtom);
+function PrivateRoute({ component: Component }) {
   const [auth, setAuth] = useAtom(authStatus);
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useAtom(userAtom);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getAuth = async () => {
@@ -23,24 +22,23 @@ function App() {
 
         if (error) {
           console.error("Error fetching user info:", error);
+          setUser(userInfo);
           setAuth(false);
         } else {
           setUser(userInfo);
           setAuth(true);
         }
+        setAuth(true);
       } else {
         setAuth(false);
+        navigate("/login");
       }
-      setLoading(false);
     };
 
     getAuth();
-  }, []);
+  }, [setUser, navigate, setAuth]);
 
-  console.log(user);
-
-  if (loading) return <Loading />;
-  return <>{auth ? <Dashboard /> : <Home />}</>;
+  return auth ? <Component /> : null;
 }
 
-export default App;
+export default PrivateRoute;
