@@ -9,6 +9,8 @@ import Plans from "./components/system/Plans.jsx";
 import Deposit from "./components/system/Deposit/Deposit.jsx";
 import Withdraw from "./components/system/Withdraw";
 import Profile from "./components/system/Profile";
+import Profit from "./components/system/Profit";
+import Transaction from "./components/system/Transactions";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +36,14 @@ const router = createBrowserRouter([
   {
     path: "/profile",
     element: <Profile />,
+  },
+  {
+    path: "/profit",
+    element: <Profit />,
+  },
+  {
+    path: "/transactions",
+    element: <Transaction />,
   },
 ]);
 

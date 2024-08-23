@@ -16,7 +16,7 @@ export default function Profile() {
             alt="avatar"
           />
         </div>
-        <div className="w-[98%] font-normal p-2 mb-10 rounded-lg bg-white mx-auto">
+        <div className="w-[98%] font-normal p-4 mb-10 rounded-lg bg-white mx-auto">
           <div className="flex items-center justify-between py-4">
             <p>John Doe</p>
             <div className="flex items-center gap-1">
@@ -30,7 +30,7 @@ export default function Profile() {
             <p>$301,244.00</p>
           </div>
         </div>
-        <div className="w-[98%] font-normal p-2 mb-10 rounded-lg bg-white mx-auto">
+        <div className="w-[98%] font-normal p-4 mb-10 rounded-lg bg-white mx-auto">
           <div className="flex items-center justify-between py-4">
             <p>Email</p>
             <p className="">Johndoe@email.com</p>

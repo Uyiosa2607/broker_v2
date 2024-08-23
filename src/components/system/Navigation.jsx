@@ -16,6 +16,7 @@ import {
   FaSignOutAlt,
 } from "react-icons/fa";
 import { AiFillMessage } from "react-icons/ai";
+import { Separator } from "../ui/separator";
 
 export default function NavBar() {
   return (
@@ -54,7 +55,7 @@ export default function NavBar() {
           </SheetHeader>
           <div className="bg-zinc-800 px-4 text-white">
             <div>
-              <p className="capitalize text-muted py-3">total balance</p>
+              <p className="capitalize text-gray-200 py-3">total balance</p>
               <p className="text-2xl">
                 $<span className="font-semibold">303,502.00</span>
               </p>
@@ -85,14 +86,17 @@ export default function NavBar() {
                 <IoMdCash className="bg-zinc-800 text-4xl rounded-full p-1 text-white" />
                 <p>Deposit Funds</p>
               </div>
+              <Separator />
               <div className="flex cursor-pointer items-center gap-4">
                 <MdSavings className="bg-zinc-800 text-4xl rounded-full p-1 text-white" />
                 <p>buy plans</p>
               </div>
+              <Separator />
               <div className="flex cursor-pointer items-center gap-4">
                 <FaCreditCard className="bg-zinc-800 text-4xl rounded-full p-1 text-white" />
                 <p>withdraw funds</p>
               </div>
+              <Separator />
               <div className="flex cursor-pointer items-center  gap-4">
                 <FaHistory className="bg-zinc-800 text-4xl rounded-full p-1 text-white" />
                 <p>transaction history</p>

@@ -26,14 +26,17 @@ export default function Dashboard() {
         <div className="w-[98%] mx-auto bg-white p-5 rounded-lg">
           <div className="flex items-center justify-between mb-3">
             <div className="capitalize flex flex-col gap-2">
-              <p>avaliable balance</p>
-              <p className="text-lg font-medium">
-                $ <span className="text-2xl font-semibold">400,345.00</span>
+              <p className="text-gray-600  text-medium mb-2">
+                avaliable balance
+              </p>
+              <p className="text-2xl font-semibold">
+                $ <span className="font-semibold">400,345.00</span>
               </p>
             </div>
             <div className="capitalize flex flex-col gap-2">
-              <p>server time</p>
-              <p>time of the day</p>
+              <p className="text-sm text-red-500 capitalize">server time</p>
+              <p className="text-sm">Date</p>
+              <p className="text-sm">time of the day</p>
             </div>
           </div>
           <div>
@@ -45,29 +48,29 @@ export default function Dashboard() {
             ></gecko-coin-price-marquee-widget>
           </div>
           <div className="flex justify-between text-white items-center w-[60%] mx-auto py-4">
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col mt-4 items-center">
               <FaCreditCard className="w-[50px] p-2 rounded-md bg-red-500 h-[50px]" />
-              <p className="text-zinc-900">deposit</p>
+              <p className="text-zinc-900 mt-2 text-xs">deposit</p>
             </div>
             <div className="flex flex-col items-center">
               <IoMdCash className="w-[50px] p-2 rounded-md bg-green-500 h-[50px]" />
-              <p className="text-zinc-900">withdraw</p>
+              <p className="text-zinc-900 mt-2 text-xs">withdraw</p>
             </div>
             <div className="flex flex-col  items-center">
               <MdSavings className="w-[50px] p-2 rounded-md bg-zinc-900 h-[50px]" />
-              <p className="text-zinc-900">buy plan</p>
+              <p className="text-zinc-900 mt-2 text-xs">buy plan</p>
             </div>
           </div>
         </div>
       </div>
       <div className="mt-4 w-[98%] flex mx-auto gap-4">
-        <div className="flex-1 p-5 bg-white rounded-lg">
-          <p className="capitalize">total deposits</p>
-          <p>$303,401.00</p>
+        <div className="flex-1 p-5 font-medium bg-white rounded-lg">
+          <p className="capitalize text-gray-400 mb-3">total deposits</p>
+          <p className="text-base">$303,401.00</p>
         </div>
-        <div className="flex-1 bg-white rounded-lg p-5">
-          <p>total withdraws</p>
-          <p>$32,000.00</p>
+        <div className="flex-1 font-medium bg-white rounded-lg p-5">
+          <p className="capitalize mb-3 text-gray-400">total withdraws</p>
+          <p className="text-base">$32,000.00</p>
         </div>
       </div>
       <section className="w-[98%] p-2 bg-white rounded-lg mb-4 mt-4 mx-auto">
