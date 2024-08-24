@@ -7,7 +7,7 @@ import {
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { IoMdPerson, IoMdCash } from "react-icons/io";
-import { MdGroups2, MdSavings } from "react-icons/md";
+import { MdSavings } from "react-icons/md";
 import { BsPersonFillLock } from "react-icons/bs";
 import {
   FaHistory,
@@ -62,7 +62,7 @@ export default function NavBar() {
                 />
                 <AvatarFallback>JD</AvatarFallback>
               </Avatar>
-              <div className="flex flex-col">
+              <div className="flex gap-1 flex-col">
                 <p className="text-sm text-left font-semibold p-0 m-0">
                   {user.name}
                 </p>
@@ -84,12 +84,6 @@ export default function NavBar() {
                   <p className="text-xs">Profile</p>
                 </div>
               </Link>
-              {/* <Link to="/#">
-                <div className="flex items-center flex-col">
-                  <MdGroups2 className="text-2xl mb-2" />
-                  <p className="text-xs">referals</p>
-                </div>
-              </Link> */}
               <Link to="/Profile">
                 <div className="flex items-center flex-col">
                   <BsPersonFillLock className="text-2xl mb-2" />
