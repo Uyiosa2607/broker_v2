@@ -15,9 +15,11 @@ import {
 } from "@/components/ui/select";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Loader2 } from "lucide-react";
 
 export default function Register() {
   const [avatar, setAvatar] = useState(undefined);
+  const [loading, setLoading] = useState(false);
 
   function handleFile(event) {
     const imageFile = event.target.files[0];
@@ -25,6 +27,7 @@ export default function Register() {
   }
 
   async function handleResgistration(event) {
+    setLoading(true);
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
@@ -60,6 +63,7 @@ export default function Register() {
     } catch (error) {
       console.log(error);
     }
+    setLoading(false);
   }
 
   return (
@@ -164,10 +168,14 @@ export default function Register() {
             </div>
             <div className="flex items-center justify-between">
               <Button
+                disabled={loading}
                 type="submit"
                 className="font-semibold w-full bg-green-600 my-3"
               >
                 Register
+                {loading ? (
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                ) : null}
               </Button>
             </div>
             <Link to="/login">
