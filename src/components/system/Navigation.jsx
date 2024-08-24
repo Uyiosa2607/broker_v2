@@ -84,12 +84,12 @@ export default function NavBar() {
                   <p className="text-xs">Profile</p>
                 </div>
               </Link>
-              <Link to="/#">
+              {/* <Link to="/#">
                 <div className="flex items-center flex-col">
                   <MdGroups2 className="text-2xl mb-2" />
                   <p className="text-xs">referals</p>
                 </div>
-              </Link>
+              </Link> */}
               <Link to="/Profile">
                 <div className="flex items-center flex-col">
                   <BsPersonFillLock className="text-2xl mb-2" />
