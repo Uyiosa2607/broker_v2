@@ -6,8 +6,13 @@ import { IoMdCash } from "react-icons/io";
 import { Link } from "react-router-dom";
 import TradingViewWidget from "./Trading";
 import Footer from "./Footer";
+import { useAtom } from "jotai";
+import { userAtom } from "@/lib/store";
+import { formatCurrency } from "@/lib/utils";
 
 export default function Dashboard() {
+  const [user] = useAtom(userAtom);
+
   useEffect(() => {
     const script = document.createElement("script");
     script.src =
@@ -20,6 +25,8 @@ export default function Dashboard() {
     };
   }, []);
 
+  console.log(user);
+
   return (
     <main className="mx-auto w-screen bg-gray-200">
       <NavBar />
@@ -31,7 +38,9 @@ export default function Dashboard() {
                 avaliable balance
               </p>
               <p className="text-xl md:text-2xl font-semibold">
-                $ <span className="font-bold">400,345.00</span>
+                <span className="font-bold">
+                  {formatCurrency(user.balance)}
+                </span>
               </p>
             </div>
             <div className="capitalize flex flex-col gap-1">

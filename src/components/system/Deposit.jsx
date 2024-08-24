@@ -1,5 +1,6 @@
 import NavBar from "./Navigation";
 import Footer from "./Footer";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -16,8 +17,27 @@ import {
   AlertDialogAction,
 } from "@/components/ui/alert-dialog";
 import { FaCheckCircle } from "react-icons/fa";
+import Balance from "./Balance";
+import uploadFile from "@/lib/upload";
+import { Loader2 } from "lucide-react";
 
 export default function Deposit() {
+  const [method, setMethod] = useState("Bitcoin");
+  const [amount, setAmount] = useState(0);
+  const [avatar, setAvatar] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  async function upLoadPicture() {
+    setLoading(true);
+    try {
+      const response = await uploadFile(avatar, "screenshots/");
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+    setLoading(false);
+  }
+
   return (
     <main className="bg-gray-200 ">
       <NavBar />
@@ -25,48 +45,92 @@ export default function Deposit() {
         <div className="w-[80%] md:w-[50%] p-5 h-fit bg-white rounded-md">
           <h3 className="font-semibold">Deposit</h3>
           <div className="my-5">
-            <Select>
+            <Select onValueChange={(value) => setMethod(value)}>
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Select Method" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="BITCOIN">Bitcoin</SelectItem>
-                <SelectItem value="USDT">USDT TRC-20</SelectItem>
+                <SelectItem value="bitcoin">Bitcoin</SelectItem>
+                <SelectItem value="usdt">USDT TRC-20</SelectItem>
               </SelectContent>
             </Select>
           </div>
           <div className="mb-5">
-            <Input placeholder="Enter Amount" type="number" />
+            <Input
+              onChange={(event) => setAmount(event.target.value)}
+              placeholder="Enter Amount"
+              type="number"
+            />
           </div>
-          <p className="mb-5 text-sm capitalize">
-            avaliable balance :{" "}
-            <span className="font-semibold capitalize">{"$404,432.00"}</span>
-          </p>
+          <div className="flex mb-5 items-center gap-1">
+            <p className="text-sm capitalize">avaliable balance :</p>
+            <Balance />
+          </div>
           <AlertDialog>
             <AlertDialogTrigger>
               <Button className="capitalize font-semibold bg-green-500 rounded-md">
                 proceed
               </Button>
             </AlertDialogTrigger>
-            <AlertDialogContent>
-              <div className="p-4">
+            <AlertDialogContent className="z-[3000]">
+              <div className="p-4 flex flex-col items-center justify-center">
                 <FaCheckCircle className="h-[70px] w-[70px] text-green-600 " />
-                <span>generated</span>
-                <p className="text-sm font-normal">
-                  Send $75 worth of USDT TRC-20 to the wallet address.
+                <span className="text-sm font-normal mb-3">Generated</span>
+                <p className="text-sm  font-semibold mb-3">
+                  Send ${amount} Worth of{" "}
+                  <span className="font-bold uppercase">{method}</span> to the
+                  Wallet Address.
                 </p>
-                <div>
-                  <span>Barcode goes here!!</span>
-                  <span>WALLET ADDRESS GOES HERE</span>
-                  <Button>copy address</Button>
+                <div className="flex items-center flex-col">
+                  {method && (
+                    <img
+                      className="mb-4"
+                      src={`https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=${
+                        method === "usdt"
+                          ? import.meta.env.VITE_USDT_ADDRESS
+                          : import.meta.env.VITE_BITCOIN_ADDRESS
+                      }`}
+                      alt="barcode"
+                    />
+                  )}
+                  <span className="text-sm text-gray-700">
+                    {method === "usdt"
+                      ? import.meta.env.VITE_USDT_ADDRESS
+                      : import.meta.env.VITE_BITCOIN_ADDRESS}
+                  </span>
+                  <Button
+                    variant="outline"
+                    className="w-fit my-4 uppercase text-xs"
+                  >
+                    copy address
+                  </Button>
                 </div>
 
-                <p className="text-sm text-red-600">Have you made payment?</p>
-                <span>Upload Payment proof after payment</span>
-                <Input type="file" />
-                <Button>Submit payment</Button>
+                <p className="text-xs mb-2 text-red-600">
+                  Have you made payment?
+                </p>
+                <span className="text-sm">
+                  Upload Payment proof after payment
+                </span>
+                <Input
+                  onChange={(event) => setAvatar(event.target.files[0])}
+                  className="text-center my-3"
+                  type="file"
+                />
+                <Button
+                  disabled={loading}
+                  onClick={upLoadPicture}
+                  className="w-fit mx-auto"
+                >
+                  Upload{" "}
+                  {loading ? (
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  ) : null}
+                </Button>
               </div>
-              <AlertDialogAction>Upload</AlertDialogAction>
+              <AlertDialogAction className="bg-green-600">
+                Complete
+              </AlertDialogAction>
             </AlertDialogContent>
           </AlertDialog>
         </div>

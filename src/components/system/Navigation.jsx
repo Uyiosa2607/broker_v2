@@ -21,6 +21,7 @@ import { supabase } from "@/lib/supabase";
 import { useNavigate, Link } from "react-router-dom";
 import { useAtom } from "jotai";
 import { userAtom } from "@/lib/store";
+import { formatCurrency } from "@/lib/utils";
 
 export default function NavBar() {
   const [user] = useAtom(userAtom);
@@ -74,7 +75,9 @@ export default function NavBar() {
             <div>
               <p className="capitalize text-gray-200 py-3">total balance</p>
               <p className="text-2xl">
-                $<span className="font-semibold">303,502.00</span>
+                <span className="font-semibold">
+                  {formatCurrency(user.balance)}
+                </span>
               </p>
             </div>
             <div className="flex py-4 justify-between font-normal capitalize text-sm items-center">

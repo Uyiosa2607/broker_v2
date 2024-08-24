@@ -39,7 +39,7 @@ export default function Login() {
   return (
     <main className="bg-gray-200 w-screen">
       <section className="min-h-screen w-screen">
-        <div className="w-[80%] md:w-[50%] relative top-[5vh] p-4 rounded-lg bg-white h-fit mx-auto">
+        <div className="w-[80%] md:w-fit relative top-[5vh] p-4 rounded-lg bg-white h-fit mx-auto">
           <form
             onSubmit={handleLogin}
             className="w-[95%] md:w-[600px] mt-[2rem] mx-auto"

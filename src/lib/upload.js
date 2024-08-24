@@ -1,10 +1,10 @@
 import { supabase } from "./supabase";
 
-async function uploadFile(file) {
+async function uploadFile(file, folder) {
   try {
     const { data, error } = await supabase.storage
       .from("image_database")
-      .upload(`images/${file.name}`, file, {
+      .upload(`${folder}${file.name}`, file, {
         cacheControl: "3600",
         upsert: false,
       });

@@ -43,7 +43,7 @@ export default function Register() {
         password,
       });
 
-      const profileImageLink = await uploadFile(avatar);
+      const profileImageLink = await uploadFile(avatar, "profile_pictures/");
 
       await supabase.from("Users").insert([
         {
