@@ -16,8 +16,11 @@ import {
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Loader2 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
+  const navigate = useNavigate();
+
   const [avatar, setAvatar] = useState(undefined);
   const [loading, setLoading] = useState(false);
 
@@ -63,6 +66,7 @@ export default function Register() {
     } catch (error) {
       console.log(error);
     }
+    navigate("/login");
     setLoading(false);
   }
 
