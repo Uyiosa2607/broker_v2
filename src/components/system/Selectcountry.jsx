@@ -10,8 +10,8 @@ import {
 
 export default function SelectCountries() {
   return (
-    <Select name="country" id="country">
-      <SelectTrigger className="w-[180px]">
+    <Select className="w-full" name="country" id="country">
+      <SelectTrigger className="w-full">
         <SelectValue placeholder="Select Country" />
       </SelectTrigger>
       <SelectContent>

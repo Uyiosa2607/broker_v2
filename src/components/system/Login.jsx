@@ -5,6 +5,7 @@ import { supabase } from "@/lib/supabase";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
@@ -79,7 +80,9 @@ export default function Login() {
                 ) : null}
               </Button>
             </div>
-            <span className="text-sm">Don&apos;t have an account?</span>
+            <Link to="/register">
+              <span className="text-sm">Don&apos;t have an account?</span>
+            </Link>
           </form>
         </div>
       </section>

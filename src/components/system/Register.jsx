@@ -14,6 +14,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Register() {
   const [avatar, setAvatar] = useState(undefined);
@@ -64,7 +65,7 @@ export default function Register() {
   return (
     <main className="h-screen bg-gray-200 w-screen">
       <section className="bg-inherit">
-        <div className=" w-[90%] md:w-[50%] relative top-[2vh] p-4 rounded-lg bg-white h-fit mx-auto">
+        <div className=" w-[90%] md:w-fit relative top-[2vh] p-5 rounded-lg bg-white h-fit mx-auto">
           <form
             onSubmit={handleResgistration}
             className="w-[95%] md:w-[600px] mt-[1rem] mx-auto"
@@ -104,24 +105,30 @@ export default function Register() {
                 placeholder="Enter a Password"
               />
             </div>
-            <div className="flex items-center gap-5">
-              <div className="mb-5 flex-1 flex flex-col gap-1.5">
-                <Label htmlFor="password">Phone</Label>
-                <Input
-                  id="phone"
-                  name="phone"
-                  type="text"
-                  required
-                  placeholder="Enter Your Phone Number"
-                />
+            <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-3">
+              <div className="flex flex-1 flex-col gap-1.5">
+                <Label htmlFor="gender">Gender</Label>
+                <Select name="gender" id="gender">
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select gender" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectLabel>Gender</SelectLabel>
+                      <SelectItem value="Male">Male</SelectItem>
+                      <SelectItem value="Female">Female</SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
               </div>
-              <div className="mb-5 flex-1 flex flex-col gap-1.5">
+
+              <div className="mb-3 md:mb-5 flex-1 flex flex-col gap-1.5">
                 <Label htmlFor="password">Country</Label>
                 <SelectCountries />
               </div>
             </div>
-            <div className="flex items-center gap-5">
-              <div className="mb-5 flex-1 flex flex-col gap-1.5">
+            <div className="flex md:items-center flex-col md:flex-row gap-5">
+              <div className="mb-1 md:mb-5 flex-1 flex flex-col gap-1.5">
                 <Label htmlFor="password">Profile picture</Label>
                 <Input
                   onChange={handleFile}
@@ -133,19 +140,16 @@ export default function Register() {
                 />
               </div>
               <div className="mb-5 flex-1 flex flex-col gap-1.5">
-                <Label htmlFor="gender">Gender</Label>
-                <Select name="gender" id="gender">
-                  <SelectTrigger className="w-[180px]">
-                    <SelectValue placeholder="Select gender" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectGroup>
-                      <SelectLabel>Gender</SelectLabel>
-                      <SelectItem value="Male">Male</SelectItem>
-                      <SelectItem value="Female">Female</SelectItem>
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
+                <div className="mb-1md:mb-5 flex-1 flex flex-col gap-1.5">
+                  <Label htmlFor="password">Phone</Label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    type="text"
+                    required
+                    placeholder="Enter Your Phone Number"
+                  />
+                </div>
               </div>
             </div>
             <div className="mb-5 flex flex-col gap-1.5">
@@ -166,7 +170,9 @@ export default function Register() {
                 Register
               </Button>
             </div>
-            <span className="text-sm">Already have an account?</span>
+            <Link to="/login">
+              <span className="text-sm">Already have an account?</span>
+            </Link>
           </form>
         </div>
       </section>
