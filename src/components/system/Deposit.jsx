@@ -22,7 +22,7 @@ export default function Deposit() {
     <main className="bg-gray-200 ">
       <NavBar />
       <section className="min-h-[90vh] relative flex top-[5vh]  justify-center w-screen">
-        <div className="w-[50%] p-5 h-fit bg-white rounded-md">
+        <div className="w-[80%] md:w-[50%] p-5 h-fit bg-white rounded-md">
           <h3 className="font-semibold">Deposit</h3>
           <div className="my-5">
             <Select>

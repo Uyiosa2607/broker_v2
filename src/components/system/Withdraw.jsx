@@ -11,7 +11,7 @@ export default function Withdraw() {
       <NavBar />
       <section className="flex h-screen justify-center">
         <section className="min-h-[90vh] relative flex top-[5vh]  justify-center w-screen">
-          <div className="w-[50%] p-5 h-fit bg-white rounded-md">
+          <div className=" w-[80%] md:w-[50%] p-5 h-fit bg-white rounded-md">
             <h3 className="font-semibold text-center mb-5">Withdraw</h3>
             {/* <div className="my-5">
               <Select>

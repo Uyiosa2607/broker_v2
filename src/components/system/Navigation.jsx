@@ -33,7 +33,7 @@ export default function NavBar() {
   }
 
   return (
-    <main className="sticky w-full bg-zinc-800 text-gray-100 p-2 top-0 left-0 z-[900]">
+    <main className="sticky w-full bg-zinc-800 text-gray-100 p-4 top-0 left-0 z-[900]">
       <Sheet>
         <div className="flex items-center justify-between">
           <div>
@@ -46,16 +46,20 @@ export default function NavBar() {
           </div>
           <div>
             <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" />
+              <AvatarImage
+                src={`https://azbgmygmtxilfilpngex.supabase.co/storage/v1/object/public/${user.img}`}
+              />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
           </div>
         </div>
         <SheetContent className="p-0 overflow-y-scroll z-[9999]" side="left">
           <SheetHeader className="mb-4">
-            <div className="flex items-center px-4 gap-1">
+            <div className="flex items-center px-4 pt-4 gap-1">
               <Avatar>
-                <AvatarImage src="https://github.com/shadcn.png" />
+                <AvatarImage
+                  src={`https://azbgmygmtxilfilpngex.supabase.co/storage/v1/object/public/${user.img}`}
+                />
                 <AvatarFallback>JD</AvatarFallback>
               </Avatar>
               <div className="flex flex-col">

@@ -64,10 +64,10 @@ export default function Register() {
   return (
     <main className="h-screen bg-gray-200 w-screen">
       <section className="bg-inherit">
-        <div className="w-[50%] relative top-[2vh] p-4 rounded-lg bg-white h-fit mx-auto">
+        <div className=" w-[90%] md:w-[50%] relative top-[2vh] p-4 rounded-lg bg-white h-fit mx-auto">
           <form
             onSubmit={handleResgistration}
-            className="w-[600px] mt-[1rem] mx-auto"
+            className="w-[95%] md:w-[600px] mt-[1rem] mx-auto"
           >
             <div>
               <h4 className="capitalize text-center text-2xl mb-5 font-semibold">
@@ -159,11 +159,14 @@ export default function Register() {
               />
             </div>
             <div className="flex items-center justify-between">
-              <Button type="submit" className="font-semibold bg-green-600 my-3">
+              <Button
+                type="submit"
+                className="font-semibold w-full bg-green-600 my-3"
+              >
                 Register
               </Button>
-              <span className="text-sm">Already have an account?</span>
             </div>
+            <span className="text-sm">Already have an account?</span>
           </form>
         </div>
       </section>

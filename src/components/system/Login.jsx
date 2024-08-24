@@ -37,9 +37,12 @@ export default function Login() {
 
   return (
     <main className="bg-gray-200 w-screen">
-      <section className="min-h-screen">
-        <div className="w-[50%] relative top-[5vh] p-4 rounded-lg bg-white h-fit mx-auto">
-          <form onSubmit={handleLogin} className="w-[600px] mt-[2rem] mx-auto">
+      <section className="min-h-screen w-screen">
+        <div className="w-[80%] md:w-[50%] relative top-[5vh] p-4 rounded-lg bg-white h-fit mx-auto">
+          <form
+            onSubmit={handleLogin}
+            className="w-[95%] md:w-[600px] mt-[2rem] mx-auto"
+          >
             <div>
               <h4 className="capitalize text-center text-2xl mb-5 font-semibold">
                 welcome back
@@ -68,15 +71,15 @@ export default function Login() {
             <div className="flex items-center justify-between">
               <Button
                 disabled={loading}
-                className="font-semibold bg-green-600 my-5"
+                className="font-semibold w-full bg-green-600 my-5"
               >
                 Login
                 {loading ? (
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 ) : null}
               </Button>
-              <span className="text-sm">Don&apos;t have an account?</span>
             </div>
+            <span className="text-sm">Don&apos;t have an account?</span>
           </form>
         </div>
       </section>

@@ -10,7 +10,7 @@ export default function Contact() {
     <main className="bg-gray-200 w-screen">
       <NavBar />
       <section className="h-screen">
-        <div className="w-[70%] mt-[2rem] p-4 rounded-lg bg-white h-fit mx-auto">
+        <div className=" w-[90%] md:w-[70%] mt-[2rem] p-4 rounded-lg bg-white h-fit mx-auto">
           <form>
             <div className="mb-5">
               <Label htmlFor="subject">Subject</Label>
@@ -18,7 +18,7 @@ export default function Contact() {
             </div>
             <div>
               <Label htmlFor="message">Message</Label>
-              <Textarea id="message" className="h-[300px]" />
+              <Textarea id="message" className="h-[180px] md:h-[300px]" />
             </div>
             <Button className="bg-green-600 font-medium my-4">Submit</Button>
           </form>
