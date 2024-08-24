@@ -123,13 +123,13 @@ export default function Register() {
               </div>
 
               <div className="mb-3 md:mb-5 flex-1 flex flex-col gap-1.5">
-                <Label htmlFor="password">Country</Label>
+                <Label htmlFor="picture">Country</Label>
                 <SelectCountries />
               </div>
             </div>
             <div className="flex md:items-center flex-col md:flex-row gap-5">
               <div className="mb-1 md:mb-5 flex-1 flex flex-col gap-1.5">
-                <Label htmlFor="password">Profile picture</Label>
+                <Label htmlFor="picture">Profile picture</Label>
                 <Input
                   onChange={handleFile}
                   id="picture"
