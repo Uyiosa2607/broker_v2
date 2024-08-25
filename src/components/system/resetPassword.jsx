@@ -6,8 +6,11 @@ import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Loader2 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function ResetPassword() {
+  const navigate = useNavigate();
+
   const [loading, setLoading] = useState(false);
 
   async function handleReset(event) {
@@ -19,9 +22,11 @@ export default function ResetPassword() {
       const response = await supabase.auth.updateUser({
         password: password,
       });
-      console.log(response);
-      //   toast.success("Password reset Succesfull");
-      setLoading(false);
+      if (!response.error) {
+        toast.success("Password reset Succesfull");
+        setLoading(false);
+        navigate("/login");
+      }
     } catch (error) {
       console.log(error);
       setLoading(false);
