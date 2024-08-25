@@ -67,8 +67,10 @@ export default function Register() {
       ]);
     } catch (error) {
       console.log(error);
+      setLoading(false);
+      toast.error("Something went wrong");
     }
-    toast.success("Registration Succesfull");
+
     navigate("/login");
     setLoading(false);
   }
