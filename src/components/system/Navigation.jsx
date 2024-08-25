@@ -6,9 +6,8 @@ import {
 } from "@/components/ui/sheet";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { IoMdPerson, IoMdCash } from "react-icons/io";
+import { IoMdCash } from "react-icons/io";
 import { MdSavings } from "react-icons/md";
-import { BsPersonFillLock } from "react-icons/bs";
 import {
   FaHistory,
   FaFunnelDollar,
@@ -73,7 +72,7 @@ export default function NavBar() {
               </div>
             </div>
           </SheetHeader>
-          <div className="bg-zinc-800 px-4 text-white">
+          <div className="bg-zinc-800 px-4 pb-4 text-white">
             <div>
               <p className="capitalize text-gray-200 py-3">total balance</p>
               <p className="text-2xl">
@@ -81,26 +80,6 @@ export default function NavBar() {
                   {formatCurrency(user.balance)}
                 </span>
               </p>
-            </div>
-            <div className="flex py-4 justify-between font-normal capitalize text-sm items-center">
-              <Link to="/profile">
-                <div className="flex items-center flex-col">
-                  <IoMdPerson className="text-2xl mb-2" />
-                  <p className="text-xs">Profile</p>
-                </div>
-              </Link>
-              <Link to="/Profile">
-                <div className="flex items-center flex-col">
-                  <BsPersonFillLock className="text-2xl mb-2" />
-                  <p className="text-xs">change password</p>
-                </div>
-              </Link>
-              <Link to="/plans">
-                <div className="flex items-center flex-col">
-                  <MdSavings className="text-2xl mb-2" />
-                  <p className="text-xs">plans</p>
-                </div>
-              </Link>
             </div>
           </div>
           <div className="px-4">

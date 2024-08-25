@@ -13,6 +13,7 @@ import Login from "./components/system/Login.jsx";
 import Register from "./components/system/Register.jsx";
 import App from "./App.jsx";
 import PrivateRoute from "./lib/private-route.jsx";
+import ResetPassword from "./components/system/resetPassword.jsx";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
   {
     path: "support",
     element: <PrivateRoute component={Contact} />,
+  },
+  {
+    path: "/reset-password",
+    element: <ResetPassword />,
   },
 ]);
 

@@ -37,8 +37,6 @@ function App() {
     getAuth();
   }, []);
 
-  console.log(user);
-
   if (loading) return <Loading />;
   return <>{auth ? <Dashboard /> : <Home />}</>;
 }

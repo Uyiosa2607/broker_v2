@@ -45,6 +45,7 @@ export default function Plans() {
   const [value, setValue] = useState(0);
 
   async function handleBuyPlan(min, max) {
+    if (value === 0) return alert("Please enter Amount");
     if (value < min || value > max)
       return toast.error("Please check Plan limits");
     if (value === 0) return alert("Please Enter amount");
