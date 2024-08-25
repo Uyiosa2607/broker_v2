@@ -17,6 +17,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -66,6 +68,7 @@ export default function Register() {
     } catch (error) {
       console.log(error);
     }
+    toast.success("Registration Succesfull");
     navigate("/login");
     setLoading(false);
   }
@@ -188,6 +191,7 @@ export default function Register() {
           </form>
         </div>
       </section>
+      <ToastContainer />
     </main>
   );
 }

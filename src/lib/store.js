@@ -4,4 +4,6 @@ const userAtom = atom([]);
 
 const authStatus = atom(false);
 
-export { userAtom, authStatus };
+const totalAtom = atom([]);
+
+export { userAtom, authStatus, totalAtom };

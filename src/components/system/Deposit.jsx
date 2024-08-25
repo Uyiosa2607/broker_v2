@@ -20,22 +20,35 @@ import { FaCheckCircle } from "react-icons/fa";
 import Balance from "./Balance";
 import uploadFile from "@/lib/upload";
 import { Loader2 } from "lucide-react";
+import { supabase } from "@/lib/supabase";
+import { useAtom } from "jotai";
+import { userAtom } from "@/lib/store";
 
 export default function Deposit() {
   const [method, setMethod] = useState("Bitcoin");
   const [amount, setAmount] = useState(0);
   const [avatar, setAvatar] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [user] = useAtom(userAtom);
 
-  async function upLoadPicture() {
+  async function createDepositRecord(event) {
+    event.preventDefault();
     setLoading(true);
     try {
       const response = await uploadFile(avatar, "screenshots/");
-      console.log(response);
+      await supabase.from("Transactions").insert([
+        {
+          method,
+          amount,
+          img: response.fullPath,
+          user_id: user.id,
+        },
+      ]);
     } catch (error) {
       console.log(error);
     }
     setLoading(false);
+    console.log("Deposit done");
   }
 
   return (
@@ -85,7 +98,7 @@ export default function Deposit() {
                   {method && (
                     <img
                       className="mb-4"
-                      src={`https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=${
+                      src={`https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${
                         method === "usdt"
                           ? import.meta.env.VITE_USDT_ADDRESS
                           : import.meta.env.VITE_BITCOIN_ADDRESS
@@ -105,28 +118,33 @@ export default function Deposit() {
                     copy address
                   </Button>
                 </div>
-
-                <p className="text-xs mb-2 text-red-600">
-                  Have you made payment?
-                </p>
-                <span className="text-sm">
-                  Upload Payment proof after payment
-                </span>
-                <Input
-                  onChange={(event) => setAvatar(event.target.files[0])}
-                  className="text-center my-3"
-                  type="file"
-                />
-                <Button
-                  disabled={loading}
-                  onClick={upLoadPicture}
-                  className="w-fit mx-auto"
+                <form
+                  className="flex flex-col items-center justify-center"
+                  onSubmit={createDepositRecord}
                 >
-                  Upload{" "}
-                  {loading ? (
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  ) : null}
-                </Button>
+                  <p className="text-xs mb-2 text-red-600">
+                    Have you made payment?
+                  </p>
+                  <span className="text-sm">
+                    Upload Payment proof after payment
+                  </span>
+                  <Input
+                    onChange={(event) => setAvatar(event.target.files[0])}
+                    className="text-center my-3"
+                    type="file"
+                    required
+                  />
+                  <Button
+                    disabled={loading}
+                    type="submit"
+                    className="w-fit mx-auto"
+                  >
+                    Upload{" "}
+                    {loading ? (
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    ) : null}
+                  </Button>
+                </form>
               </div>
               <AlertDialogAction className="bg-green-600">
                 Complete

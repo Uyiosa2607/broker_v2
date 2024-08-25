@@ -1,5 +1,8 @@
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { supabase } from "./supabase";
+// import { useAtom } from "jotai";
+// import { userAtom } from "./store";
 
 export function cn(...inputs) {
   return twMerge(clsx(inputs));
@@ -10,4 +13,52 @@ export function formatCurrency(number) {
     style: "currency",
     currency: "USD",
   }).format(number);
+}
+
+export async function sumTransactionsByUser(userId) {
+  try {
+    // Fetch transactions for the specific user
+    const { data: transactions, error } = await supabase
+      .from("Transactions")
+      .select("*")
+      .eq("user_id", userId);
+
+    if (error) {
+      console.error("Error fetching transactions:", error);
+      return { totalWithdrawals: 0, totalDeposits: 0, total: 0 };
+    }
+    // Calculate total withdrawals
+    const totalWithdrawals = transactions
+      .filter((item) => item.type === "withdrawal")
+      .reduce((acc, item) => acc + (item.amount || 0), 0);
+
+    // Calculate total deposits
+    const totalDeposits = transactions
+      .filter((item) => item.type === "deposit")
+      .reduce((acc, item) => acc + (item.amount || 0), 0);
+
+    // Return the results
+    return { totalWithdrawals, totalDeposits };
+  } catch (error) {
+    console.error("Error:", error);
+    return { totalWithdrawals: 0, totalDeposits: 0, total: 0 };
+  }
+}
+
+export async function updateUserBalance(id, value, balance) {
+  try {
+    const response = await supabase
+      .from("Users")
+      .update({
+        balance: `${balance - value}`,
+      })
+      .eq("id", id);
+    if (!response.error) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    console.log(error);
+  }
 }

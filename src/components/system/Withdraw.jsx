@@ -12,11 +12,39 @@ import { Label } from "../ui/label";
 import Balance from "./Balance";
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
+import { supabase } from "@/lib/supabase";
+import { useAtom } from "jotai";
+import { userAtom } from "@/lib/store";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Withdraw() {
   const [address, setAddress] = useState("");
   const [amount, setAmount] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [user] = useAtom(userAtom);
+
+  async function createWithdrawalRecord() {
+    if (amount > user.balance) return toast.error("Not enough balance");
+    setLoading(true);
+
+    try {
+      const response = await supabase.from("Transactions").insert([
+        {
+          type: "withdrawal",
+          method: "Bitcoin",
+          amount,
+          user_id: user.id,
+        },
+      ]);
+      if (response.error)
+        return console.log("Something went wrong", response.error);
+      toast.success("Withdrawal request Submited");
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <main className="bg-gray-200 w-screen">
@@ -64,8 +92,8 @@ export default function Withdraw() {
                   <DialogDescription className="mb-4 text-zinc-900 font-medium">
                     Proceed to Withdraw ${amount} to {address}
                   </DialogDescription>
-                  <Button>
-                    Complete withdrawal
+                  <Button onClick={createWithdrawalRecord}>
+                    Complete withdrawal{"  "}
                     {loading ? (
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                     ) : null}
@@ -77,6 +105,7 @@ export default function Withdraw() {
         </section>
       </section>
       <Footer />
+      <ToastContainer />
     </main>
   );
 }

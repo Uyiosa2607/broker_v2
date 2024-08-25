@@ -7,11 +7,13 @@ import { Link } from "react-router-dom";
 import TradingViewWidget from "./Trading";
 import Footer from "./Footer";
 import { useAtom } from "jotai";
-import { userAtom } from "@/lib/store";
+import { totalAtom, userAtom } from "@/lib/store";
 import { formatCurrency } from "@/lib/utils";
+import { sumTransactionsByUser } from "@/lib/utils";
 
 export default function Dashboard() {
   const [user] = useAtom(userAtom);
+  const [total, setTotal] = useAtom(totalAtom);
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -20,12 +22,12 @@ export default function Dashboard() {
     script.async = true;
     document.body.appendChild(script);
 
+    const balances = sumTransactionsByUser(user.id);
+    setTotal(balances);
     return () => {
       document.body.removeChild(script);
     };
   }, []);
-
-  console.log(user);
 
   return (
     <main className="mx-auto w-screen bg-gray-200">
@@ -82,11 +84,15 @@ export default function Dashboard() {
       <div className="mt-4 w-[98%] flex mx-auto gap-4">
         <div className="flex-1 p-5 font-medium bg-white rounded-lg">
           <p className="capitalize text-gray-400 mb-3">total deposits</p>
-          <p className="text-base">$303,401.00</p>
+          <p className="text-base font-semibold">
+            {formatCurrency(total.totalDeposits)}
+          </p>
         </div>
         <div className="flex-1 font-medium bg-white rounded-lg p-5">
           <p className="capitalize mb-3 text-gray-400">total withdraws</p>
-          <p className="text-base">$32,000.00</p>
+          <p className="text-base font-semibold">
+            {formatCurrency(total.totalWithdrawals)}
+          </p>
         </div>
       </div>
       <section className="w-[98%] p-2 bg-white rounded-lg mb-4 mt-4 mx-auto">

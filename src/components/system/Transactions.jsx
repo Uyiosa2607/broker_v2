@@ -1,46 +1,34 @@
 import NavBar from "./Navigation";
 import Footer from "./Footer";
 import { Separator } from "../ui/separator";
-
-const transactions = [
-  {
-    date: "Wed, Jul 24, 2024 9:19 PM",
-    type: "USDT TRC-20",
-    amount: "$500",
-    reference: "GIPS1s04895104s",
-    status: "complete",
-  },
-  {
-    date: "Wed, Jul 24, 2024 9:19 PM",
-    type: "USDT TRC-20",
-    amount: "$500",
-    reference: "GIPS10489a5104s",
-    status: "complete",
-  },
-  {
-    date: "Wed, Jul 24, 2024 9:19 PM",
-    type: "USDT TRC-20",
-    amount: "$500",
-    reference: "GIPS104895c104s",
-    status: "pending",
-  },
-  {
-    date: "Wed, Jul 24, 2024 9:19 PM",
-    type: "USDT TRC-20",
-    amount: "$500",
-    reference: "GIPS1048s95104s",
-    status: "complete",
-  },
-  {
-    date: "Wed, Jul 24, 2024 9:19 PM",
-    type: "USDT TRC-20",
-    amount: "$500",
-    reference: "GIPS10489510ds",
-    status: "pending",
-  },
-];
+import { useEffect, useState } from "react";
+import { useAtom } from "jotai";
+import { userAtom } from "@/lib/store";
+import { supabase } from "@/lib/supabase";
 
 export default function Transaction() {
+  const [user] = useAtom(userAtom);
+
+  const [transactions, setTransaction] = useState([]);
+
+  useEffect(() => {
+    async function getTransaction() {
+      try {
+        const response = await supabase
+          .from("Transactions")
+          .select("*")
+          .eq("user_id", user.id);
+
+        if (response.error)
+          return console.log("Something went wrong", response.error);
+        setTransaction(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getTransaction();
+  }, [user]);
+
   return (
     <main className="bg-gray-100">
       <NavBar />
@@ -54,10 +42,11 @@ export default function Transaction() {
               className={`p-4 flex flex-col gap-3 rounded-md shadow-md ${
                 index % 2 === 0 ? "bg-white" : "bg-gray-50"
               }`}
-              key={transaction.reference}
+              key={transaction.id}
             >
               <p className="capitalize font-medium">
-                Date: <span className="text-gray-400">{transaction.date}</span>
+                Date:{" "}
+                <span className="text-gray-400">{transaction.created_at}</span>
               </p>
               <Separator />
               <p className="capitalize font-medium">
@@ -71,7 +60,7 @@ export default function Transaction() {
               <Separator />
               <p className="capitalize font-medium">
                 Reference:{" "}
-                <span className="text-gray-400">{transaction.reference}</span>
+                <span className="text-gray-400">{transaction.id}</span>
               </p>
               <p
                 className={`w-full text-xs ${

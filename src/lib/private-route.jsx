@@ -14,18 +14,18 @@ function PrivateRoute({ component: Component }) {
     const getAuth = async () => {
       const getAuthStatus = await supabase.auth.getSession();
       if (getAuthStatus.data.session) {
-        const { data: userInfo, error } = await supabase
+        const getUser = await supabase
           .from("Users")
           .select("*")
           .eq("id", getAuthStatus.data.session.user.id)
           .single();
 
-        if (error) {
-          console.error("Error fetching user info:", error);
-          setUser(userInfo);
+        if (getUser.error) {
+          console.error("Error fetching user info:", getUser.error);
+          setUser(getUser.data);
           setAuth(false);
         } else {
-          setUser(userInfo);
+          setUser(getUser.data);
           setAuth(true);
         }
         setAuth(true);
