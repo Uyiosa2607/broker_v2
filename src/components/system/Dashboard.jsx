@@ -33,7 +33,7 @@ export default function Dashboard() {
     <main className="mx-auto w-screen bg-gray-200">
       <NavBar />
       <div className="flex flex-col mt-4 w-full">
-        <div className="w-[98%] mx-auto bg-white p-5 rounded-lg">
+        <div className="w-[98%] mx-auto bg-white p-3 md:p-5 rounded-lg">
           <div className="flex items-center justify-between mb-3">
             <div className="capitalize flex flex-col gap-2">
               <p className="text-gray-600 text-sm md:text-base text-medium mb-2">
@@ -59,22 +59,22 @@ export default function Dashboard() {
               initial-currency="usd"
             ></gecko-coin-price-marquee-widget>
           </div>
-          <div className="flex justify-between  text-white items-center w-[80%] md:w-[60%] mx-auto py-4">
+          <div className="flex justify-between text-white items-center w-[80%] md:w-[60%] mx-auto py-4">
             <Link to="/deposit">
-              <div className="flex flex-col mt-4 items-center">
-                <FaCreditCard className="h-[45px] w-[45px]  md:w-[50px] p-2 rounded-md bg-red-500 md:h-[50px]" />
+              <div className="flex flex-col  items-center">
+                <FaCreditCard className="h-[44px] w-[44px]  md:w-[50px] p-2 rounded-md bg-red-500 md:h-[50px]" />
                 <p className="text-zinc-900 mt-2 text-xs">deposit</p>
               </div>
             </Link>
             <Link to="/withdraw">
               <div className="flex flex-col items-center">
-                <IoMdCash className="h-[45px] w-[45px] md:w-[50px] p-2 rounded-md bg-green-500 md:h-[50px]" />
+                <IoMdCash className="h-[44px] w-[44px] md:w-[50px] p-2 rounded-md bg-green-500 md:h-[50px]" />
                 <p className="text-zinc-900 mt-2 text-xs">withdraw</p>
               </div>
             </Link>
             <Link to="/plans">
               <div className="flex flex-col  items-center">
-                <MdSavings className="h-[45px] w-[45px] md:w-[50px] p-2 rounded-md bg-zinc-900 md:h-[50px]" />
+                <MdSavings className="h-[44px] w-[44px] md:w-[50px] p-2 rounded-md bg-zinc-900 md:h-[50px]" />
                 <p className="text-zinc-900 mt-2 text-xs">buy plan</p>
               </div>
             </Link>

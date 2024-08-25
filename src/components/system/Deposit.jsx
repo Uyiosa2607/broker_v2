@@ -23,6 +23,8 @@ import { Loader2 } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { useAtom } from "jotai";
 import { userAtom } from "@/lib/store";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Deposit() {
   const [method, setMethod] = useState("Bitcoin");
@@ -48,7 +50,7 @@ export default function Deposit() {
       console.log(error);
     }
     setLoading(false);
-    console.log("Deposit done");
+    return toast.success("Deposit Submited");
   }
 
   return (
@@ -85,7 +87,7 @@ export default function Deposit() {
                 proceed
               </Button>
             </AlertDialogTrigger>
-            <AlertDialogContent className="z-[3000]">
+            <AlertDialogContent className="z-[3000] w-[80%] rounded-lg md:w-fit">
               <div className="p-4 flex flex-col items-center justify-center">
                 <FaCheckCircle className="h-[70px] w-[70px] text-green-600 " />
                 <span className="text-sm font-normal mb-3">Generated</span>
@@ -154,6 +156,7 @@ export default function Deposit() {
         </div>
       </section>
       <Footer />
+      <ToastContainer />
     </main>
   );
 }

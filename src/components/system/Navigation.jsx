@@ -34,7 +34,7 @@ export default function NavBar() {
   }
 
   return (
-    <main className="sticky w-full bg-zinc-800 text-gray-100 p-2 top-0 left-0 z-[900]">
+    <main className="sticky w-full bg-zinc-800 text-gray-100 p-2 px-4 top-0 left-0 z-[900]">
       <Sheet>
         <div className="flex items-center justify-between">
           <div>

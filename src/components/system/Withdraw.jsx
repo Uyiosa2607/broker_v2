@@ -87,13 +87,16 @@ export default function Withdraw() {
                   proceed
                 </Button>
               </DialogTrigger>
-              <DialogContent>
-                <div className="p-4">
+              <DialogContent className="w-[90%] md:w-fit rounded-lg">
+                <div className="p-2 flex flex-col items-center">
                   <DialogDescription className="mb-4 text-zinc-900 font-medium">
                     Proceed to Withdraw ${amount} to {address}
                   </DialogDescription>
-                  <Button onClick={createWithdrawalRecord}>
-                    Complete withdrawal{"  "}
+                  <Button
+                    className="w-fit mx-auto"
+                    onClick={createWithdrawalRecord}
+                  >
+                    Complete Withdrawal{"  "}
                     {loading ? (
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                     ) : null}
