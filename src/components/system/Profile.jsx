@@ -30,7 +30,7 @@ export default function Profile() {
     if (email.length == 0) return alert("Please Enter your Email");
     try {
       const response = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: `${import.meta.env.VITE_DOMAIN_NAME}/reset-password`,
+        redirectTo: import.meta.env.VITE_DOMAIN_NAME,
       });
       if (!response.error) {
         toast.success("Password reset Link has been sent to your email");
