@@ -48,6 +48,7 @@ export default function NavBar() {
             <Link to="/profile">
               <Avatar>
                 <AvatarImage
+                  className="object-cover"
                   src={`https://azbgmygmtxilfilpngex.supabase.co/storage/v1/object/public/${user.img}`}
                 />
                 <AvatarFallback>CN</AvatarFallback>
@@ -60,6 +61,7 @@ export default function NavBar() {
             <div className="flex items-center px-4 pt-4 gap-2">
               <Avatar>
                 <AvatarImage
+                  className="object-cover"
                   src={`https://azbgmygmtxilfilpngex.supabase.co/storage/v1/object/public/${user.img}`}
                 />
                 <AvatarFallback>JD</AvatarFallback>
