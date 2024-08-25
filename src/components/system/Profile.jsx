@@ -16,12 +16,17 @@ import {
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Loader2 } from "lucide-react";
 
 export default function Profile() {
   const [user] = useAtom(userAtom);
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
 
   async function sendResetLink() {
+    setLoading(true);
     if (email.length == 0) return alert("Please Enter your Email");
     try {
       const response = await supabase.auth.resetPasswordForEmail(email, {
@@ -30,7 +35,9 @@ export default function Profile() {
       console.log(response);
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
+    setLoading(false);
   }
 
   return (
@@ -110,12 +117,16 @@ export default function Profile() {
               onChange={(event) => setEmail(event.target.value)}
             />
             <Button onClick={sendResetLink} className="font-semibold">
-              Send link
+              Send link &nbsp;{" "}
+              {loading ? (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              ) : null}
             </Button>
           </div>
         </DialogContent>
       </Dialog>
       <Footer />
+      <ToastContainer />
     </main>
   );
 }
