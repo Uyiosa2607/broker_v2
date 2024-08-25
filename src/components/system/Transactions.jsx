@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useAtom } from "jotai";
 import { userAtom } from "@/lib/store";
 import { supabase } from "@/lib/supabase";
+import { formatCurrency } from "@/lib/utils";
 
 export default function Transaction() {
   const [user] = useAtom(userAtom);
@@ -45,22 +46,35 @@ export default function Transaction() {
               key={transaction.id}
             >
               <p className="capitalize font-medium">
-                Date:{" "}
-                <span className="text-gray-400">{transaction.created_at}</span>
+                Date :{" "}
+                <span className="text-gray-700">{transaction.created_at}</span>
               </p>
               <Separator />
               <p className="capitalize font-medium">
-                Type: <span className="text-gray-400">{transaction.type}</span>
+                Type :{" "}
+                <span className="text-gray-700">
+                  <span
+                    className={`${
+                      transaction.type === "deposit"
+                        ? "bg-green-600 w-fit text-white px-1 rounded-md p-[3px]"
+                        : "bg-red-500 w-fit text-white px-2 rounded-md p-[3px]"
+                    }`}
+                  >
+                    {transaction.type}
+                  </span>
+                </span>
               </p>
               <Separator />
               <p className="capitalize font-medium">
-                Amount:{" "}
-                <span className="text-gray-400">{transaction.amount}</span>
+                Amount :{" "}
+                <span className="text-gray-700">
+                  {formatCurrency(transaction.amount)}
+                </span>
               </p>
               <Separator />
               <p className="capitalize font-medium">
-                Reference:{" "}
-                <span className="text-gray-400">{transaction.id}</span>
+                Reference :{" "}
+                <span className="text-gray-700">{transaction.id}</span>
               </p>
               <p
                 className={`w-full text-xs ${
