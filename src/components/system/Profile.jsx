@@ -59,7 +59,7 @@ export default function Profile() {
     event.preventDefault();
     try {
       const response = await supabase
-        .form("Users")
+        .from("Users")
         .update([
           {
             name,
