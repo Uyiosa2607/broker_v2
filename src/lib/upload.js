@@ -6,10 +6,10 @@ async function uploadFile(file, folder) {
       .from("image_database")
       .upload(`${folder}${file.name}`, file, {
         cacheControl: "3600",
-        upsert: false,
+        upsert: true,
       });
 
-    if (error) return;
+    if (error) return error;
 
     return data;
   } catch (error) {

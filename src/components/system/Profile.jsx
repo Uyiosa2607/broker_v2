@@ -23,15 +23,13 @@ import { Label } from "../ui/label";
 import { FaCameraRetro } from "react-icons/fa";
 import { Popover } from "../ui/popover";
 import { PopoverContent, PopoverTrigger } from "@radix-ui/react-popover";
+import uploadFile from "@/lib/upload";
 
 export default function Profile() {
   const [user] = useAtom(userAtom);
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
-  const [avatar, setAvatar] = useState({
-    file: null,
-    url: "",
-  });
+  const [avatar, setAvatar] = useState(null);
 
   console.log(user);
 
@@ -79,30 +77,22 @@ export default function Profile() {
     }
   }
 
-  function handleAvatar(event) {
-    setAvatar({
-      file: event.target.files[0],
-      url: URL.createObjectURL(event.target.files[0]),
-    });
-  }
-
-  async function updateProfilePicture(avatar) {
-    if (avatar.file === null) return alert("Please select image");
+  async function updateProfilePicture() {
+    if (avatar === null) return alert("Please select a photo");
     try {
       const response = await supabase.storage
         .from("image_database")
-        .update(`${user.img}`, avatar.file, {
+        .update(`${user.img}`, avatar, {
           cacheControl: "3600",
           upsert: true,
+          contentType: avatar.type,
         });
-
       if (!response.error) return toast.success("Profile picture Updated");
       return toast.error("Something went wrong, Please try again");
     } catch (error) {
       console.log(error);
     }
   }
-
   return (
     <main className="min-h-screen bg-gray-200 w-screen">
       <NavBar />
@@ -117,17 +107,24 @@ export default function Profile() {
             <PopoverTrigger>
               <FaCameraRetro className="bottom-1" />
             </PopoverTrigger>
-            <PopoverContent className="bg-zinc-800 py-10 w-[80%] rounded-lg md:w-fit mx-auto text-white">
+            <PopoverContent className="bg-zinc-800 py-10  rounded-lg md:w-fit mx-auto text-white">
               <div className="p-4 flex flex-col items-center">
-                {avatar.file && (
+                {avatar && (
                   <img
                     className="w-[60px] mb-5 h-[60px] rounded-full object-cover"
-                    src={avatar.url}
+                    src={URL.createObjectURL(avatar)}
                     alt="profile image"
                   />
                 )}
-                <Input className="mb-5" onChange={handleAvatar} type="file" />
-                <Button onClick={updateProfilePicture}>
+                <form className="mb-5 flex flex-col gap-2">
+                  <Input
+                    className="mb-5 w-[120px]"
+                    id="picture"
+                    onChange={(event) => setAvatar(event.target.files[0])}
+                    type="File"
+                  />
+                </form>
+                <Button className="bg-green-700" onClick={updateProfilePicture}>
                   Change profile picture
                 </Button>
               </div>
