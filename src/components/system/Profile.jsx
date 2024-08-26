@@ -23,7 +23,6 @@ import { Label } from "../ui/label";
 import { FaCameraRetro } from "react-icons/fa";
 import { Popover } from "../ui/popover";
 import { PopoverContent, PopoverTrigger } from "@radix-ui/react-popover";
-import uploadFile from "@/lib/upload";
 
 export default function Profile() {
   const [user] = useAtom(userAtom);
@@ -100,7 +99,9 @@ export default function Profile() {
         <div className="py-7 flex flex-col items-center justify-center">
           <img
             className="w-[100px] rounded-full h-[100px] object-cover"
-            src={`https://azbgmygmtxilfilpngex.supabase.co/storage/v1/object/public/image_database/${user.img}`}
+            src={`https://azbgmygmtxilfilpngex.supabase.co/storage/v1/object/public/image_database/${
+              user.img
+            }?${new Date().getTime()}`}
             alt="avatar"
           />
           <Popover>
