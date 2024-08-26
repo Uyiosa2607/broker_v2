@@ -188,7 +188,9 @@ export default function Register() {
               </Button>
             </div>
             <Link to="/login">
-              <span className="text-sm">Already have an account?</span>
+              <span className="text-xs underline">
+                Already have an account?
+              </span>
             </Link>
           </form>
         </div>

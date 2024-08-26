@@ -85,11 +85,16 @@ export default function Login() {
                 ) : null}
               </Button>
             </div>
-            <Link to="/register">
-              <span className="text-sm underline">
-                Don&apos;t have an account?
-              </span>
-            </Link>
+            <div className="flex items-center justify-between">
+              <Link to="/register">
+                <span className="text-xs underline">
+                  Don&apos;t have an account?
+                </span>
+              </Link>
+              <Link to="/forget-password">
+                <span className="text-xs underline">forgot password?</span>
+              </Link>
+            </div>
           </form>
         </div>
       </section>
