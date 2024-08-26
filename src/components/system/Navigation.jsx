@@ -49,7 +49,7 @@ export default function NavBar() {
               <Avatar>
                 <AvatarImage
                   className="object-cover"
-                  src={`https://azbgmygmtxilfilpngex.supabase.co/storage/v1/object/public/${user.img}`}
+                  src={`https://azbgmygmtxilfilpngex.supabase.co/storage/v1/object/public/image_database/${user.img}`}
                 />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
@@ -62,7 +62,7 @@ export default function NavBar() {
               <Avatar>
                 <AvatarImage
                   className="object-cover"
-                  src={`https://azbgmygmtxilfilpngex.supabase.co/storage/v1/object/public/${user.img}`}
+                  src={`https://azbgmygmtxilfilpngex.supabase.co/storage/v1/object/public/image_database/${user.img}`}
                 />
                 <AvatarFallback>JD</AvatarFallback>
               </Avatar>

@@ -110,7 +110,7 @@ export default function Profile() {
         <div className="py-7 flex flex-col items-center justify-center">
           <img
             className="w-[100px] rounded-full h-[100px] object-cover"
-            src={`https://azbgmygmtxilfilpngex.supabase.co/storage/v1/object/public/${user.img}`}
+            src={`https://azbgmygmtxilfilpngex.supabase.co/storage/v1/object/public/image_database/${user.img}`}
             alt="avatar"
           />
           <Popover>

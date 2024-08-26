@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
@@ -26,7 +28,10 @@ export default function Login() {
         password,
       });
 
-      if (response.error) return;
+      if (response.error) {
+        setLoading(false);
+        return toast.error("Invalid Login Credentials");
+      }
 
       navigate("/dashboard");
       setLoading(false);
@@ -74,18 +79,21 @@ export default function Login() {
                 disabled={loading}
                 className="font-semibold w-full bg-green-600 my-5"
               >
-                Login
+                Login &nbsp;
                 {loading ? (
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 ) : null}
               </Button>
             </div>
             <Link to="/register">
-              <span className="text-sm">Don&apos;t have an account?</span>
+              <span className="text-sm underline">
+                Don&apos;t have an account?
+              </span>
             </Link>
           </form>
         </div>
       </section>
+      <ToastContainer />
     </main>
   );
 }
