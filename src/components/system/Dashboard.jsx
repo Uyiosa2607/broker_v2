@@ -1,5 +1,5 @@
 import NavBar from "./Navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FaCreditCard } from "react-icons/fa";
 import { MdSavings } from "react-icons/md";
 import { IoMdCash } from "react-icons/io";
@@ -14,6 +14,7 @@ import { sumTransactionsByUser } from "@/lib/utils";
 export default function Dashboard() {
   const [user] = useAtom(userAtom);
   const [total, setTotal] = useAtom(totalAtom);
+  const [formattedDate, setFormattedDate] = useState("");
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -24,10 +25,20 @@ export default function Dashboard() {
 
     const balances = sumTransactionsByUser(user.id);
     setTotal(balances);
+
+    const interval = setInterval(() => {
+      const date = new Date();
+      const dateOptions = { day: "numeric", month: "long" };
+      setFormattedDate(
+        new Intl.DateTimeFormat("en-US", dateOptions).format(date)
+      );
+    }, 1000);
+
     return () => {
       document.body.removeChild(script);
+      clearInterval(interval);
     };
-  }, []);
+  }, [user.id, setTotal]);
 
   return (
     <main className="mx-auto w-screen bg-gray-200">
@@ -37,7 +48,7 @@ export default function Dashboard() {
           <div className="flex items-center justify-between mb-3">
             <div className="capitalize flex flex-col gap-2">
               <p className="text-gray-600 text-sm md:text-base text-medium mb-2">
-                avaliable balance
+                Available Balance
               </p>
               <p className="text-xl md:text-2xl font-semibold">
                 <span className="font-bold">
@@ -46,9 +57,8 @@ export default function Dashboard() {
               </p>
             </div>
             <div className="capitalize flex flex-col gap-1">
-              <p className="text-sm text-red-500 capitalize">server time</p>
-              <p className="text-sm">Date</p>
-              <p className="text-sm">time of the day</p>
+              <p className="text-sm text-red-500 capitalize">Server date</p>
+              <p className="text-sm">{formattedDate}</p>
             </div>
           </div>
           <div>
@@ -61,21 +71,21 @@ export default function Dashboard() {
           </div>
           <div className="flex justify-between text-white items-center w-[80%] md:w-[60%] mx-auto py-4">
             <Link to="/deposit">
-              <div className="flex flex-col  items-center">
-                <FaCreditCard className="h-[44px] w-[44px]  md:w-[50px] p-2 rounded-md bg-red-500 md:h-[50px]" />
-                <p className="text-zinc-900 mt-2 text-xs">deposit</p>
+              <div className="flex flex-col items-center">
+                <FaCreditCard className="h-[44px] w-[44px] md:w-[50px] p-2 rounded-md bg-red-500 md:h-[50px]" />
+                <p className="text-zinc-900 mt-2 text-xs">Deposit</p>
               </div>
             </Link>
             <Link to="/withdraw">
               <div className="flex flex-col items-center">
                 <IoMdCash className="h-[44px] w-[44px] md:w-[50px] p-2 rounded-md bg-green-500 md:h-[50px]" />
-                <p className="text-zinc-900 mt-2 text-xs">withdraw</p>
+                <p className="text-zinc-900 mt-2 text-xs">Withdraw</p>
               </div>
             </Link>
             <Link to="/plans">
-              <div className="flex flex-col  items-center">
+              <div className="flex flex-col items-center">
                 <MdSavings className="h-[44px] w-[44px] md:w-[50px] p-2 rounded-md bg-zinc-900 md:h-[50px]" />
-                <p className="text-zinc-900 mt-2 text-xs">buy plan</p>
+                <p className="text-zinc-900 mt-2 text-xs">Buy Plan</p>
               </div>
             </Link>
           </div>
@@ -83,13 +93,13 @@ export default function Dashboard() {
       </div>
       <div className="mt-4 w-[98%] flex mx-auto gap-4">
         <div className="flex-1 p-5 font-medium bg-white rounded-lg">
-          <p className="capitalize text-gray-400 mb-3">total deposits</p>
+          <p className="capitalize text-gray-400 mb-3">Total Deposits</p>
           <p className="text-base font-semibold">
             {formatCurrency(total.totalDeposits)}
           </p>
         </div>
         <div className="flex-1 font-medium bg-white rounded-lg p-5">
-          <p className="capitalize mb-3 text-gray-400">total withdraws</p>
+          <p className="capitalize mb-3 text-gray-400">Total Withdrawals</p>
           <p className="text-base font-semibold">
             {formatCurrency(total.totalWithdrawals)}
           </p>
@@ -97,16 +107,16 @@ export default function Dashboard() {
       </div>
       <section className="w-[98%] p-2 bg-white rounded-lg mb-4 mt-4 mx-auto">
         <div>
-          <p className="font-medium mb-2 pl-4">Referal Link</p>
+          <p className="font-medium mb-2 pl-4">Referral Link</p>
           <p className="text-gray-400 text-sm pl-5">
-            Get Bonus when someone register on Invex Capitals with your referral
-            link
+            Get a bonus when someone registers on Invex Capitals with your
+            referral link.
           </p>
-          {/* Referal Stuffs goes here */}
+          {/* Referral stuff goes here */}
         </div>
         <div className="mt-2 mb-4">
           <p className="text-red-600 pl-6">
-            Referal program is currently suspended
+            Referral program is currently suspended
           </p>
         </div>
         <TradingViewWidget />

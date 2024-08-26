@@ -7,6 +7,25 @@ import { userAtom } from "@/lib/store";
 import { supabase } from "@/lib/supabase";
 import { formatCurrency } from "@/lib/utils";
 
+function formatDateTime(dateString) {
+  const date = new Date(dateString);
+
+  // Options for formatting date and time components
+  const dayOptions = { weekday: "short", day: "numeric", month: "long" };
+  const timeOptions = { hour: "numeric", minute: "numeric", hour12: true };
+
+  // Format the day and time separately
+  const formattedDay = new Intl.DateTimeFormat("en-US", dayOptions).format(
+    date
+  );
+  const formattedTime = new Intl.DateTimeFormat("en-US", timeOptions).format(
+    date
+  );
+
+  // Combine into the desired format
+  return `${formattedDay} at ${formattedTime}`;
+}
+
 export default function Transaction() {
   const [user] = useAtom(userAtom);
 
@@ -47,7 +66,9 @@ export default function Transaction() {
             >
               <p className="capitalize font-medium">
                 Date :{" "}
-                <span className="text-gray-700">{transaction.created_at}</span>
+                <span className="text-gray-700">
+                  {formatDateTime(transaction.created_at)}
+                </span>
               </p>
               <Separator />
               <p className="capitalize font-medium">

@@ -34,8 +34,6 @@ export default function Profile() {
   const [address, setAddress] = useState(user.address);
   const [uploading, setuploading] = useState(false);
 
-  console.log(user);
-
   async function sendResetLink() {
     setLoading(true);
     if (email.length == 0) return alert("Please Enter your Email");
@@ -60,14 +58,14 @@ export default function Profile() {
     try {
       const response = await supabase
         .from("Users")
-        .update([
-          {
-            name,
-            phone,
-            address,
-          },
-        ])
-        .eq("id", user.id);
+        .update({
+          name: name,
+          phone: phone,
+          address: address,
+        })
+        .eq("id", user.id)
+        .select();
+      console.log(response);
       if (!response.error) return toast.success("Profile Updated");
       return toast.error("Something went wrong");
     } catch (error) {
