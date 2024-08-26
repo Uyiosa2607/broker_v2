@@ -117,9 +117,9 @@ export default function Profile() {
                     alt="profile image"
                   />
                 )}
-                <form className="mb-5 flex flex-col gap-2">
+                <form className="mb-2 flex flex-col gap-2">
                   <Input
-                    className="mb-5 w-[120px]"
+                    className="mb-1 w-[120px]"
                     id="picture"
                     onChange={(event) => setAvatar(event.target.files[0])}
                     type="File"
