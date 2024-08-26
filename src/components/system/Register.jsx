@@ -62,7 +62,7 @@ export default function Register() {
           gender,
           country,
           address,
-          img: profileImageLink.fullPath,
+          img: profileImageLink.path,
         },
       ]);
     } catch (error) {
