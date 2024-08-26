@@ -29,6 +29,10 @@ export default function Profile() {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [avatar, setAvatar] = useState(null);
+  const [name, setName] = useState(user.name);
+  const [phone, setPhone] = useState(user.phone);
+  const [address, setAddress] = useState(user.address);
+  const [uploading, setuploading] = useState(false);
 
   console.log(user);
 
@@ -53,11 +57,6 @@ export default function Profile() {
 
   async function updateProfile(event) {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const name = formData.get("name");
-    const phone = formData.get("phone");
-    const address = formData.get("address");
-
     try {
       const response = await supabase
         .form("Users")
@@ -77,6 +76,7 @@ export default function Profile() {
   }
 
   async function updateProfilePicture() {
+    setuploading(true);
     if (avatar === null) return alert("Please select a photo");
     try {
       const response = await supabase.storage
@@ -86,10 +86,14 @@ export default function Profile() {
           upsert: true,
           contentType: avatar.type,
         });
-      if (!response.error) return toast.success("Profile picture Updated");
+      if (!response.error) {
+        setuploading(false);
+        return toast.success("Profile picture Updated");
+      }
       return toast.error("Something went wrong, Please try again");
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   }
   return (
@@ -126,7 +130,10 @@ export default function Profile() {
                   />
                 </form>
                 <Button className="bg-green-700" onClick={updateProfilePicture}>
-                  Change profile picture
+                  Change profile picture &nbsp;{" "}
+                  {uploading ? (
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  ) : null}
                 </Button>
               </div>
             </PopoverContent>
@@ -147,19 +154,31 @@ export default function Profile() {
               <form onSubmit={updateProfile} className="p-4">
                 <div className="flex mb-5 flex-col gap-2">
                   <Label>Name</Label>
-                  <Input name="name" type="text" required value={user.name} />
+                  <Input
+                    onChange={(event) => setName(event.target.value)}
+                    name="name"
+                    type="text"
+                    required
+                    value={name}
+                  />
                 </div>
                 <div className="flex mb-5 flex-col gap-2">
                   <Label>Phone</Label>
-                  <Input name="phone" required value={user.phone} />
+                  <Input
+                    name="phone"
+                    onChange={(event) => setPhone(event.target.value)}
+                    required
+                    value={phone}
+                  />
                 </div>
                 <div className="flex mb-5 flex-col gap-2">
                   <Label>Address</Label>
                   <Input
+                    onChange={(event) => setAddress(event.target.value)}
                     name="address"
                     type="text"
                     required
-                    value={user.address}
+                    value={address}
                   />
                 </div>
 
