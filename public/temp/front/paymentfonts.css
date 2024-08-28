@@ -4,13 +4,14 @@
  */
 
 @font-face {
-  font-family: 'PaymentFont';
-  src: url('fonts/paymentfont-webfont.eot');
-  src: url('fonts/paymentfont-webfontd41d.eot?#iefix') format('embedded-opentype'),
-       url('fonts/paymentfont-webfont.woff') format('woff2'),
-       url('fonts/paymentfont-webfont.woff') format('woff'),
-       url('fonts/paymentfont-webfont.ttf') format('truetype'),
-       url('fonts/paymentfont-webfont.svg#paymentfont-webfont') format('svg');
+  font-family: "PaymentFont";
+  src: url("fonts/paymentfont-webfont.eot");
+  src: url("fonts/paymentfont-webfontd41d.eot?#iefix")
+      format("embedded-opentype"),
+    url("./paymentfont-webfont.woff") format("woff2"),
+    url("./paymentfont-webfont.woff") format("woff"),
+    url("fonts/paymentfont-webfont.ttf") format("truetype"),
+    url("fonts/paymentfont-webfont.svg#paymentfont-webfont") format("svg");
   font-weight: normal;
   font-style: normal;
 }
