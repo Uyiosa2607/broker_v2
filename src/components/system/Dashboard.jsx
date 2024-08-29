@@ -43,7 +43,7 @@ export default function Dashboard() {
   return (
     <main className="mx-auto w-screen bg-gray-200">
       <NavBar />
-      <div className="flex flex-col mt-4 w-full">
+      <div className="flex flex-col mt-2 w-full">
         <div className="w-[98%] mx-auto bg-white p-3 md:p-5 rounded-lg">
           <div className="flex items-center justify-between mb-3">
             <div className="capitalize flex flex-col gap-2">
@@ -91,7 +91,7 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-      <div className="mt-4 w-[98%] flex mx-auto gap-4">
+      <div className="mt-2 w-[98%] flex mx-auto gap-4">
         <div className="flex-1 p-2 py-4  md:p-5 font-medium bg-white rounded-lg">
           <p className="capitalize text-sm text-gray-400 mb-3">
             Total Deposits
@@ -109,7 +109,7 @@ export default function Dashboard() {
           </p>
         </div>
       </div>
-      <section className="w-[98%] p-2 bg-white rounded-lg mb-4 mt-4 mx-auto">
+      <section className="w-[98%] p-2 bg-white rounded-lg mb-2 mt-2 mx-auto">
         <div>
           <p className="font-medium mb-2 pl-4">Referral Link</p>
           <p className="text-gray-400 text-sm pl-5">
@@ -119,7 +119,7 @@ export default function Dashboard() {
           {/* Referral stuff goes here */}
         </div>
         <div className="mt-2 mb-4">
-          <p className="text-red-600 pl-6">
+          <p className="text-red-600 pl-2">
             Referral program is currently suspended
           </p>
         </div>

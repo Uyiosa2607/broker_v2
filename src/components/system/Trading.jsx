@@ -38,7 +38,7 @@ function TradingViewWidget() {
   return (
     <div
       id="tradingview-widget-container"
-      className="relative bg-gray-100 rounded-lg shadow-lg p-4 h-[500px] w-full flex flex-col"
+      className="relative bg-gray-100 rounded-lg shadow-lg p-2 h-[500px] w-full flex flex-col"
     >
       <div
         className="tradingview-widget-container__widget flex-1"
