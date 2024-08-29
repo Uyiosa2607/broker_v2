@@ -1,89 +1,96 @@
 import NavBar from "./Navigation";
 import Footer from "./Footer";
 import { Separator } from "../ui/separator";
-
-const transactions = [
-  {
-    date: "Wed, Jul 24, 2024 9:19 PM",
-    type: "USDT TRC-20",
-    amount: "$500",
-    reference: "GIPS1s04895104s",
-    status: "complete",
-  },
-  {
-    date: "Wed, Jul 24, 2024 9:19 PM",
-    type: "USDT TRC-20",
-    amount: "$500",
-    reference: "GIPS10489a5104s",
-    status: "complete",
-  },
-  {
-    date: "Wed, Jul 24, 2024 9:19 PM",
-    type: "USDT TRC-20",
-    amount: "$500",
-    reference: "GIPS104895c104s",
-    status: "pending",
-  },
-  {
-    date: "Wed, Jul 24, 2024 9:19 PM",
-    type: "USDT TRC-20",
-    amount: "$500",
-    reference: "GIPS1048s95104s",
-    status: "complete",
-  },
-  {
-    date: "Wed, Jul 24, 2024 9:19 PM",
-    type: "USDT TRC-20",
-    amount: "$500",
-    reference: "GIPS10489510ds",
-    status: "pending",
-  },
-];
+import { supabase } from "@/lib/supabase";
+import { useState, useEffect } from "react";
+import { useAtom } from "jotai";
+import { userAtom } from "@/lib/store";
+import { formatCurrency } from "@/lib/utils";
 
 export default function Profit() {
+  const [user] = useAtom(userAtom);
+  const [profits, setProfit] = useState([]);
+
+  useEffect(() => {
+    async function getProfit() {
+      try {
+        const { error, data } = await supabase
+          .from("Profits")
+          .select("*")
+          .eq("user_id", user.id);
+        if (error) return console.log("something went wrong:", error);
+        setProfit(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getProfit();
+  }, [user]);
+
+  function formatDateTime(dateString) {
+    const date = new Date(dateString);
+
+    const dayOptions = { weekday: "short", day: "numeric", month: "long" };
+    const timeOptions = { hour: "numeric", minute: "numeric", hour12: true };
+
+    const formattedDay = new Intl.DateTimeFormat("en-US", dayOptions).format(
+      date
+    );
+    const formattedTime = new Intl.DateTimeFormat("en-US", timeOptions).format(
+      date
+    );
+
+    return `${formattedDay} at ${formattedTime}`;
+  }
+
   return (
     <main className="bg-gray-100">
       <NavBar />
       <section className="min-h-screen w-[98%] mx-auto">
-        <p className="capitalize font-medium text-lg pt-5 mb-4">
+        <p className="capitalize text-center font-medium text-lg mb-3">
           Profit History
         </p>
         <div className="flex text-sm flex-col gap-4">
-          {transactions.map((transaction, index) => (
-            <div
-              className={`p-4 flex flex-col gap-3 rounded-md shadow-md ${
-                index % 2 === 0 ? "bg-white" : "bg-gray-50"
-              }`}
-              key={transaction.reference}
-            >
-              <p className="capitalize font-medium">
-                Date: <span className="text-gray-400">{transaction.date}</span>
-              </p>
-              <Separator />
-              <p className="capitalize font-medium">
-                Type: <span className="text-gray-400">{transaction.type}</span>
-              </p>
-              <Separator />
-              <p className="capitalize font-medium">
-                Amount:{" "}
-                <span className="text-gray-400">{transaction.amount}</span>
-              </p>
-              <Separator />
-              <p className="capitalize font-medium">
-                Reference:{" "}
-                <span className="text-gray-400">{transaction.reference}</span>
-              </p>
-              <p
-                className={`w-full text-xs ${
-                  transaction.status === "complete"
-                    ? "bg-green-700"
-                    : "bg-black"
-                } text-white text-center my-3`}
+          {profits.length < 1 ? (
+            <p className="text-center mt-[5rem]">No Profit records</p>
+          ) : (
+            profits.map((transaction, index) => (
+              <div
+                className={`p-4 flex flex-col gap-3 rounded-md shadow-md ${
+                  index % 2 === 0 ? "bg-white" : "bg-gray-50"
+                }`}
+                key={transaction.id}
               >
-                {transaction.status}
-              </p>
-            </div>
-          ))}
+                <p className="capitalize font-medium">
+                  Date:{" "}
+                  <span className="text-zinc-800">
+                    {formatDateTime(transaction.created_at)}
+                  </span>
+                </p>
+                <Separator />
+                <p className="capitalize font-medium">
+                  Amount:{" "}
+                  <span className="text-zinc-800">
+                    {formatCurrency(transaction.amount)}
+                  </span>
+                </p>
+                <Separator />
+                <p className="capitalize font-medium">
+                  Reference:{" "}
+                  <span className="text-zinc-800">{transaction.id}</span>
+                </p>
+                <p
+                  className={`w-full text-xs ${
+                    transaction.status === "Paid out"
+                      ? "bg-green-700"
+                      : "bg-black"
+                  } text-white text-center my-3`}
+                >
+                  {transaction.status}
+                </p>
+              </div>
+            ))
+          )}
         </div>
       </section>
       <Footer />

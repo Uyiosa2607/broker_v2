@@ -21,8 +21,6 @@ export default function Home() {
       {/* ======= Header ======= */}
       <header id="header" className="fixed-top header-scrolled">
         <div className="container d-flex align-items-center">
-          {/*  <h1 class="logo mr-auto"><a href="index.html">BizLand<span>.</span></a></h1>*/}
-          {/* Uncomment below if you prefer to use an image logo */}
           <div className="mr-auto">
             <a href="/" className="logo mr-auto">
               <img

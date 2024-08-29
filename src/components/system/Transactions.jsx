@@ -28,7 +28,6 @@ function formatDateTime(dateString) {
 
 export default function Transaction() {
   const [user] = useAtom(userAtom);
-
   const [transactions, setTransaction] = useState([]);
 
   useEffect(() => {
@@ -39,75 +38,84 @@ export default function Transaction() {
           .select("*")
           .eq("user_id", user.id);
 
-        if (response.error)
-          return console.log("Something went wrong", response.error);
+        if (response.error) {
+          console.log("Something went wrong", response.error);
+          return;
+        }
         setTransaction(response.data);
       } catch (error) {
         console.log(error);
       }
     }
-    getTransaction();
+
+    if (user.id) {
+      getTransaction();
+    }
   }, [user]);
 
   return (
     <main className="bg-gray-100">
       <NavBar />
       <section className="min-h-screen w-[98%] mx-auto">
-        <p className="capitalize font-medium text-lg pt-5 mb-4">
+        <p className="capitalize font-medium text-lg text-center mb-4">
           Transaction History
         </p>
         <div className="flex text-sm flex-col gap-4">
-          {transactions.map((transaction, index) => (
-            <div
-              className={`p-4 flex flex-col gap-3 rounded-md shadow-md ${
-                index % 2 === 0 ? "bg-white" : "bg-gray-50"
-              }`}
-              key={transaction.id}
-            >
-              <p className="capitalize font-medium">
-                Date :{" "}
-                <span className="text-gray-700">
-                  {formatDateTime(transaction.created_at)}
-                </span>
-              </p>
-              <Separator />
-              <p className="capitalize font-medium">
-                Type :{" "}
-                <span className="text-gray-700">
-                  <span
-                    className={`${
-                      transaction.type === "deposit"
-                        ? "bg-green-600 w-fit text-white px-1 rounded-md p-[3px]"
-                        : "bg-red-500 w-fit text-white px-2 rounded-md p-[3px]"
-                    }`}
-                  >
-                    {transaction.type}
-                  </span>
-                </span>
-              </p>
-              <Separator />
-              <p className="capitalize font-medium">
-                Amount :{" "}
-                <span className="text-gray-700">
-                  {formatCurrency(transaction.amount)}
-                </span>
-              </p>
-              <Separator />
-              <p className="capitalize font-medium">
-                Reference :{" "}
-                <span className="text-gray-700">{transaction.id}</span>
-              </p>
-              <p
-                className={`w-full text-xs ${
-                  transaction.status === "complete"
-                    ? "bg-green-700"
-                    : "bg-black"
-                } text-white text-center my-3`}
+          {transactions.length === 0 ? (
+            <p className="text-center text-gray-700">No transaction history</p>
+          ) : (
+            transactions.map((transaction, index) => (
+              <div
+                className={`p-4 flex flex-col gap-3 rounded-md shadow-md ${
+                  index % 2 === 0 ? "bg-white" : "bg-gray-50"
+                }`}
+                key={transaction.id}
               >
-                {transaction.status}
-              </p>
-            </div>
-          ))}
+                <p className="capitalize font-medium">
+                  Date :{" "}
+                  <span className="text-gray-700">
+                    {formatDateTime(transaction.created_at)}
+                  </span>
+                </p>
+                <Separator />
+                <p className="capitalize font-medium">
+                  Type :{" "}
+                  <span className="text-gray-700">
+                    <span
+                      className={`${
+                        transaction.type === "deposit"
+                          ? "bg-green-600 text-white px-1 rounded-md"
+                          : "bg-red-500 text-white px-2 rounded-md"
+                      }`}
+                    >
+                      {transaction.type}
+                    </span>
+                  </span>
+                </p>
+                <Separator />
+                <p className="capitalize font-medium">
+                  Amount :{" "}
+                  <span className="text-gray-700">
+                    {formatCurrency(transaction.amount)}
+                  </span>
+                </p>
+                <Separator />
+                <p className="capitalize font-medium">
+                  Reference :{" "}
+                  <span className="text-gray-700">{transaction.id}</span>
+                </p>
+                <p
+                  className={`w-full text-xs ${
+                    transaction.status === "complete"
+                      ? "bg-green-700"
+                      : "bg-black"
+                  } text-white text-center my-3`}
+                >
+                  {transaction.status}
+                </p>
+              </div>
+            ))
+          )}
         </div>
       </section>
       <Footer />
