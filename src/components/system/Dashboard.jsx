@@ -92,14 +92,18 @@ export default function Dashboard() {
         </div>
       </div>
       <div className="mt-4 w-[98%] flex mx-auto gap-4">
-        <div className="flex-1 p-5 font-medium bg-white rounded-lg">
-          <p className="capitalize text-gray-400 mb-3">Total Deposits</p>
+        <div className="flex-1 p-2 py-4  md:p-5 font-medium bg-white rounded-lg">
+          <p className="capitalize text-sm text-gray-400 mb-3">
+            Total Deposits
+          </p>
           <p className="text-base font-semibold">
             {formatCurrency(total.totalDeposits)}
           </p>
         </div>
-        <div className="flex-1 font-medium bg-white rounded-lg p-5">
-          <p className="capitalize mb-3 text-gray-400">Total Withdrawals</p>
+        <div className="flex-1 font-medium bg-white rounded-lg p-2 py-4 md:p-5">
+          <p className="capitalize mb-3 text-sm text-gray-400">
+            Total Withdrawals
+          </p>
           <p className="text-base font-semibold">
             {formatCurrency(total.totalWithdrawals)}
           </p>
