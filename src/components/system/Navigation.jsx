@@ -90,7 +90,7 @@ export default function NavBar() {
           </div>
           <div className="px-4">
             <h1 className="text-base pt-3 text-gray-500 mb-5">Transactions</h1>
-            <div className="flex flex-col gap-4">
+            <div className="flex capitalize flex-col gap-4">
               <Link to="/deposit">
                 <div className="flex cursor-pointer items-center gap-4">
                   <IoMdCash className="bg-zinc-800 text-4xl rounded-full p-1 text-white" />
