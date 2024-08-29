@@ -91,7 +91,7 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-      <div className="mt-2 w-[98%] flex mx-auto gap-4">
+      <div className="mt-2 w-[98%] flex mx-auto gap-2">
         <div className="flex-1 p-2 py-4  md:p-5 font-medium bg-white rounded-lg">
           <p className="capitalize text-sm text-gray-400 mb-3">
             Total Deposits
