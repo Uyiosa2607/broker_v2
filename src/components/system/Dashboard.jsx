@@ -112,7 +112,7 @@ export default function Dashboard() {
       <section className="w-[98%] p-2 bg-white rounded-lg mb-2 mt-2 mx-auto">
         <div>
           <p className="font-medium mb-2 pl-4">Referral Link</p>
-          <p className="text-gray-400 text-sm pl-5">
+          <p className="text-gray-400 text-sm pl-2">
             Get a bonus when someone registers on Invex Capitals with your
             referral link.
           </p>
