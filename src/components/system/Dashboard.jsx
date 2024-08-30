@@ -44,7 +44,7 @@ export default function Dashboard() {
     <main className="mx-auto w-screen bg-gray-200">
       <NavBar />
       <div className="flex flex-col mt-2 w-full">
-        <div className="w-[98%] mx-auto bg-white p-3 md:p-5 rounded-lg">
+        <div className="w-[98%] mx-auto bg-white p-2 md:p-5 rounded-lg">
           <div className="flex items-center justify-between mb-3">
             <div className="capitalize flex flex-col gap-2">
               <p className="text-gray-600 text-sm md:text-base text-medium mb-2">
@@ -69,7 +69,7 @@ export default function Dashboard() {
               initial-currency="usd"
             ></gecko-coin-price-marquee-widget>
           </div>
-          <div className="flex justify-between text-white items-center w-[80%] md:w-[60%] mx-auto py-4">
+          <div className="flex justify-between text-white items-center w-[80%] md:w-[60%] mx-auto pt-3">
             <Link to="/deposit">
               <div className="flex flex-col items-center">
                 <FaCreditCard className="h-[44px] w-[44px] md:w-[50px] p-2 rounded-md bg-red-500 md:h-[50px]" />
@@ -92,16 +92,16 @@ export default function Dashboard() {
         </div>
       </div>
       <div className="mt-2 w-[98%] flex mx-auto gap-2">
-        <div className="flex-1 p-2 py-4  md:p-5 font-medium bg-white rounded-lg">
-          <p className="capitalize text-sm text-gray-400 mb-3">
+        <div className="flex-1 p-2 py-3 pl-3 md:p-5 font-medium bg-white rounded-lg">
+          <p className="capitalize text-sm text-gray-400 mb-2">
             Total Deposits
           </p>
           <p className="text-base font-semibold">
             {formatCurrency(total.totalDeposits)}
           </p>
         </div>
-        <div className="flex-1 font-medium bg-white rounded-lg p-2 py-4 md:p-5">
-          <p className="capitalize mb-3 text-sm text-gray-400">
+        <div className="flex-1 font-medium pl-3 bg-white rounded-lg p-2 py-3 md:p-5">
+          <p className="capitalize mb-2 text-sm text-gray-400">
             Total Withdrawals
           </p>
           <p className="text-base font-semibold">
@@ -109,16 +109,16 @@ export default function Dashboard() {
           </p>
         </div>
       </div>
-      <section className="w-[98%] p-2 bg-white rounded-lg mb-2 mt-2 mx-auto">
+      <section className="w-[98%] py-2 px-1 bg-white rounded-lg mb-2 mt-2 mx-auto">
         <div>
-          <p className="font-medium mb-2">Referral Link</p>
+          <p className="font-medium pl-1 mb-2">Referral Link</p>
           <p className="text-gray-400 text-sm pl-2">
             Get a bonus when someone registers on Invex Capitals with your
             referral link.
           </p>
           {/* Referral stuff goes here */}
         </div>
-        <div className="mt-2 mb-4">
+        <div className="mt-2 mb-2">
           <p className="text-red-600 text-xs pl-2">
             Referral program is currently suspended
           </p>

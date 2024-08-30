@@ -44,12 +44,12 @@ function TradingViewWidget() {
         className="tradingview-widget-container__widget flex-1"
         style={{ width: "100%" }}
       ></div>
-      <div className="text-center text-gray-600 mt-2">
+      <div className="text-center text-gray-600 mb-2 mt-2">
         <a
           href="https://www.tradingview.com/"
           rel="noopener noreferrer nofollow"
           target="_blank"
-          className="text-blue-500 mt-4"
+          className="text-blue-500 mt-2"
         >
           Personal Trading Data
         </a>

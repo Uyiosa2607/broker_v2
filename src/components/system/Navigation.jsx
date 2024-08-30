@@ -33,7 +33,7 @@ export default function NavBar() {
   }
 
   return (
-    <main className="sticky w-full bg-zinc-800 text-gray-100 p-2 px-4 top-0 left-0 z-[900]">
+    <main className="sticky w-full bg-zinc-800 text-gray-100 py-2 px-3 top-0 left-0 z-[900]">
       <Sheet>
         <div className="flex items-center justify-between">
           <div>
@@ -46,7 +46,7 @@ export default function NavBar() {
           </div>
           <div>
             <Link to="/profile">
-              <Avatar>
+              <Avatar className="w-[30px] h-[30px] md:h-[40px] md:w-[40px]">
                 <AvatarImage
                   className="object-cover"
                   src={`https://azbgmygmtxilfilpngex.supabase.co/storage/v1/object/public/image_database/${
@@ -78,7 +78,7 @@ export default function NavBar() {
               </div>
             </div>
           </SheetHeader>
-          <div className="bg-zinc-800 px-4 pb-4 text-white">
+          <div className="bg-zinc-800 px-2 pb-3 text-white">
             <div>
               <p className="capitalize text-gray-200 py-3">total balance</p>
               <p className="text-2xl">
@@ -88,68 +88,68 @@ export default function NavBar() {
               </p>
             </div>
           </div>
-          <div className="px-4">
-            <h1 className="text-base pt-3 text-gray-500 mb-5">Transactions</h1>
+          <div className="px-4 text-sm">
+            <h1 className="text-base pt-3 text-gray-500 mb-3">Transactions</h1>
             <div className="flex capitalize flex-col gap-4">
               <Link to="/deposit">
-                <div className="flex cursor-pointer items-center gap-4">
-                  <IoMdCash className="bg-zinc-800 text-4xl rounded-full p-1 text-white" />
+                <div className="flex cursor-pointer items-center gap-2">
+                  <IoMdCash className="bg-zinc-800 text-2xl rounded-full p-1 text-white" />
                   <p>Deposit Funds</p>
                 </div>
               </Link>
               <Separator />
               <Link to="/plans">
-                <div className="flex cursor-pointer items-center gap-4">
-                  <MdSavings className="bg-zinc-800 text-4xl rounded-full p-1 text-white" />
+                <div className="flex cursor-pointer items-center gap-2">
+                  <MdSavings className="bg-zinc-800 text-2xl rounded-full p-1 text-white" />
                   <p>buy plans</p>
                 </div>
               </Link>
               <Separator />
               <Link to="/withdraw">
-                <div className="flex cursor-pointer items-center gap-4">
-                  <FaCreditCard className="bg-zinc-800 text-4xl rounded-full p-1 text-white" />
+                <div className="flex cursor-pointer items-center gap-2">
+                  <FaCreditCard className="bg-zinc-800 text-2xl rounded-full p-1 text-white" />
                   <p>withdraw funds</p>
                 </div>
               </Link>
               <Separator />
               <Link to="/transactions">
-                <div className="flex cursor-pointer items-center  gap-4">
-                  <FaHistory className="bg-zinc-800 text-4xl rounded-full p-1 text-white" />
+                <div className="flex cursor-pointer items-center  gap-2">
+                  <FaHistory className="bg-zinc-800 text-2xl rounded-full p-1 text-white" />
                   <p>transaction history</p>
                 </div>
               </Link>
             </div>
           </div>
-          <div className="px-4 mt-2">
-            <h1 className="text-base pt-3 text-gray-500 mb-5">Investment</h1>
-            <div className="flex flex-col gap-4">
+          <div className="px-4 text-sm mt-2">
+            <h1 className="text-base pt-3 text-gray-500 mb-3">Investment</h1>
+            <div className="flex flex-col gap-2">
               <Link to="/profit">
-                <div className="flex cursor-pointer items-center gap-4">
-                  <FaFunnelDollar className="bg-zinc-800 text-4xl rounded-full p-1 text-white" />
+                <div className="flex cursor-pointer items-center gap-2">
+                  <FaFunnelDollar className="bg-zinc-800 text-2xl rounded-full p-1 text-white" />
                   <p>Profit History</p>
                 </div>
               </Link>
             </div>
           </div>
-          <div className="px-4 mt-2">
-            <h1 className="text-base pt-3 text-gray-500 mb-5">Support</h1>
-            <div className="flex flex-col gap-4">
+          <div className="px-4 text-sm mt-2">
+            <h1 className="text-base pt-3 text-gray-500 mb-3">Support</h1>
+            <div className="flex flex-col gap-2">
               <Link to="/support">
-                <div className="flex cursor-pointer items-center gap-4">
-                  <AiFillMessage className="bg-zinc-800 text-4xl rounded-full p-1 text-white" />
+                <div className="flex cursor-pointer items-center gap-2">
+                  <AiFillMessage className="bg-zinc-800 text-2xl rounded-full p-1 text-white" />
                   <p>Open Support Ticket</p>
                 </div>
               </Link>
             </div>
           </div>
-          <div className="px-4 mt-2">
+          <div className="px-4 text-sm mt-2">
             <h1 className="text-base pt-3 text-gray-500 mb-3">Session</h1>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-2">
               <div
                 onClick={logOut}
-                className="flex cursor-pointer items-center gap-4"
+                className="flex cursor-pointer items-center gap-2"
               >
-                <FaSignOutAlt className="bg-zinc-800 text-4xl rounded-full p-1 text-white" />
+                <FaSignOutAlt className="bg-zinc-800 text-2xl rounded-full p-1 text-white" />
                 <p>Sign Out</p>
               </div>
             </div>

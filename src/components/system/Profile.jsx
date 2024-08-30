@@ -97,8 +97,8 @@ export default function Profile() {
   return (
     <main className="min-h-screen bg-gray-200 w-screen">
       <NavBar />
-      <section className="min-h-screen">
-        <div className="py-4 flex flex-col items-center justify-center">
+      <section className="p-0">
+        <div className="py-2 mb-3 flex flex-col items-center justify-center">
           <img
             className="w-[100px] rounded-full h-[100px] object-cover"
             src={`https://azbgmygmtxilfilpngex.supabase.co/storage/v1/object/public/image_database/${
@@ -110,11 +110,11 @@ export default function Profile() {
             <PopoverTrigger>
               <FaCameraRetro className="bottom-1" />
             </PopoverTrigger>
-            <PopoverContent className="bg-zinc-800 py-10  rounded-lg md:w-fit mx-auto text-white">
+            <PopoverContent className="bg-zinc-800 py-6 rounded-lg w-[95%] md:w-[70%] mx-auto text-white">
               <div className="p-4 flex flex-col items-center">
                 {avatar && (
                   <img
-                    className="w-[60px] mb-5 h-[60px] rounded-full object-cover"
+                    className="w-[60px] mb-3 h-[60px] rounded-full object-cover"
                     src={URL.createObjectURL(avatar)}
                     alt="profile image"
                   />
@@ -137,119 +137,119 @@ export default function Profile() {
             </PopoverContent>
           </Popover>
         </div>
-        <div className="w-[98%] font-normal p-2 md:p-4 mb-10 rounded-lg bg-white mx-auto">
-          <Dialog>
-            <div className="flex items-center justify-between py-4">
+        <div className="w-[98%] font-normal p-2 md:p-4 mb-3 rounded-lg bg-white mx-auto">
+          <div className="flex items-center justify-between py-2">
+            <Dialog>
               <p>{user.name}</p>
               <DialogTrigger>
-                <div className="flex items-center gap-1">
+                <div className="flex text-sm items-center gap-1">
                   <FaEdit />
                   <p className="">Edit Profile</p>
                 </div>
               </DialogTrigger>
-            </div>
-            <DialogContent className="w-[90%] rounded-lg md:w-fit">
-              <form onSubmit={updateProfile} className="p-2 md:p-4">
-                <div className="flex mb-3 flex-col gap-2">
-                  <Label>Name</Label>
-                  <Input
-                    onChange={(event) => setName(event.target.value)}
-                    name="name"
-                    type="text"
-                    required
-                    value={name}
-                  />
-                </div>
-                <div className="flex mb-3 flex-col gap-2">
-                  <Label>Phone</Label>
-                  <Input
-                    name="phone"
-                    onChange={(event) => setPhone(event.target.value)}
-                    required
-                    value={phone}
-                  />
-                </div>
-                <div className="flex mb-4 flex-col gap-2">
-                  <Label>Address</Label>
-                  <Input
-                    onChange={(event) => setAddress(event.target.value)}
-                    name="address"
-                    type="text"
-                    required
-                    value={address}
-                  />
-                </div>
+              <DialogContent className="w-[90%] rounded-lg md:w-fit">
+                <form onSubmit={updateProfile} className="p-2 md:p-4">
+                  <div className="flex mb-3 text-sm flex-col gap-2">
+                    <Label>Name</Label>
+                    <Input
+                      onChange={(event) => setName(event.target.value)}
+                      name="name"
+                      type="text"
+                      required
+                      value={name}
+                    />
+                  </div>
+                  <div className="flex mb-3 text-sm flex-col gap-2">
+                    <Label>Phone</Label>
+                    <Input
+                      name="phone"
+                      onChange={(event) => setPhone(event.target.value)}
+                      required
+                      value={phone}
+                    />
+                  </div>
+                  <div className="flex mb-4  text-sm flex-col gap-2">
+                    <Label>Address</Label>
+                    <Input
+                      onChange={(event) => setAddress(event.target.value)}
+                      name="address"
+                      type="text"
+                      required
+                      value={address}
+                    />
+                  </div>
 
-                <Button type="submit" className="font-semibold">
-                  Update Profile
-                </Button>
-              </form>
-            </DialogContent>
-          </Dialog>
+                  <Button type="submit" className="text-sm font-semibold">
+                    Update Profile
+                  </Button>
+                </form>
+              </DialogContent>
+            </Dialog>
+          </div>
           <Separator />
-          <div className="flex items-center justify-between py-4">
+          <div className="flex text-sm items-center justify-between py-2">
             <p>Balance</p>
             <p className="font-semibold">{formatCurrency(user.balance)}</p>
           </div>
         </div>
-        <div className="w-[98%] font-normal p-4 mb-10 rounded-lg bg-white mx-auto">
-          <div className="flex items-center justify-between py-4">
+        <div className="w-[98%] text-sm font-normal p-2 mb-2 rounded-lg bg-white mx-auto">
+          <div className="flex items-center justify-between py-2">
             <p>Email</p>
             <p className="">{user.email}</p>
           </div>
           <Separator />
-          <div className="flex items-center justify-between py-4">
+          <div className="flex text-sm items-center justify-between py-2">
             <p>Phone</p>
             <p className="">{user.phone}</p>
           </div>
           <Separator />
-          <div className="flex items-center justify-between py-4">
+          <div className="flex texe-sm items-center justify-between py-2">
             <p>Country</p>
             <p>{user.country}</p>
           </div>
           <Separator />
-          <div className="flex items-center justify-between py-4">
+          <div className="flex texe-sm items-center justify-between py-2">
             <p>Gender</p>
             <p>{user.gender}</p>
           </div>
           <Separator />
-          <div className="flex items-center justify-between py-4">
+          <div className="flex texe-sm items-center justify-between py-2">
             <p>City</p>
             <p>{user.city}</p>
           </div>
           <Separator />
-          <div className="flex items-center justify-between py-4">
+          <div className="flex text-sm items-center justify-between py-2">
             <p>Address</p>
             <p>{user.address}</p>
           </div>
         </div>
-        <Dialog>
-          <div className="w-[98%] p-4 rounded-lg mb-5 mx-auto bg-white ">
-            <DialogTrigger className="flex w-full items-center justify-between">
+        <div className="w-[98%] mt-2 p-2 rounded-lg mb-2 bg-white mx-auto">
+          <Dialog>
+            <DialogTrigger className="flex text-sm w-full items-center justify-between">
               <p className="text-red-500 capitalize">change password</p>
               <BsPersonFillLock />
             </DialogTrigger>
-          </div>
-          <DialogContent>
-            <DialogDescription className="mt-2">
-              Please your email to receive password reset Link
-            </DialogDescription>
-            <div>
-              <Input
-                placeholder="Enter Your Email"
-                type="email"
-                className="mb-4"
-                onChange={(event) => setEmail(event.target.value)}
-              />
-              <Button onClick={sendResetLink} className="font-semibold">
-                Send link &nbsp;{" "}
-                {loading ? (
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                ) : null}
-              </Button>
-            </div>
-          </DialogContent>
-        </Dialog>
+            <DialogContent>
+              <DialogDescription className="mt-2 text-sm">
+                Please your email to receive password reset Link
+              </DialogDescription>
+              <div>
+                <Input
+                  placeholder="Enter Your Email"
+                  type="email"
+                  className="mb-3"
+                  onChange={(event) => setEmail(event.target.value)}
+                />
+                <Button onClick={sendResetLink} className="font-semibold">
+                  Send link &nbsp;{" "}
+                  {loading ? (
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  ) : null}
+                </Button>
+              </div>
+            </DialogContent>
+          </Dialog>
+        </div>
       </section>
       <Footer />
       <ToastContainer />
