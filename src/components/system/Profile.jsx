@@ -137,7 +137,7 @@ export default function Profile() {
             </PopoverContent>
           </Popover>
         </div>
-        <div className="w-[98%] font-normal p-4 mb-10 rounded-lg bg-white mx-auto">
+        <div className="w-[98%] font-normal p-2 md:p-4 mb-10 rounded-lg bg-white mx-auto">
           <Dialog>
             <div className="flex items-center justify-between py-4">
               <p>{user.name}</p>
@@ -148,9 +148,9 @@ export default function Profile() {
                 </div>
               </DialogTrigger>
             </div>
-            <DialogContent>
-              <form onSubmit={updateProfile} className="p-4">
-                <div className="flex mb-5 flex-col gap-2">
+            <DialogContent className="w-[90%] rounded-lg md:w-fit">
+              <form onSubmit={updateProfile} className="p-2 md:p-4">
+                <div className="flex mb-3 flex-col gap-2">
                   <Label>Name</Label>
                   <Input
                     onChange={(event) => setName(event.target.value)}
@@ -160,7 +160,7 @@ export default function Profile() {
                     value={name}
                   />
                 </div>
-                <div className="flex mb-5 flex-col gap-2">
+                <div className="flex mb-3 flex-col gap-2">
                   <Label>Phone</Label>
                   <Input
                     name="phone"
@@ -169,7 +169,7 @@ export default function Profile() {
                     value={phone}
                   />
                 </div>
-                <div className="flex mb-5 flex-col gap-2">
+                <div className="flex mb-4 flex-col gap-2">
                   <Label>Address</Label>
                   <Input
                     onChange={(event) => setAddress(event.target.value)}
