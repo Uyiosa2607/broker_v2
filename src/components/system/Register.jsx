@@ -84,11 +84,11 @@ export default function Register() {
             className="w-[95%] md:w-[600px] mt-[1rem] mx-auto"
           >
             <div>
-              <h4 className="capitalize text-center text-2xl mb-5 font-semibold">
+              <h4 className="text-center text-2xl mb-3 font-semibold">
                 Create an account
               </h4>
             </div>
-            <div className="mb-5 flex flex-col gap-1.5">
+            <div className="mb-3 flex flex-col gap-1.5">
               <Label htmlFor="name">Name</Label>
               <Input
                 id="name"
@@ -98,7 +98,7 @@ export default function Register() {
                 placeholder="Firstname and Surname"
               />
             </div>
-            <div className="mb-5 flex flex-col gap-1.5">
+            <div className="mb-3 flex flex-col gap-1.5">
               <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
@@ -108,7 +108,7 @@ export default function Register() {
                 placeholder="Enter Your Email"
               />
             </div>
-            <div className="mb-5 flex flex-col gap-1.5">
+            <div className="mb-3 flex flex-col gap-1.5">
               <Label htmlFor="password">password</Label>
               <Input
                 id="password"
@@ -119,7 +119,7 @@ export default function Register() {
               />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-3">
-              <div className="flex flex-1 flex-col gap-1.5">
+              <div className="flex flex-1 flex-col gap-1">
                 <Label htmlFor="gender">Gender</Label>
                 <Select name="gender" id="gender">
                   <SelectTrigger className="w-full">
@@ -135,13 +135,13 @@ export default function Register() {
                 </Select>
               </div>
 
-              <div className="mb-3 md:mb-5 flex-1 flex flex-col gap-1.5">
+              <div className="mb-3 md:mb-3 flex-1 flex flex-col gap-1">
                 <Label htmlFor="picture">Country</Label>
                 <SelectCountries />
               </div>
             </div>
             <div className="flex md:items-center flex-col md:flex-row gap-5">
-              <div className="mb-1 md:mb-5 flex-1 flex flex-col gap-1.5">
+              <div className="mb-1 md:mb-3 flex-1 flex flex-col gap-1">
                 <Label htmlFor="picture">Profile picture</Label>
                 <Input
                   onChange={handleFile}
@@ -152,8 +152,8 @@ export default function Register() {
                   placeholder="Select Photo"
                 />
               </div>
-              <div className="mb-5 flex-1 flex flex-col gap-1.5">
-                <div className="mb-1md:mb-5 flex-1 flex flex-col gap-1.5">
+              <div className="mb-3 flex-1 flex flex-col gap-1">
+                <div className="mb-1md:mb-3 flex-1 flex flex-col gap-1">
                   <Label htmlFor="password">Phone</Label>
                   <Input
                     id="phone"
@@ -165,7 +165,7 @@ export default function Register() {
                 </div>
               </div>
             </div>
-            <div className="mb-5 flex flex-col gap-1.5">
+            <div className="mb-3 flex flex-col gap-1">
               <Label htmlFor="password">Address</Label>
               <Input
                 id="address"

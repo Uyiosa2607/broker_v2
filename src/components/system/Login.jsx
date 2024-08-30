@@ -50,11 +50,11 @@ export default function Login() {
             className="w-[95%] md:w-[600px] mt-[2rem] mx-auto"
           >
             <div>
-              <h4 className="capitalize text-center text-2xl mb-5 font-semibold">
+              <h4 className="capitalize text-center text-2xl mb-3 font-semibold">
                 welcome back
               </h4>
             </div>
-            <div className="mb-5">
+            <div className="mb-3">
               <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
@@ -77,7 +77,7 @@ export default function Login() {
             <div className="flex items-center justify-between">
               <Button
                 disabled={loading}
-                className="font-semibold w-full bg-green-600 my-5"
+                className="font-semibold w-full bg-green-600 my-3"
               >
                 Login &nbsp;
                 {loading ? (
