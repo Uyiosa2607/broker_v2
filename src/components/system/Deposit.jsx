@@ -77,7 +77,7 @@ export default function Deposit() {
               type="number"
             />
           </div>
-          <div className="flex mb-4 items-center gap-1">
+          <div className="flex mb-2 items-center gap-1">
             <p className="text-sm capitalize">avaliable balance :</p>
             <Balance />
           </div>
@@ -87,20 +87,15 @@ export default function Deposit() {
                 proceed
               </Button>
             </AlertDialogTrigger>
-            <AlertDialogContent className="z-[3000] w-[80%] rounded-lg md:w-fit">
-              <div className="p-4 flex flex-col items-center justify-center">
-                <FaCheckCircle className="h-[70px] w-[70px] text-green-600 " />
-                <span className="text-sm font-normal mb-3">Generated</span>
-                <p className="text-sm  font-semibold mb-3">
-                  Send ${amount} Worth of{" "}
-                  <span className="font-bold uppercase">{method}</span> to the
-                  Wallet Address.
-                </p>
+            <AlertDialogContent className="z-[3000] w-[90%] rounded-lg md:w-fit">
+              <div className="p-3 md:p-4 flex flex-col items-center justify-center">
+                <FaCheckCircle className="h-[50px] w-[50px] md:h-[70px] md:w-[70px] text-green-600 " />
+                <span className="text-sm font-normal mb-2">Generated</span>
                 <div className="flex items-center flex-col">
                   {method && (
                     <img
-                      className="mb-4"
-                      src={`https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${
+                      className="mb-2"
+                      src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${
                         method === "usdt"
                           ? import.meta.env.VITE_USDT_ADDRESS
                           : import.meta.env.VITE_BITCOIN_ADDRESS
@@ -115,7 +110,7 @@ export default function Deposit() {
                   </span>
                   <Button
                     variant="outline"
-                    className="w-fit my-4 uppercase text-xs"
+                    className="w-fit my-2 uppercase text-xs"
                   >
                     copy address
                   </Button>
@@ -127,12 +122,12 @@ export default function Deposit() {
                   <p className="text-xs mb-2 text-red-600">
                     Have you made payment?
                   </p>
-                  <span className="text-sm">
+                  <span className="text-xs">
                     Upload Payment proof after payment
                   </span>
                   <Input
                     onChange={(event) => setAvatar(event.target.files[0])}
-                    className="text-center my-3"
+                    className="text-center my-2"
                     type="file"
                     required
                   />
