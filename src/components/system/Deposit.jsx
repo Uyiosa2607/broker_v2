@@ -57,7 +57,7 @@ export default function Deposit() {
     <main className="bg-gray-200 ">
       <NavBar />
       <section className="min-h-[90vh] relative flex top-[5vh]  justify-center w-screen">
-        <div className="w-[90%] md:w-[50%] p-4 md:p-5 h-fit bg-white rounded-md">
+        <div className="w-[90%] md:w-[600px] p-4 md:p-5 h-fit bg-white rounded-md">
           <h3 className="font-semibold">Deposit</h3>
           <div className="my-3">
             <Select onValueChange={(value) => setMethod(value)}>
@@ -87,7 +87,7 @@ export default function Deposit() {
                 proceed
               </Button>
             </AlertDialogTrigger>
-            <AlertDialogContent className="z-[3000] w-[90%] rounded-lg md:w-fit">
+            <AlertDialogContent className="z-[3000] w-[90%] rounded-lg md:w-[500px]">
               <div className="p-3 md:p-4 flex flex-col items-center justify-center">
                 <FaCheckCircle className="h-[50px] w-[50px] md:h-[70px] md:w-[70px] text-green-600 " />
                 <span className="text-sm font-normal mb-2">Generated</span>

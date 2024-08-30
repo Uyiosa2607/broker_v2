@@ -51,9 +51,9 @@ export default function Withdraw() {
       <NavBar />
       <section className="flex h-screen justify-center">
         <section className="min-h-[90vh] relative flex top-[5vh]  justify-center w-screen">
-          <div className=" w-[90%] md:w-[50%] p-4 md:p-5 h-fit bg-white rounded-md">
+          <div className=" w-[90%] md:w-[600px] p-4 md:p-5 h-fit bg-white rounded-md">
             <h3 className="font-semibold text-center mb-4">Withdraw</h3>
-            <p className="text-red-700 text-xs font-medium mb-3 text-center">
+            <p className="text-red-700 text-sm font-medium mb-3 text-center">
               Withdrawals are only paid out with Bitcoin
             </p>
             <div className="mb-3">
@@ -87,7 +87,7 @@ export default function Withdraw() {
                   proceed
                 </Button>
               </DialogTrigger>
-              <DialogContent className="w-[90%] md:w-fit rounded-lg">
+              <DialogContent className="w-[90%] md:w-[500px] rounded-lg">
                 <div className="p-2 flex flex-col items-center">
                   <DialogDescription className="mb-4 text-zinc-900 font-medium">
                     Proceed to Withdraw ${amount} to {address}

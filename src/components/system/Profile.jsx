@@ -97,7 +97,7 @@ export default function Profile() {
   return (
     <main className="min-h-screen bg-gray-200 w-screen">
       <NavBar />
-      <section className="p-0">
+      <section className="p-0 min-h-screen">
         <div className="py-2 mb-3 flex flex-col items-center justify-center">
           <img
             className="w-[100px] rounded-full h-[100px] object-cover"
@@ -147,7 +147,7 @@ export default function Profile() {
                   <p className="">Edit Profile</p>
                 </div>
               </DialogTrigger>
-              <DialogContent className="w-[90%] rounded-lg md:w-fit">
+              <DialogContent className="w-[90%] rounded-lg md:w-[500px]">
                 <form onSubmit={updateProfile} className="p-2 md:p-4">
                   <div className="flex mb-3 text-sm flex-col gap-2">
                     <Label>Name</Label>
