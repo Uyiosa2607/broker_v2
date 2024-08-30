@@ -97,8 +97,8 @@ export default function Profile() {
   return (
     <main className="min-h-screen bg-gray-200 w-screen">
       <NavBar />
-      <section className="min-h-[90vh]">
-        <div className="py-7 flex flex-col items-center justify-center">
+      <section className="min-h-screen">
+        <div className="py-4 flex flex-col items-center justify-center">
           <img
             className="w-[100px] rounded-full h-[100px] object-cover"
             src={`https://azbgmygmtxilfilpngex.supabase.co/storage/v1/object/public/image_database/${

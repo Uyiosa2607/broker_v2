@@ -42,7 +42,7 @@ export default function NavBar() {
             </SheetTrigger>
           </div>
           <div>
-            <h1 className="uppercase font-semibold">logo here</h1>
+            <h1 className="uppercase font-semibold"></h1>
           </div>
           <div>
             <Link to="/profile">

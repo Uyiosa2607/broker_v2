@@ -78,7 +78,7 @@ export default function Register() {
   return (
     <main className="h-screen bg-gray-200 w-screen">
       <section className="bg-inherit">
-        <div className=" w-[90%] md:w-fit relative top-[2vh] p-5 rounded-lg bg-white h-fit mx-auto">
+        <div className=" w-[90%] md:w-fit relative top-[1vh] p-3 md:p-5 rounded-lg bg-white h-fit mx-auto">
           <form
             onSubmit={handleResgistration}
             className="w-[95%] md:w-[600px] mt-[1rem] mx-auto"

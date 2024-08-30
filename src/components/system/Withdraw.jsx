@@ -51,12 +51,12 @@ export default function Withdraw() {
       <NavBar />
       <section className="flex h-screen justify-center">
         <section className="min-h-[90vh] relative flex top-[5vh]  justify-center w-screen">
-          <div className=" w-[80%] md:w-[50%] p-5 h-fit bg-white rounded-md">
-            <h3 className="font-semibold text-center mb-5">Withdraw</h3>
-            <p className="text-gray-700 text-sm font-medium mb-3 text-center">
+          <div className=" w-[90%] md:w-[50%] p-4 md:p-5 h-fit bg-white rounded-md">
+            <h3 className="font-semibold text-center mb-4">Withdraw</h3>
+            <p className="text-red-700 text-xs font-medium mb-3 text-center">
               Withdrawals are only paid out with Bitcoin
             </p>
-            <div className="mb-5">
+            <div className="mb-3">
               <Label htmlFor="address">Address</Label>
               <Input
                 onChange={(event) => setAddress(event.target.value)}
@@ -65,7 +65,7 @@ export default function Withdraw() {
                 type="text"
               />
             </div>
-            <div className="mb-5">
+            <div className="mb-3">
               <Label htmlFor="amount">Amount</Label>
               <Input
                 onChange={(event) => setAmount(event.target.value)}

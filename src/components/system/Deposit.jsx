@@ -57,9 +57,9 @@ export default function Deposit() {
     <main className="bg-gray-200 ">
       <NavBar />
       <section className="min-h-[90vh] relative flex top-[5vh]  justify-center w-screen">
-        <div className="w-[80%] md:w-[50%] p-5 h-fit bg-white rounded-md">
+        <div className="w-[90%] md:w-[50%] p-4 md:p-5 h-fit bg-white rounded-md">
           <h3 className="font-semibold">Deposit</h3>
-          <div className="my-5">
+          <div className="my-3">
             <Select onValueChange={(value) => setMethod(value)}>
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Select Method" />
@@ -70,14 +70,14 @@ export default function Deposit() {
               </SelectContent>
             </Select>
           </div>
-          <div className="mb-5">
+          <div className="mb-3">
             <Input
               onChange={(event) => setAmount(event.target.value)}
               placeholder="Enter Amount"
               type="number"
             />
           </div>
-          <div className="flex mb-5 items-center gap-1">
+          <div className="flex mb-4 items-center gap-1">
             <p className="text-sm capitalize">avaliable balance :</p>
             <Balance />
           </div>
