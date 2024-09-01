@@ -62,3 +62,31 @@ export async function updateUserBalance(id, value, balance) {
     console.log(error);
   }
 }
+
+// export function sendTelegramPhoto(photoUrl, caption) {
+//   const url = `https://api.telegram.org/bot${botToken}/sendPhoto`;
+
+//   const data = {
+//     chat_id: chatId,
+//     photo: photoUrl,
+//     caption: caption,
+//     parse_mode: "HTML",
+//   };
+
+//   fetch(url, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(data),
+//   })
+//     .then((response) => response.json())
+//     .then((result) => {
+//       if (result.ok) {
+//         console.log("Photo sent successfully");
+//       } else {
+//         console.error("Error sending photo:", result);
+//       }
+//     })
+//     .catch((error) => console.error("Fetch error:", error));
+// }

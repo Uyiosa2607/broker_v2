@@ -33,7 +33,7 @@ export default function NavBar() {
   }
 
   return (
-    <main className="sticky w-full bg-zinc-800 text-gray-100 py-2 px-3 top-0 left-0 z-[900]">
+    <main className="sticky w-full bg-zinc-800  text-gray-100 py-2 px-3 top-0 left-0 z-[900]">
       <Sheet>
         <div className="flex items-center justify-between">
           <div>
@@ -59,8 +59,8 @@ export default function NavBar() {
           </div>
         </div>
         <SheetContent className="p-0 overflow-y-scroll z-[9999]" side="left">
-          <SheetHeader className="mb-4">
-            <div className="flex items-center px-4 pt-4 gap-2">
+          <SheetHeader className="mb-3">
+            <div className="flex items-center px-2 pt-3 gap-2">
               <Avatar>
                 <AvatarImage
                   className="object-cover"
@@ -74,13 +74,15 @@ export default function NavBar() {
                 <p className="text-sm text-left font-semibold p-0 m-0">
                   {user.name}
                 </p>
-                <p className="text-xs">{user.email}</p>
+                <p className="text-xs w-[90%] truncate">
+                  {"aghahowaosamudiamen03@gmail.com"}
+                </p>
               </div>
             </div>
           </SheetHeader>
           <div className="bg-zinc-800 px-2 pb-3 text-white">
-            <div>
-              <p className="capitalize text-gray-200 py-3">total balance</p>
+            <div className="ml-4">
+              <p className="capitalize text-gray-200 py-2">total balance</p>
               <p className="text-2xl">
                 <span className="font-semibold">
                   {formatCurrency(user.balance)}
@@ -89,7 +91,7 @@ export default function NavBar() {
             </div>
           </div>
           <div className="px-4 text-sm">
-            <h1 className="text-base pt-3 text-gray-500 mb-3">Transactions</h1>
+            <h1 className="text-base pt-1 text-gray-500 mb-3">Transactions</h1>
             <div className="flex capitalize flex-col gap-4">
               <Link to="/deposit">
                 <div className="flex cursor-pointer items-center gap-2">
@@ -121,7 +123,7 @@ export default function NavBar() {
             </div>
           </div>
           <div className="px-4 text-sm mt-2">
-            <h1 className="text-base pt-3 text-gray-500 mb-3">Investment</h1>
+            <h1 className="text-base pt-1 text-gray-500 mb-3">Investment</h1>
             <div className="flex flex-col gap-2">
               <Link to="/profit">
                 <div className="flex cursor-pointer items-center gap-2">
@@ -132,7 +134,7 @@ export default function NavBar() {
             </div>
           </div>
           <div className="px-4 text-sm mt-2">
-            <h1 className="text-base pt-3 text-gray-500 mb-3">Support</h1>
+            <h1 className="text-base pt-1 text-gray-500 mb-3">Support</h1>
             <div className="flex flex-col gap-2">
               <Link to="/support">
                 <div className="flex cursor-pointer items-center gap-2">
@@ -143,7 +145,7 @@ export default function NavBar() {
             </div>
           </div>
           <div className="px-4 text-sm mt-2">
-            <h1 className="text-base pt-3 text-gray-500 mb-3">Session</h1>
+            <h1 className="text-base pt-1 text-gray-500 mb-3">Session</h1>
             <div className="flex flex-col gap-2">
               <div
                 onClick={logOut}
