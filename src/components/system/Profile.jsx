@@ -195,8 +195,7 @@ export default function Profile() {
         <div className="w-[98%] text-sm font-normal p-2 mb-2 rounded-lg bg-white mx-auto">
           <div className="flex gap-10 items-center justify-between py-2">
             <p className="flex-1">Email</p>
-            {/* <p className="truncate">{user.email}</p> */}
-            <p className="flex-1 truncate">aghahowaosamudiamen@gmail.com</p>
+            <p className="flex-1 truncate">{user.email}</p>
           </div>
           <Separator />
           <div className="flex text-sm items-center justify-between py-2">

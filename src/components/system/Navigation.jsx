@@ -74,9 +74,7 @@ export default function NavBar() {
                 <p className="text-sm text-left font-semibold p-0 m-0">
                   {user.name}
                 </p>
-                <p className="text-xs w-[90%] truncate">
-                  {"aghahowaosamudiamen03@gmail.com"}
-                </p>
+                <p className="text-xs w-[80%] truncate">{user.email}</p>
               </div>
             </div>
           </SheetHeader>

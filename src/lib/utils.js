@@ -1,8 +1,6 @@
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { supabase } from "./supabase";
-// import { useAtom } from "jotai";
-// import { userAtom } from "./store";
 
 export function cn(...inputs) {
   return twMerge(clsx(inputs));
