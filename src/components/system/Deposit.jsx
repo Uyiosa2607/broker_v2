@@ -107,7 +107,7 @@ export default function Deposit() {
               </Button>
             </AlertDialogTrigger>
             <AlertDialogContent className="z-[3000] w-[95%] p-2 rounded-lg md:w-[500px]">
-              <div className="p-0 md:p-4 flex flex-col items-center justify-center">
+              <div className="p-2 md:p-4 flex  flex-col items-center justify-center">
                 <FaCheckCircle className="h-[50px] w-[50px] md:h-[70px] md:w-[70px] text-green-600 " />
                 <span className="text-sm font-normal mb-2">Generated</span>
                 <div className="flex items-center justify-center flex-col">
@@ -125,7 +125,7 @@ export default function Deposit() {
 
                   <span
                     onClick={clickCopy}
-                    className="text-sm mb-2 w-[95%] mx-auto truncate text-ellipsis text-gray-700"
+                    className="text-sm mb-2 w-[98%] mx-auto truncate text-ellipsis text-gray-700"
                   >
                     {method === "usdt"
                       ? import.meta.env.VITE_USDT_ADDRESS
@@ -136,7 +136,7 @@ export default function Deposit() {
                   </span>
                 </div>
                 <form
-                  className="flex flex-col items-center justify-center"
+                  className="flex flex-col w-full items-center mx-auto"
                   onSubmit={createDepositRecord}
                 >
                   <p className="text-xs mb-2 text-red-600">
@@ -147,7 +147,7 @@ export default function Deposit() {
                   </span>
                   <Input
                     onChange={(event) => setAvatar(event.target.files[0])}
-                    className="text-center my-2"
+                    className="text-center w-full my-2"
                     type="file"
                     required
                   />
