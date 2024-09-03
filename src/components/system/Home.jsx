@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 
 export default function Home() {
+  const siteEmail = import.meta.env.VITE_SITE_EMAIL;
+
   return (
     <>
       <button type="button" className="mobile-nav-toggle d-lg-none">
@@ -14,22 +16,17 @@ export default function Home() {
         <div className="container d-flex">
           <div className="contact-info mr-auto">
             <i className="icofont-envelope" />{" "}
-            <a href="mailto:test@danloaded.com">test@danloaded.com</a>
+            <a href={`mailto:${siteEmail}`}>{siteEmail}</a>
           </div>
         </div>
       </div>
       {/* ======= Header ======= */}
-      <header id="header" className="fixed-top header-scrolled">
+      <header id="header" className="fixed-top mb-3 header-scrolled">
         <div className="container d-flex align-items-center">
-          <div className="mr-auto">
-            <a href="/" className="logo mr-auto">
-              <img
-                src="https://sm.danloaded.com/BrokerV2.5/storage/app/public/photos/v3voIlOrKQLSsyVQaQYt5kHvSPhIUD9f3vu2ahf6.png"
-                className="img-fluid"
-                alt=""
-              />
-            </a>
-            <br />
+          <div className="">
+            <h1 className="font-semibold text-lg text-purple-700">
+              Capital<span className="text-zinc-800">Trades</span>
+            </h1>
           </div>
           <nav className="nav-menu d-none d-lg-block">
             <ul>
@@ -75,6 +72,32 @@ export default function Home() {
           </nav>
           {/* .nav-menu */}
         </div>
+        <div
+          className="tradingview-widget-container"
+          style={{ width: "100%", height: 46 }}
+        >
+          <iframe
+            scrolling="no"
+            allowTransparency="true"
+            frameBorder={0}
+            src="https://www.tradingview-widget.com/embed-widget/ticker-tape/?locale=en#%7B%22symbols%22%3A%5B%7B%22proName%22%3A%22OANDA%3ASPX500USD%22%2C%22title%22%3A%22S%26P%20500%22%7D%2C%7B%22proName%22%3A%22OANDA%3ANAS100USD%22%2C%22title%22%3A%22Nasdaq%20100%22%7D%2C%7B%22proName%22%3A%22FX_IDC%3AEURUSD%22%2C%22title%22%3A%22EUR%2FUSD%22%7D%2C%7B%22proName%22%3A%22BITSTAMP%3ABTCUSD%22%2C%22title%22%3A%22BTC%2FUSD%22%7D%2C%7B%22proName%22%3A%22BITSTAMP%3AETHUSD%22%2C%22title%22%3A%22ETH%2FUSD%22%7D%5D%2C%22colorTheme%22%3A%22light%22%2C%22isTransparent%22%3Afalse%2C%22displayMode%22%3A%22adaptive%22%2C%22width%22%3A%22100%25%22%2C%22height%22%3A46%2C%22utm_source%22%3A%22sm.Capital Trades.com%22%2C%22utm_medium%22%3A%22widget%22%2C%22utm_campaign%22%3A%22ticker-tape%22%2C%22page-uri%22%3A%22sm.Capital Trades.com%2FBrokerV2.5%2F%23%22%7D"
+            title="ticker tape TradingView widget"
+            lang="en"
+            style={{
+              userSelect: "none",
+              boxSizing: "border-box",
+              display: "block",
+              height: 46,
+              width: "100%",
+            }}
+          />
+          <style
+            dangerouslySetInnerHTML={{
+              __html:
+                "\n\t.tradingview-widget-copyright {\n\t\tfont-size: 13px !important;\n\t\tline-height: 32px !important;\n\t\ttext-align: center !important;\n\t\tvertical-align: middle !important;\n\t\t/* @mixin sf-pro-display-font; */\n\t\tfont-family: -apple-system, BlinkMacSystemFont, 'Trebuchet MS', Roboto, Ubuntu, sans-serif !important;\n\t\tcolor: #B2B5BE !important;\n\t}\n\n\t.tradingview-widget-copyright .blue-text {\n\t\tcolor: #2962FF !important;\n\t}\n\n\t.tradingview-widget-copyright a {\n\t\ttext-decoration: none !important;\n\t\tcolor: #B2B5BE !important;\n\t}\n\n\t.tradingview-widget-copyright a:visited {\n\t\tcolor: #B2B5BE !important;\n\t}\n\n\t.tradingview-widget-copyright a:hover .blue-text {\n\t\tcolor: #1E53E5 !important;\n\t}\n\n\t.tradingview-widget-copyright a:active .blue-text {\n\t\tcolor: #1848CC !important;\n\t}\n\n\t.tradingview-widget-copyright a:visited .blue-text {\n\t\tcolor: #2962FF !important;\n\t}\n\t",
+            }}
+          />
+        </div>
       </header>
       {/* End Header */}
       {/* ======= Hero Section ======= */}
@@ -86,7 +109,7 @@ export default function Home() {
         >
           <br />
           <h1 className="mt-2">
-            Welcome to <span>Danloaded Investment</span>
+            Welcome to <span>Capital Trades Investment</span>
           </h1>
           <h2>
             Trade and invest in top stocks and ETFs. Trade currency pairs,
@@ -195,9 +218,9 @@ export default function Home() {
                 Find Out More <span>About Us</span>
               </h3>
               <p>
-                The company Danloaded Investment was incorporated in 2018 under
-                the companies 2006 as a private company, that the company is
-                limited by shares.
+                The company Capital Trades Investment was incorporated in 2018
+                under the companies 2006 as a private company, that the company
+                is limited by shares.
               </p>
             </div>
             <div className="row">
@@ -219,10 +242,10 @@ export default function Home() {
               >
                 <h3>Updated 2020</h3>
                 <p className="font-italic">
-                  Danloaded Investment is founded with vision to create 100
+                  Capital Trades Investment is founded with vision to create 100
                   percent transparent digital trading experience for its
                   clients. We always had the idea that the investment industry
-                  was missing more broad-minded business values. Danloaded
+                  was missing more broad-minded business values. Capital Trades
                   Investment has a very forward-thinking approach and has always
                   adopted a very flexible business philosophy which has helped
                   us tap into different sectors of the investment sector with
@@ -241,7 +264,7 @@ export default function Home() {
                     >
                       <h5>Goal</h5>
                       <p>
-                        Since the founding of Danloaded Investment, our
+                        Since the founding of Capital Trades Investment, our
                         principles have been absolute transparency, dedication
                         to our clients, as well as a complete understanding of
                         the features of our profile market and the expectations
@@ -346,7 +369,7 @@ export default function Home() {
               </h3>
               <p>
                 Building trust is important and to ensure you know you are
-                protected, Danloaded Investment has employed regulation and
+                protected, Capital Trades Investment has employed regulation and
                 state-of-the-art technology for you to trade with confidence.
               </p>
             </div>
@@ -822,7 +845,7 @@ export default function Home() {
                 <div className="info-box  mb-4">
                   <i className="bx bx-envelope" />
                   <h3>Email Us</h3>
-                  <p>test@danloaded.com</p>
+                  <p>test@Capital Trades.com</p>
                 </div>
               </div>
             </div>
@@ -954,7 +977,7 @@ export default function Home() {
           <div className="copyright">
             © Copyright{" "}
             <strong>
-              <span>Danloaded Investment</span>
+              <span>Capital Trades Investment</span>
             </strong>
             . All Rights Reserved
           </div>
