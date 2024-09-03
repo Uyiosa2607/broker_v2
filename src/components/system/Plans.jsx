@@ -49,8 +49,7 @@ export default function Plans() {
     if (value < min || value > max)
       return toast.error("Please check Plan limits");
     if (value === 0) return alert("Please Enter amount");
-    if (value > user.balance)
-      return toast.error("Balance is Low, Please Balance and try again");
+    if (value > user.balance) return toast.error("Not enough Balance");
     const updateBalance = await updateUserBalance(user.id, value, user.balance);
     if (updateBalance) return toast.success("Plan has been activated");
   }
