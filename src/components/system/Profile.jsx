@@ -219,7 +219,7 @@ export default function Profile() {
           </div>
           <Separator />
           <div className="flex text-sm items-center justify-between py-2">
-            <p>Address</p>
+            <p className="w-[90%] truncate">Address</p>
             <p>{user.address}</p>
           </div>
         </div>

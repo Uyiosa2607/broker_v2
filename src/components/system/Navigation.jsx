@@ -71,7 +71,7 @@ export default function NavBar() {
                 <AvatarFallback>JD</AvatarFallback>
               </Avatar>
               <div className="flex flex-col">
-                <p className="text-sm text-left width-[80%] truncate font-semibold p-0 m-0">
+                <p className="text-sm text-left width-[95%] truncate font-semibold p-0 m-0">
                   {user.name}
                 </p>
                 <p className="text-xs w-[80%] truncate">{user.email}</p>

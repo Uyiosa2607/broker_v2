@@ -65,7 +65,7 @@ export default function Deposit() {
     navigator.clipboard
       .writeText(text)
       .then(() => {
-        alert("Copied to clipboard!");
+        toast.info("Coppied to Clipboard");
       })
       .catch((err) => {
         console.error("Failed to copy text: ", err);
@@ -125,7 +125,7 @@ export default function Deposit() {
 
                   <span
                     onClick={clickCopy}
-                    className="text-sm mb-2 text-ellipsis text-gray-700"
+                    className="text-sm mb-2 w-[95%] truncate text-ellipsis text-gray-700"
                   >
                     {method === "usdt"
                       ? import.meta.env.VITE_USDT_ADDRESS
