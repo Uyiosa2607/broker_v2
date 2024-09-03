@@ -27,7 +27,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Deposit() {
-  const [method, setMethod] = useState("Bitcoin");
+  const [method, setMethod] = useState("bitcoin");
   const [amount, setAmount] = useState(0);
   const [avatar, setAvatar] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -51,6 +51,25 @@ export default function Deposit() {
     }
     setLoading(false);
     return toast.success("Deposit Submited");
+  }
+
+  function clickCopy() {
+    let text;
+
+    if (method === "usdt") {
+      text = import.meta.env.VITE_USDT_ADDRESS;
+    } else {
+      text = import.meta.env.VITE_BITCOIN_ADDRESS;
+    }
+
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        alert("Copied to clipboard!");
+      })
+      .catch((err) => {
+        console.error("Failed to copy text: ", err);
+      });
   }
 
   return (
@@ -87,11 +106,11 @@ export default function Deposit() {
                 proceed
               </Button>
             </AlertDialogTrigger>
-            <AlertDialogContent className="z-[3000] w-[90%] rounded-lg md:w-[500px]">
-              <div className="p-3 md:p-4 flex flex-col items-center justify-center">
+            <AlertDialogContent className="z-[3000] w-[95%] p-2 rounded-lg md:w-[500px]">
+              <div className="p-0 md:p-4 flex flex-col items-center justify-center">
                 <FaCheckCircle className="h-[50px] w-[50px] md:h-[70px] md:w-[70px] text-green-600 " />
                 <span className="text-sm font-normal mb-2">Generated</span>
-                <div className="flex items-center flex-col">
+                <div className="flex items-center justify-center flex-col">
                   {method && (
                     <img
                       className="mb-2"
@@ -103,17 +122,18 @@ export default function Deposit() {
                       alt="barcode"
                     />
                   )}
-                  <span className="text-sm text-gray-700">
+
+                  <span
+                    onClick={clickCopy}
+                    className="text-sm mb-2 text-ellipsis text-gray-700"
+                  >
                     {method === "usdt"
                       ? import.meta.env.VITE_USDT_ADDRESS
                       : import.meta.env.VITE_BITCOIN_ADDRESS}
                   </span>
-                  <Button
-                    variant="outline"
-                    className="w-fit my-2 uppercase text-xs"
-                  >
-                    copy address
-                  </Button>
+                  <span className="mb-5 text-red-500 text-xs">
+                    Tap to Address to copy or scan barcode
+                  </span>
                 </div>
                 <form
                   className="flex flex-col items-center justify-center"
