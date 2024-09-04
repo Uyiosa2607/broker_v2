@@ -195,7 +195,7 @@ export default function Profile() {
         <div className="w-[98%] text-sm font-normal p-2 mb-2 rounded-lg bg-white mx-auto">
           <div className="flex gap-10 items-center justify-between py-2">
             <p className="flex-1">Email</p>
-            <p className="flex-1 truncate">{user.email}</p>
+            <p className="flex-1 text-right truncate">{user.email}</p>
           </div>
           <Separator />
           <div className="flex text-sm items-center justify-between py-2">
@@ -218,9 +218,9 @@ export default function Profile() {
             <p>{user.city}</p>
           </div>
           <Separator />
-          <div className="flex text-sm items-center justify-between py-2">
-            <p className="w-[90%] truncate">Address</p>
-            <p>{user.address}</p>
+          <div className="flex text-sm  gap-4 items-center justify-between py-2">
+            <p className="flex-1">Address</p>
+            <p className="flex-1 text-right truncate">{user.address}</p>
           </div>
         </div>
         <div className="w-[98%] mt-2 p-2 rounded-lg mb-2 bg-white mx-auto">

@@ -60,7 +60,7 @@ export default function NavBar() {
         </div>
         <SheetContent className="p-0 overflow-y-scroll z-[9999]" side="left">
           <SheetHeader className="mb-3">
-            <div className="flex items-center px-2 pt-3 gap-2">
+            <div className="flex items-center px-2 pt-2 gap-2">
               <Avatar>
                 <AvatarImage
                   className="object-cover"
@@ -70,11 +70,13 @@ export default function NavBar() {
                 />
                 <AvatarFallback>JD</AvatarFallback>
               </Avatar>
-              <div className="flex flex-col">
-                <p className="text-sm text-left width-[95%] truncate font-semibold p-0 m-0">
+              <div className="flex-1 w-[80%] justify-end flex flex-col ">
+                <p className="text-sm text-right width-[98%] truncate font-semibold">
                   {user.name}
                 </p>
-                <p className="text-xs w-[80%] truncate">{user.email}</p>
+                <p className="text-xs text-right w-[98%] truncate">
+                  {user.email}
+                </p>
               </div>
             </div>
           </SheetHeader>
