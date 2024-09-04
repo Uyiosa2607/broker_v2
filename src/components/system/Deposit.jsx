@@ -97,7 +97,7 @@ export default function Deposit() {
             />
           </div>
           <div className="flex mb-2 items-center gap-1">
-            <p className="text-sm capitalize">avaliable balance :</p>
+            <p className="text-sm capitalize">avaliable balance:</p>
             <Balance />
           </div>
           <AlertDialog>
@@ -106,11 +106,11 @@ export default function Deposit() {
                 proceed
               </Button>
             </AlertDialogTrigger>
-            <AlertDialogContent className="z-[3000] w-[95%] p-2 rounded-lg md:w-[500px]">
-              <div className="p-2 md:p-4 flex  flex-col items-center justify-center">
+            <AlertDialogContent className="z-[3000] w-[98%] p-2 rounded-lg md:w-[500px]">
+              <div className="p-2 md:p-4 flex w-[96%] md:w-full mx-auto  flex-col items-center justify-center">
                 <FaCheckCircle className="h-[50px] w-[50px] md:h-[70px] md:w-[70px] text-green-600 " />
                 <span className="text-sm font-normal mb-2">Generated</span>
-                <div className="flex items-center justify-center flex-col">
+                <div className="flex items-center w-full mx-auto justify-center flex-col">
                   {method && (
                     <img
                       className="mb-2"
@@ -136,7 +136,7 @@ export default function Deposit() {
                   </span>
                 </div>
                 <form
-                  className="flex flex-col w-full items-center mx-auto"
+                  className="flex flex-col w-[98%] items-center mx-auto"
                   onSubmit={createDepositRecord}
                 >
                   <p className="text-xs mb-2 text-red-600">
@@ -147,7 +147,7 @@ export default function Deposit() {
                   </span>
                   <Input
                     onChange={(event) => setAvatar(event.target.files[0])}
-                    className="text-center w-full my-2"
+                    className="text-center mx-auto w-[98%] my-2"
                     type="file"
                     required
                   />
@@ -163,9 +163,11 @@ export default function Deposit() {
                   </Button>
                 </form>
               </div>
-              <AlertDialogAction className="bg-green-600">
-                Complete
-              </AlertDialogAction>
+              <div className="w-[98%] mx-auto">
+                <AlertDialogAction className="bg-green-600 w-[95%] mx-auto md:w-full">
+                  Complete
+                </AlertDialogAction>
+              </div>
             </AlertDialogContent>
           </AlertDialog>
         </div>
