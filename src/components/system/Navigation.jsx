@@ -5,7 +5,6 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { IoMdCash } from "react-icons/io";
 import { MdSavings } from "react-icons/md";
 import {
@@ -21,6 +20,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useAtom } from "jotai";
 import { userAtom } from "@/lib/store";
 import { formatCurrency } from "@/lib/utils";
+import AvatarImg from "./Avatar";
 
 export default function NavBar() {
   const [user] = useAtom(userAtom);
@@ -46,30 +46,14 @@ export default function NavBar() {
           </div>
           <div>
             <Link to="/profile">
-              <Avatar className="w-[30px] h-[30px] md:h-[40px] md:w-[40px]">
-                <AvatarImage
-                  className="object-cover"
-                  src={`https://azbgmygmtxilfilpngex.supabase.co/storage/v1/object/public/image_database/${
-                    user.img
-                  }?${new Date().getTime()}`}
-                />
-                <AvatarFallback>CN</AvatarFallback>
-              </Avatar>
+              <AvatarImg />
             </Link>
           </div>
         </div>
         <SheetContent className="p-0 overflow-y-scroll z-[9999]" side="left">
           <SheetHeader className="mb-3">
             <div className="flex items-center px-2 pt-2 gap-2">
-              <Avatar>
-                <AvatarImage
-                  className="object-cover"
-                  src={`https://azbgmygmtxilfilpngex.supabase.co/storage/v1/object/public/image_database/${
-                    user.img
-                  }?${new Date().getTime()}`}
-                />
-                <AvatarFallback>JD</AvatarFallback>
-              </Avatar>
+              <AvatarImg />
               <div className="flex-1 w-[80%] justify-end flex flex-col ">
                 <p className="text-sm text-right width-[98%] truncate font-semibold">
                   {user.name}
@@ -94,28 +78,28 @@ export default function NavBar() {
             <h1 className="text-base pt-1 text-gray-500 mb-3">Transactions</h1>
             <div className="flex capitalize flex-col gap-4">
               <Link to="/deposit">
-                <div className="flex cursor-pointer items-center gap-2">
+                <div className="flex hover:text-red-400 cursor-pointer items-center gap-2">
                   <IoMdCash className="bg-zinc-800 text-2xl rounded-full p-1 text-white" />
                   <p>Deposit Funds</p>
                 </div>
               </Link>
               <Separator />
               <Link to="/plans">
-                <div className="flex cursor-pointer items-center gap-2">
+                <div className="flex hover:text-red-400 cursor-pointer items-center gap-2">
                   <MdSavings className="bg-zinc-800 text-2xl rounded-full p-1 text-white" />
                   <p>buy plans</p>
                 </div>
               </Link>
               <Separator />
               <Link to="/withdraw">
-                <div className="flex cursor-pointer items-center gap-2">
+                <div className="flex hover:text-red-400 cursor-pointer items-center gap-2">
                   <FaCreditCard className="bg-zinc-800 text-2xl rounded-full p-1 text-white" />
                   <p>withdraw funds</p>
                 </div>
               </Link>
               <Separator />
               <Link to="/transactions">
-                <div className="flex cursor-pointer items-center  gap-2">
+                <div className="flex hover:text-red-400 cursor-pointer items-center  gap-2">
                   <FaHistory className="bg-zinc-800 text-2xl rounded-full p-1 text-white" />
                   <p>transaction history</p>
                 </div>
@@ -126,7 +110,7 @@ export default function NavBar() {
             <h1 className="text-base pt-1 text-gray-500 mb-3">Investment</h1>
             <div className="flex flex-col gap-2">
               <Link to="/profit">
-                <div className="flex cursor-pointer items-center gap-2">
+                <div className="flex hover:text-red-400 cursor-pointer items-center gap-2">
                   <FaFunnelDollar className="bg-zinc-800 text-2xl rounded-full p-1 text-white" />
                   <p>Profit History</p>
                 </div>
@@ -135,9 +119,9 @@ export default function NavBar() {
           </div>
           <div className="px-4 text-sm mt-2">
             <h1 className="text-base pt-1 text-gray-500 mb-3">Support</h1>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col  gap-2">
               <Link to="/support">
-                <div className="flex cursor-pointer items-center gap-2">
+                <div className="flex hover:text-red-400 cursor-pointer items-center gap-2">
                   <AiFillMessage className="bg-zinc-800 text-2xl rounded-full p-1 text-white" />
                   <p>Open Support Ticket</p>
                 </div>
@@ -149,7 +133,7 @@ export default function NavBar() {
             <div className="flex flex-col gap-2">
               <div
                 onClick={logOut}
-                className="flex cursor-pointer items-center gap-2"
+                className="flex hover:text-red-400 cursor-pointer items-center gap-2"
               >
                 <FaSignOutAlt className="bg-zinc-800 text-2xl rounded-full p-1 text-white" />
                 <p>Sign Out</p>
