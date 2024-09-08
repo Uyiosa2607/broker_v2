@@ -37,6 +37,14 @@ export default function Withdraw() {
           user_id: user.id,
         },
       ]);
+
+      await supabase
+        .from("Users")
+        .update({
+          balance: Number(user.balance) - Number(amount),
+        })
+        .eq("id", user.id);
+
       if (response.error)
         return console.log("Something went wrong", response.error);
       toast.success("Withdrawal request Submited");
