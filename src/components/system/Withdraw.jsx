@@ -17,6 +17,7 @@ import { useAtom } from "jotai";
 import { userAtom } from "@/lib/store";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { formatCurrency } from "@/lib/utils";
 
 export default function Withdraw() {
   const [address, setAddress] = useState("");
@@ -61,7 +62,7 @@ export default function Withdraw() {
         <section className="min-h-[90vh] relative flex top-[5vh]  justify-center w-screen">
           <div className=" w-[90%] md:w-[600px] p-4 md:p-5 h-fit bg-white rounded-md">
             <h3 className="font-semibold text-center mb-4">Withdraw</h3>
-            <p className="text-red-700 text-sm font-medium mb-3 text-center">
+            <p className="text-blue-700 text-xs font-medium mb-3">
               Withdrawals are only paid out with Bitcoin
             </p>
             <div className="mb-3">
@@ -95,20 +96,29 @@ export default function Withdraw() {
                   proceed
                 </Button>
               </DialogTrigger>
-              <DialogContent className="w-[90%] md:w-[500px] rounded-lg">
-                <div className="p-2 flex flex-col items-center">
+              <DialogContent className="w-[90%] p-2 md:w-[500px] rounded-lg">
+                <div className="w-[95%] flex items-center justify-center flex-col p-2">
                   <DialogDescription className="mb-4 text-zinc-900 font-medium">
-                    Proceed to Withdraw ${amount} to {address}
+                    <div className="w-full">
+                      Proceed to Withdraw{" "}
+                      <span className="font-medium text-red-600">
+                        {formatCurrency(amount)}
+                      </span>{" "}
+                      to
+                      <span className="block w-[79%] text-red-600 font-medium  my-4 md:w-[98%] truncate">
+                        {address}
+                      </span>
+                    </div>
+                    <Button
+                      className="w-fit bg-green-700 mx-auto text-xs"
+                      onClick={createWithdrawalRecord}
+                    >
+                      Complete Withdrawal{"  "}
+                      {loading ? (
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      ) : null}
+                    </Button>
                   </DialogDescription>
-                  <Button
-                    className="w-fit mx-auto"
-                    onClick={createWithdrawalRecord}
-                  >
-                    Complete Withdrawal{"  "}
-                    {loading ? (
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    ) : null}
-                  </Button>
                 </div>
               </DialogContent>
             </Dialog>
