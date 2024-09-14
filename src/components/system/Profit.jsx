@@ -17,6 +17,7 @@ export default function Profit() {
         const { error, data } = await supabase
           .from("Profits")
           .select("*")
+          .order("created_at", { ascending: false })
           .eq("user_id", user.id);
         if (error) return console.log("something went wrong:", error);
         setProfit(data);

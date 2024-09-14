@@ -36,6 +36,7 @@ export default function Transaction() {
         const response = await supabase
           .from("Transactions")
           .select("*")
+          .order("created_at", { ascending: false })
           .eq("user_id", user.id);
 
         if (response.error) {
