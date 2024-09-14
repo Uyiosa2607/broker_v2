@@ -17,11 +17,12 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { Toaster } from "../ui/toaster";
+import { useToast } from "@/hooks/use-toast";
 
 export default function Register() {
   const navigate = useNavigate();
+  const { toast } = useToast();
 
   const [avatar, setAvatar] = useState(undefined);
   const [loading, setLoading] = useState(false);
@@ -51,6 +52,14 @@ export default function Register() {
         password,
       });
 
+      if (response.error) {
+        setLoading(false);
+        return toast({
+          variant: "destructive",
+          title: "Something went wrong",
+          description: response.error.message,
+        });
+      }
       const profileImageLink = await uploadFile(avatar, "profile_pictures/");
 
       await supabase.from("Users").insert([
@@ -68,10 +77,12 @@ export default function Register() {
     } catch (error) {
       console.log(error);
       setLoading(false);
-      toast.error("Something went wrong");
     }
 
-    navigate("/login");
+    toast({
+      title: "Resgistration complete",
+      message: "You can login with your credentials now",
+    });
     setLoading(false);
   }
 
@@ -195,7 +206,7 @@ export default function Register() {
           </form>
         </div>
       </section>
-      <ToastContainer />
+      <Toaster />
     </main>
   );
 }

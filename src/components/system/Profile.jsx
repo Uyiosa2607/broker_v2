@@ -75,7 +75,10 @@ export default function Profile() {
 
   async function updateProfilePicture() {
     setuploading(true);
-    if (avatar === null) return alert("Please select a photo");
+    if (avatar === null) {
+      setuploading(false);
+      return alert("Please select a photo");
+    }
     try {
       const response = await supabase.storage
         .from("image_database")
@@ -88,6 +91,7 @@ export default function Profile() {
         setuploading(false);
         return toast.success("Profile picture Updated");
       }
+      setuploading(false);
       return toast.error("Something went wrong, Please try again");
     } catch (error) {
       console.log(error);
@@ -231,7 +235,7 @@ export default function Profile() {
             </DialogTrigger>
             <DialogContent>
               <DialogDescription className="mt-2 text-sm">
-                Please your email to receive password reset Link
+                Please enter your email to receive password reset Link
               </DialogDescription>
               <div>
                 <Input

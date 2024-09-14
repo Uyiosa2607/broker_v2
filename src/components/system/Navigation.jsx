@@ -13,23 +13,57 @@ import {
   FaCreditCard,
   FaSignOutAlt,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { AiFillMessage } from "react-icons/ai";
 import { Separator } from "../ui/separator";
 import { supabase } from "@/lib/supabase";
-import { useNavigate, Link } from "react-router-dom";
 import { useAtom } from "jotai";
 import { userAtom } from "@/lib/store";
 import { formatCurrency } from "@/lib/utils";
 import AvatarImg from "./Avatar";
+import { useEffect } from "react";
 
 export default function NavBar() {
-  const [user] = useAtom(userAtom);
+  const [user, setUser] = useAtom(userAtom);
+  async function fetchUser() {
+    try {
+      const getAuthStatus = await supabase.auth.getSession();
+      const { data, error } = await supabase
+        .from("Users")
+        .select("*")
+        .eq("id", getAuthStatus.data.session.user.id);
+      if (!error) {
+        setUser(data[0]);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    const sub = supabase
+      .channel("two-tables-changes")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "Users" },
+        (payload) => {
+          fetchUser();
+        }
+      )
+      .subscribe((status) => {
+        if (status === "SUBSCRIBED") {
+          console.log("Subscribed");
+        } else if (status === "CHANNEL_ERROR") {
+          console.error("Error subscribing to changes");
+        }
+      });
+    return () => {
+      supabase.removeChannel(sub);
+    };
+  }, []);
 
   async function logOut() {
     await supabase.auth.signOut();
-    navigate("/login");
   }
 
   return (

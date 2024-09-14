@@ -13,7 +13,7 @@ export default function AvatarImg() {
           user.img
         }?${new Date().getTime()}`}
       />
-      <AvatarFallback>CN</AvatarFallback>
+      <AvatarFallback>{user.name}</AvatarFallback>
     </Avatar>
   );
 }

@@ -6,13 +6,14 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { Toaster } from "../ui/toaster";
+import { useToast } from "@/hooks/use-toast";
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+  const { toast } = useToast();
 
   async function handleLogin(event) {
     event.preventDefault();
@@ -30,11 +31,16 @@ export default function Login() {
 
       if (response.error) {
         setLoading(false);
-        return toast.error("Invalid Login Credentials");
+        return toast({
+          variant: "destructive",
+          title: "Unable to Login",
+          description: response.error.message,
+        });
       }
 
       navigate("/dashboard");
       setLoading(false);
+      return;
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -98,7 +104,7 @@ export default function Login() {
           </form>
         </div>
       </section>
-      <ToastContainer />
+      <Toaster />
     </main>
   );
 }

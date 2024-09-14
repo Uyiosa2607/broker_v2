@@ -23,8 +23,8 @@ import { Loader2 } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { useAtom } from "jotai";
 import { userAtom } from "@/lib/store";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { Toaster } from "../ui/toaster";
+import { useToast } from "@/hooks/use-toast";
 
 export default function Deposit() {
   const [method, setMethod] = useState("bitcoin");
@@ -32,6 +32,8 @@ export default function Deposit() {
   const [avatar, setAvatar] = useState(null);
   const [loading, setLoading] = useState(false);
   const [user] = useAtom(userAtom);
+
+  const { toast } = useToast();
 
   async function createDepositRecord(event) {
     event.preventDefault();
@@ -50,7 +52,10 @@ export default function Deposit() {
       console.log(error);
     }
     setLoading(false);
-    return toast.success("Deposit Submited");
+    return toast({
+      title: "Completed",
+      description: "Deposit processing",
+    });
   }
 
   function clickCopy() {
@@ -65,7 +70,9 @@ export default function Deposit() {
     navigator.clipboard
       .writeText(text)
       .then(() => {
-        toast.info("Coppied to Clipboard");
+        toast({
+          description: "Address copied to clipboard",
+        });
       })
       .catch((err) => {
         console.error("Failed to copy text: ", err);
@@ -173,7 +180,7 @@ export default function Deposit() {
         </div>
       </section>
       <Footer />
-      <ToastContainer />
+      <Toaster />
     </main>
   );
 }
