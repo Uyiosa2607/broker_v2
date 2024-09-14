@@ -83,7 +83,8 @@ export default function Register() {
       title: "Resgistration complete",
       message: "You can login with your credentials now",
     });
-    setLoading(false);
+    navigate("/login");
+    return setLoading(false);
   }
 
   return (
