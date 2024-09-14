@@ -21,10 +21,13 @@ import { useAtom } from "jotai";
 import { userAtom } from "@/lib/store";
 import { formatCurrency } from "@/lib/utils";
 import AvatarImg from "./Avatar";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 export default function NavBar() {
   const [user, setUser] = useAtom(userAtom);
+  const navigate = useNavigate();
+
   async function fetchUser() {
     try {
       const getAuthStatus = await supabase.auth.getSession();
@@ -64,6 +67,7 @@ export default function NavBar() {
 
   async function logOut() {
     await supabase.auth.signOut();
+    return navigate("/");
   }
 
   return (
