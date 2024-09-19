@@ -16,13 +16,13 @@ import {
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { Loader2 } from "lucide-react";
 import { Label } from "../ui/label";
 import { FaCameraRetro } from "react-icons/fa";
 import { Popover } from "../ui/popover";
 import { PopoverContent, PopoverTrigger } from "@radix-ui/react-popover";
+import { Toaster } from "../ui/toaster";
+import { useToast } from "@/hooks/use-toast";
 
 export default function Profile() {
   const [user] = useAtom(userAtom);
@@ -34,15 +34,23 @@ export default function Profile() {
   const [address, setAddress] = useState(user.address);
   const [uploading, setuploading] = useState(false);
 
+  const { toast } = useToast();
+
   async function sendResetLink() {
     setLoading(true);
-    if (email.length == 0) return alert("Please Enter your Email");
+    if (email.length == 0)
+      return toast({
+        description: "Please enter your email",
+      });
     try {
       const response = await supabase.auth.resetPasswordForEmail(email, {
         redirectTo: import.meta.env.VITE_DOMAIN_NAME,
       });
       if (!response.error) {
-        toast.success("Password reset Link has been sent to your email");
+        toast({
+          title: "Success",
+          description: "A reset link has been sent to your email",
+        });
         setLoading(false);
         return;
       }
@@ -66,7 +74,11 @@ export default function Profile() {
         .eq("id", user.id)
         .select();
       console.log(response);
-      if (!response.error) return toast.success("Profile Updated");
+      if (!response.error)
+        return toast({
+          title: "Success",
+          description: "Profile Updated",
+        });
       return toast.error("Something went wrong");
     } catch (error) {
       console.log(error);
@@ -89,10 +101,15 @@ export default function Profile() {
         });
       if (!response.error) {
         setuploading(false);
-        return toast.success("Profile picture Updated");
+        return toast({
+          description: "Profile Photo updated",
+        });
       }
       setuploading(false);
-      return toast.error("Something went wrong, Please try again");
+      return toast({
+        variant: "destructive",
+        description: "Something went wrong",
+      });
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -256,7 +273,7 @@ export default function Profile() {
         </div>
       </section>
       <Footer />
-      <ToastContainer />
+      <Toaster />
     </main>
   );
 }
