@@ -7,8 +7,8 @@ import Balance from "./Balance";
 import { useAtom } from "jotai";
 import { userAtom } from "@/lib/store";
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { Toaster } from "../ui/toaster";
+import { useToast } from "@/hooks/use-toast";
 import { formatCurrency } from "@/lib/utils";
 
 const plans = [
@@ -44,14 +44,39 @@ export default function Plans() {
   const [user] = useAtom(userAtom);
   const [value, setValue] = useState(0);
 
+  const { toast } = useToast();
+
   async function handleBuyPlan(min, max) {
-    if (value === 0) return alert("Please enter Amount");
+    if (value === 0)
+      return toast({
+        variant: "destructive",
+        title: "Something went wrong",
+        description: "enter amount to invest",
+      });
     if (value < min || value > max)
-      return toast.error("Please check Plan limits");
-    if (value === 0) return alert("Please Enter amount");
-    if (value > user.balance) return toast.error("Not enough Balance");
+      return toast({
+        variant: "destructive",
+        title: "Something went wrong",
+        description: "Please check plan Limits",
+      });
+    if (value === 0)
+      return toast({
+        variant: "destructive",
+        title: "Something went wrong",
+        description: "Please enter Amount",
+      });
+    if (value > user.balance)
+      return toast({
+        variant: "destructive",
+        title: "Something went wrong",
+        description: "Not enough Balance",
+      });
     const updateBalance = await updateUserBalance(user.id, value, user.balance);
-    if (updateBalance) return toast.success("Plan has been activated");
+    if (updateBalance)
+      return toast({
+        title: "Success",
+        description: "Plan has been activated",
+      });
   }
 
   return (
@@ -104,7 +129,7 @@ export default function Plans() {
         </div>
       </section>
       <Footer />
-      <ToastContainer />
+      <Toaster />
     </main>
   );
 }
