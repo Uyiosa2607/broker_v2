@@ -10,11 +10,16 @@ import { useAtom } from "jotai";
 import { totalAtom, userAtom } from "@/lib/store";
 import { formatCurrency } from "@/lib/utils";
 import { sumTransactionsByUser } from "@/lib/utils";
+import { Toaster } from "../ui/toaster";
+import { useToast } from "@/hooks/use-toast";
+import { Clipboard } from "lucide-react";
 
 export default function Dashboard() {
   const [user] = useAtom(userAtom);
   const [total, setTotal] = useAtom(totalAtom);
   const [formattedDate, setFormattedDate] = useState("");
+
+  const { toast } = useToast();
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -39,6 +44,19 @@ export default function Dashboard() {
       clearInterval(interval);
     };
   }, [user.id, setTotal]);
+
+  function copyCode() {
+    navigator.clipboard
+      .writeText(user.id.slice(0, 6))
+      .then(() => {
+        toast({
+          description: "Referal code copied to clipboard",
+        });
+      })
+      .catch((err) => {
+        console.error("Failed to copy text: ", err);
+      });
+  }
 
   return (
     <main className="mx-auto w-screen bg-gray-200">
@@ -118,17 +136,19 @@ export default function Dashboard() {
           </p>
           {/* Referral stuff goes here */}
         </div>
-        <div className="mt-2 mb-2">
+        <div className="mt-2 mb-2 flex items-center gap-1">
           <p className="text-blue-600 font-medium text-sm pl-2">
             Referral Code:{" "}
             <span className="font-semibold capitalize">
               {user.id.slice(0, 6)}
             </span>
           </p>
+          <Clipboard onClick={copyCode} size={14} />
         </div>
         <TradingViewWidget />
       </section>
       <Footer />
+      <Toaster />
     </main>
   );
 }
