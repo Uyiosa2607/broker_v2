@@ -7,11 +7,12 @@ import { Label } from "../ui/label";
 import { Textarea } from "../ui/textarea";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { Toaster } from "../ui/toaster";
+import { useToast } from "@/hooks/use-toast";
 
 export default function Contact() {
   const form = useRef();
+  const { toast } = useToast();
 
   async function sendEmail(event) {
     event.preventDefault();
@@ -25,9 +26,16 @@ export default function Contact() {
         }
       );
 
-      if (request.ok) return toast.success("Ticket Submited");
+      if (request.ok)
+        return toast({
+          description: "Ticket Submited",
+        });
 
-      return toast.error("Something went wrong");
+      return toast({
+        variant: "destructive",
+        title: "Unable to send message",
+        description: "Something went wrong",
+      });
     } catch (error) {
       console.log(error);
     }
@@ -66,7 +74,7 @@ export default function Contact() {
         />
       </section>
       <Footer />
-      <ToastContainer />
+      <Toaster />
     </main>
   );
 }
