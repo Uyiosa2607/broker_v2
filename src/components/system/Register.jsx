@@ -187,6 +187,15 @@ export default function Register() {
                 placeholder="Adress Here"
               />
             </div>
+            <div className="mb-3 flex flex-col gap-1">
+              <Label htmlFor="password">Referal code</Label>
+              <Input
+                id="code"
+                name="code"
+                type="text"
+                placeholder="Referal code optional"
+              />
+            </div>
             <div className="flex items-center justify-between">
               <Button
                 disabled={loading}

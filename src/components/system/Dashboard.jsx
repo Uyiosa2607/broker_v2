@@ -114,13 +114,16 @@ export default function Dashboard() {
           <p className="font-medium pl-1 mb-2">Referral Link</p>
           <p className="text-gray-400 text-sm pl-2">
             Get a bonus when someone registers on Invex Capitals with your
-            referral link.
+            referral Code.
           </p>
           {/* Referral stuff goes here */}
         </div>
         <div className="mt-2 mb-2">
-          <p className="text-red-600 text-xs pl-2">
-            Referral program is currently suspended
+          <p className="text-blue-600 font-medium text-sm pl-2">
+            Referral Code:{" "}
+            <span className="font-semibold capitalize">
+              {user.id.slice(0, 6)}
+            </span>
           </p>
         </div>
         <TradingViewWidget />
