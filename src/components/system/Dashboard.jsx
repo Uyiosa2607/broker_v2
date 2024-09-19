@@ -139,7 +139,7 @@ export default function Dashboard() {
         <div className="mt-2 mb-2 flex items-center gap-1">
           <p className="text-blue-600 font-medium text-sm pl-2">
             Referral Code:{" "}
-            <span className="font-semibold capitalize">
+            <span className="font-semibold uppercase">
               {user.id.slice(0, 6)}
             </span>
           </p>

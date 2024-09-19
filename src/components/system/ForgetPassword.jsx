@@ -4,9 +4,12 @@ import { Label } from "../ui/label";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
+import { Toaster } from "../ui/toaster";
+import { useToast } from "@/hooks/use-toast";
 
 export default function ForgetPassword() {
   const [loading, setLoading] = useState(false);
+  const { toast } = useToast();
 
   async function getResetLink(event) {
     event.preventDefault();
@@ -22,7 +25,9 @@ export default function ForgetPassword() {
       });
       if (!response.error) {
         setLoading(false);
-        return toast.success("Password reset link has been sent to your email");
+        return toast({
+          description: "Password reset link has been sent to your email",
+        });
       }
     } catch (error) {
       setLoading(false);
@@ -56,7 +61,7 @@ export default function ForgetPassword() {
           </form>
         </div>
       </section>
-      <ToastContainer />
+      <Toaster />
     </main>
   );
 }

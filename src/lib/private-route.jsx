@@ -22,7 +22,6 @@ function PrivateRoute({ component: Component }) {
 
         if (getUser.error) {
           console.error("Error fetching user info:", getUser.error);
-          setUser(getUser.data);
           setAuth(false);
         } else {
           setUser(getUser.data);
