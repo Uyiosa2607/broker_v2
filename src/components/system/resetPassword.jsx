@@ -3,13 +3,14 @@ import { Button } from "../ui/button";
 import { Label } from "../ui/label";
 import { supabase } from "@/lib/supabase";
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { Loader2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { Toaster } from "../ui/toaster";
+import { useToast } from "@/hooks/use-toast";
 
 export default function ResetPassword() {
   const navigate = useNavigate();
+  const { toast } = useToast();
 
   const [loading, setLoading] = useState(false);
 
@@ -23,7 +24,7 @@ export default function ResetPassword() {
         password: password,
       });
       if (!response.error) {
-        toast.success("Password reset Succesfull");
+        toast({ title: "Success", description: "Password reset successfull" });
         setLoading(false);
         navigate("/login");
       }
@@ -58,7 +59,7 @@ export default function ResetPassword() {
           </form>
         </div>
       </section>
-      <ToastContainer />
+      <Toaster />
     </main>
   );
 }
