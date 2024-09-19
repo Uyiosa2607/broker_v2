@@ -1,3 +1,7 @@
+import { useState } from "react";
+import { userAtom } from "@/lib/store";
+import { supabase } from "@/lib/supabase";
+import { useAtom } from "jotai";
 import NavBar from "./Navigation";
 import Footer from "./Footer";
 import {
@@ -10,15 +14,11 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import Balance from "./Balance";
-import { useState } from "react";
 import { Loader2 } from "lucide-react";
-import { supabase } from "@/lib/supabase";
-import { useAtom } from "jotai";
-import { userAtom } from "@/lib/store";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { formatCurrency } from "@/lib/utils";
 import { ShieldAlert } from "lucide-react";
+import { Toaster } from "../ui/toaster";
+import { useToast } from "@/hooks/use-toast";
 
 export default function Withdraw() {
   const [address, setAddress] = useState("");
@@ -26,8 +26,16 @@ export default function Withdraw() {
   const [loading, setLoading] = useState(false);
   const [user] = useAtom(userAtom);
 
+  const { toast } = useToast();
+
   async function createWithdrawalRecord() {
-    if (amount > user.balance) return toast.error("Not enough balance");
+    if (amount > user.balance)
+      return toast({
+        variant: "destructive",
+        title: "An Error occured",
+        description: "Not enough balance",
+      });
+
     setLoading(true);
 
     try {
@@ -49,7 +57,10 @@ export default function Withdraw() {
 
       if (response.error)
         return console.log("Something went wrong", response.error);
-      toast.success("Withdrawal request Submited");
+      toast({
+        title: "Success",
+        description: "withrawal request submited",
+      });
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -130,7 +141,7 @@ export default function Withdraw() {
         </section>
       </section>
       <Footer />
-      <ToastContainer />
+      <Toaster />
     </main>
   );
 }
