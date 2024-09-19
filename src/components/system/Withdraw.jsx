@@ -18,6 +18,7 @@ import { userAtom } from "@/lib/store";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { formatCurrency } from "@/lib/utils";
+import { ShieldAlert } from "lucide-react";
 
 export default function Withdraw() {
   const [address, setAddress] = useState("");
@@ -96,24 +97,27 @@ export default function Withdraw() {
                   proceed
                 </Button>
               </DialogTrigger>
-              <DialogContent className="w-[90%] p-2 md:w-[500px] rounded-lg">
-                <div className="w-[95%] flex items-center justify-center flex-col p-2">
+              <DialogContent className="w-[95%] p-2 md:w-[500px] rounded-lg">
+                <div className="flex w-[88%] md:w-[90%] md:mx-auto lg:w-full flex-col md:p-2">
                   <DialogDescription className="mb-4 text-zinc-900 font-medium">
-                    <div className="w-full">
-                      Proceed to Withdraw{" "}
+                    <div className="w-full flex items-center justify-center my-3">
+                      <ShieldAlert size={60} color="red" />
+                    </div>
+                    <p className="w-full break-words leading-5">
+                      You are about withdrawing{" "}
                       <span className="font-medium text-red-600">
                         {formatCurrency(amount)}
                       </span>{" "}
-                      to
-                      <span className="block w-[79%] text-red-600 font-medium  my-4 md:w-[98%] truncate">
+                      to&nbsp;
+                      <span className="text-red-600 text-center font-medium">
                         {address}
                       </span>
-                    </div>
+                    </p>
                     <Button
-                      className="w-fit bg-green-700 mx-auto text-xs"
+                      className="w-full mt-3 flex items-center justify-center bg-green-700 mx-auto text-sm"
                       onClick={createWithdrawalRecord}
                     >
-                      Complete Withdrawal{"  "}
+                      Proceed{"  "}
                       {loading ? (
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                       ) : null}
