@@ -12,29 +12,29 @@ import { useToast } from "@/hooks/use-toast";
 import { formatCurrency } from "@/lib/utils";
 
 const plans = [
-  { total_profit: "10%", duration: "7 days", maximum: 100, minimum: 50 },
-  { total_profit: "15%", duration: "10 days", maximum: 400, minimum: 150 },
+  { total_profit: "10%", duration: "2 days", maximum: 100, minimum: 50 },
+  { total_profit: "15%", duration: "3 days", maximum: 400, minimum: 150 },
   {
     total_profit: "20%",
-    duration: "10 days",
+    duration: "5 days",
     maximum: 1000,
     minimum: 500,
   },
   {
     total_profit: "30%",
-    duration: "15 days",
+    duration: "7 days",
     maximum: 6000,
     minimum: 1000,
   },
   {
     total_profit: "40%",
-    duration: "25 days",
+    duration: "10 days",
     maximum: 8000,
     minimum: 1500,
   },
   {
     total_profit: "60%",
-    duration: "30 days",
+    duration: "15 days",
     maximum: 25000,
     minimum: 2000,
   },
