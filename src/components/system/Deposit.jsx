@@ -1,4 +1,5 @@
 import NavBar from "./Navigation";
+import imageCompression from "browser-image-compression";
 import Footer from "./Footer";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -38,24 +39,41 @@ export default function Deposit() {
   async function createDepositRecord(event) {
     event.preventDefault();
     setLoading(true);
+
     try {
-      const response = await uploadFile(avatar, "screenshots/");
+      const options = {
+        maxSizeMB: 1,
+        maxWidthOrHeight: 1024,
+        useWebWorker: true,
+      };
+
+      const compressedAvatar = await imageCompression(avatar, options);
+
+      const response = await uploadFile(compressedAvatar, "screenshots/");
+      if (!response) throw new Error("Image upload failed");
+
       await supabase.from("Transactions").insert([
         {
           method,
           amount,
-          img: response.fullPath,
+          img: response.path,
           user_id: user.id,
         },
       ]);
+
+      toast({
+        title: "Completed",
+        description: "Deposit processing",
+      });
     } catch (error) {
-      console.log(error);
+      console.error("Error creating deposit record:", error);
+      toast({
+        title: "Error",
+        description: "There was an issue with the deposit process.",
+      });
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
-    return toast({
-      title: "Completed",
-      description: "Deposit processing",
-    });
   }
 
   function clickCopy() {
