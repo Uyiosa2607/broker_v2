@@ -23,6 +23,7 @@ import { Popover } from "../ui/popover";
 import { PopoverContent, PopoverTrigger } from "@radix-ui/react-popover";
 import { Toaster } from "../ui/toaster";
 import { useToast } from "@/hooks/use-toast";
+import imageCompression from "browser-image-compression";
 
 export default function Profile() {
   const [user] = useAtom(userAtom);
@@ -92,9 +93,15 @@ export default function Profile() {
       return alert("Please select a photo");
     }
     try {
+      const options = {
+        maxSizeMB: 1,
+        maxWidthOrHeight: 800,
+        useWebWorker: true,
+      };
+      const compressedImage = await imageCompression(avatar, options);
       const response = await supabase.storage
         .from("image_database")
-        .update(`${user.img}`, avatar, {
+        .update(`${user.img}`, compressedImage, {
           cacheControl: "3600",
           upsert: true,
           contentType: avatar.type,
