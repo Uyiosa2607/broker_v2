@@ -1,5 +1,4 @@
 import NavBar from "./Navigation";
-import imageCompression from "browser-image-compression";
 import Footer from "./Footer";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -41,15 +40,7 @@ export default function Deposit() {
     setLoading(true);
 
     try {
-      const options = {
-        maxSizeMB: 1,
-        maxWidthOrHeight: 1024,
-        useWebWorker: true,
-      };
-
-      const compressedAvatar = await imageCompression(avatar, options);
-
-      const response = await uploadFile(compressedAvatar, "screenshots/");
+      const response = await uploadFile(avatar, "screenshots/");
       if (!response) throw new Error("Image upload failed");
 
       await supabase.from("Transactions").insert([
