@@ -138,7 +138,7 @@ export default function Profile() {
             <PopoverTrigger>
               <FaCameraRetro className="bottom-1" />
             </PopoverTrigger>
-            <PopoverContent className="bg-zinc-800 py-6 rounded-lg w-[95%] md:w-[70%] mx-auto text-white">
+            <PopoverContent className="bg-zinc-800 py-6 rounded-lg w-[95%] md:w-[90%] lg:p-4 mx-auto text-white">
               <div className="p-4 flex flex-col items-center">
                 {avatar && (
                   <img
@@ -152,15 +152,20 @@ export default function Profile() {
                     className="mb-1 w-[120px]"
                     id="picture"
                     onChange={(event) => setAvatar(event.target.files[0])}
-                    type="File"
+                    type="file"
                   />
                 </form>
-                <Button className="bg-green-700" onClick={updateProfilePicture}>
-                  Change profile picture &nbsp;{" "}
-                  {uploading ? (
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  ) : null}
-                </Button>
+                {avatar && (
+                  <Button
+                    className="bg-green-700"
+                    onClick={updateProfilePicture}
+                  >
+                    Change profile picture &nbsp;{" "}
+                    {uploading ? (
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    ) : null}
+                  </Button>
+                )}
               </div>
             </PopoverContent>
           </Popover>
