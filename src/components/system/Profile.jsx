@@ -131,7 +131,7 @@ export default function Profile() {
             className="w-[100px] rounded-full h-[100px] object-cover"
             src={`https://azbgmygmtxilfilpngex.supabase.co/storage/v1/object/public/image_database/${
               user.img
-            }?${new Date().getTime()}`}
+            }??${Date.now().toString()}`}
             alt="avatar"
           />
           <Popover>

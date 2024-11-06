@@ -11,7 +11,7 @@ export default function AvatarImg() {
         className="object-cover"
         src={`https://azbgmygmtxilfilpngex.supabase.co/storage/v1/object/public/image_database/${
           user.img
-        }?${new Date().getTime()}`}
+        }?${Date.now().toString()}`}
       />
       <AvatarFallback>{user.name}</AvatarFallback>
     </Avatar>
