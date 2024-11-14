@@ -1,11 +1,10 @@
-import NavBar from "./Navigation";
-import Footer from "./Footer";
 import { Separator } from "../ui/separator";
 import { useEffect, useState } from "react";
 import { useAtom } from "jotai";
 import { userAtom } from "@/lib/store";
 import { supabase } from "@/lib/supabase";
 import { formatCurrency } from "@/lib/utils";
+import NavBar from "./Navigation";
 
 function formatDateTime(dateString) {
   const date = new Date(dateString);
@@ -119,7 +118,6 @@ export default function Transaction() {
           )}
         </div>
       </section>
-      <Footer />
     </main>
   );
 }

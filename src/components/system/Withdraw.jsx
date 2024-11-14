@@ -2,8 +2,6 @@ import { useState } from "react";
 import { userAtom } from "@/lib/store";
 import { supabase } from "@/lib/supabase";
 import { useAtom } from "jotai";
-import NavBar from "./Navigation";
-import Footer from "./Footer";
 import {
   Dialog,
   DialogContent,
@@ -17,8 +15,8 @@ import Balance from "./Balance";
 import { Loader2 } from "lucide-react";
 import { formatCurrency } from "@/lib/utils";
 import { ShieldAlert } from "lucide-react";
-import { Toaster } from "../ui/toaster";
 import { useToast } from "@/hooks/use-toast";
+import NavBar from "./Navigation";
 
 export default function Withdraw() {
   const [address, setAddress] = useState("");
@@ -140,8 +138,6 @@ export default function Withdraw() {
           </div>
         </section>
       </section>
-      <Footer />
-      <Toaster />
     </main>
   );
 }

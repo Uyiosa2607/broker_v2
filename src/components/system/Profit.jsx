@@ -1,11 +1,10 @@
-import NavBar from "./Navigation";
-import Footer from "./Footer";
 import { Separator } from "../ui/separator";
 import { supabase } from "@/lib/supabase";
 import { useState, useEffect } from "react";
 import { useAtom } from "jotai";
 import { userAtom } from "@/lib/store";
 import { formatCurrency } from "@/lib/utils";
+import NavBar from "./Navigation";
 
 export default function Profit() {
   const [user] = useAtom(userAtom);
@@ -94,7 +93,6 @@ export default function Profit() {
           )}
         </div>
       </section>
-      <Footer />
     </main>
   );
 }

@@ -1,5 +1,3 @@
-import NavBar from "./Navigation";
-import Footer from "./Footer";
 import { Separator } from "../ui/separator";
 import { FaEdit } from "react-icons/fa";
 import { BsPersonFillLock } from "react-icons/bs";
@@ -21,9 +19,9 @@ import { Label } from "../ui/label";
 import { FaCameraRetro } from "react-icons/fa";
 import { Popover } from "../ui/popover";
 import { PopoverContent, PopoverTrigger } from "@radix-ui/react-popover";
-import { Toaster } from "../ui/toaster";
 import { useToast } from "@/hooks/use-toast";
 import imageCompression from "browser-image-compression";
+import NavBar from "./Navigation";
 
 export default function Profile() {
   const [user] = useAtom(userAtom);
@@ -284,8 +282,6 @@ export default function Profile() {
           </Dialog>
         </div>
       </section>
-      <Footer />
-      <Toaster />
     </main>
   );
 }

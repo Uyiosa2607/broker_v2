@@ -1,5 +1,3 @@
-import NavBar from "./Navigation";
-import Footer from "./Footer";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -23,8 +21,8 @@ import { Loader2 } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { useAtom } from "jotai";
 import { userAtom } from "@/lib/store";
-import { Toaster } from "../ui/toaster";
 import { useToast } from "@/hooks/use-toast";
+import NavBar from "./Navigation";
 
 export default function Deposit() {
   const [method, setMethod] = useState("bitcoin");
@@ -188,8 +186,6 @@ export default function Deposit() {
           </AlertDialog>
         </div>
       </section>
-      <Footer />
-      <Toaster />
     </main>
   );
 }

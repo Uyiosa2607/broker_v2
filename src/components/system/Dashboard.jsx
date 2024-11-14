@@ -1,18 +1,16 @@
-import NavBar from "./Navigation";
 import { useEffect, useState } from "react";
 import { FaCreditCard } from "react-icons/fa";
 import { MdSavings } from "react-icons/md";
 import { IoMdCash } from "react-icons/io";
 import { Link } from "react-router-dom";
 import TradingViewWidget from "./Trading";
-import Footer from "./Footer";
 import { useAtom } from "jotai";
 import { totalAtom, userAtom } from "@/lib/store";
 import { formatCurrency } from "@/lib/utils";
 import { sumTransactionsByUser } from "@/lib/utils";
-import { Toaster } from "../ui/toaster";
 import { useToast } from "@/hooks/use-toast";
 import { Clipboard } from "lucide-react";
+import NavBar from "./Navigation";
 
 export default function Dashboard() {
   const [user] = useAtom(userAtom);
@@ -59,7 +57,7 @@ export default function Dashboard() {
   }
 
   return (
-    <main className="mx-auto w-screen bg-gray-200">
+    <main>
       <NavBar />
       <div className="flex flex-col mt-2 w-full">
         <div className="w-[98%] mx-auto bg-white p-2 md:p-5 rounded-lg">
@@ -147,8 +145,6 @@ export default function Dashboard() {
         </div>
         <TradingViewWidget />
       </section>
-      <Footer />
-      <Toaster />
     </main>
   );
 }

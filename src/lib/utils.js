@@ -1,6 +1,11 @@
+import { useEffect } from "react";
+import { useAtom } from "jotai";
+import { authStatus, userAtom } from "@/lib/store";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { supabase } from "./supabase";
+import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
 export function cn(...inputs) {
   return twMerge(clsx(inputs));
@@ -88,3 +93,5 @@ export async function updateUserBalance(id, value, balance) {
 //     })
 //     .catch((error) => console.error("Fetch error:", error));
 // }
+
+//

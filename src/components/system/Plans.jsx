@@ -1,5 +1,3 @@
-import NavBar from "./Navigation";
-import Footer from "./Footer";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { updateUserBalance } from "@/lib/utils";
@@ -7,9 +5,9 @@ import Balance from "./Balance";
 import { useAtom } from "jotai";
 import { userAtom } from "@/lib/store";
 import { useState } from "react";
-import { Toaster } from "../ui/toaster";
 import { useToast } from "@/hooks/use-toast";
 import { formatCurrency } from "@/lib/utils";
+import NavBar from "./Navigation";
 
 const plans = [
   { total_profit: "10%", duration: "2 days", maximum: 100, minimum: 50 },
@@ -128,8 +126,6 @@ export default function Plans() {
           ))}
         </div>
       </section>
-      <Footer />
-      <Toaster />
     </main>
   );
 }

@@ -12,10 +12,11 @@ import Contact from "./components/system/Contact";
 import Login from "./components/system/Login.jsx";
 import Register from "./components/system/Register.jsx";
 import App from "./App.jsx";
-import PrivateRoute from "./lib/private-route.jsx";
+import PrivateRoute from "./lib/privateRoute.jsx";
 import ResetPassword from "./components/system/resetPassword.jsx";
-import "./index.css";
 import ForgetPassword from "./components/system/ForgetPassword.jsx";
+import "./index.css";
+import Layout from "./components/system/Layout.jsx";
 
 const router = createBrowserRouter([
   {
@@ -31,37 +32,44 @@ const router = createBrowserRouter([
     element: <Register />,
   },
   {
-    path: "/dashboard",
-    element: <PrivateRoute component={Dashboard} />,
+    path: "/user",
+    element: <Layout />,
+    children: [
+      {
+        path: "dashboard",
+        element: <PrivateRoute component={Dashboard} />,
+      },
+      {
+        path: "plans",
+        element: <PrivateRoute component={Plans} />,
+      },
+      {
+        path: "deposit",
+        element: <PrivateRoute component={Deposit} />,
+      },
+      {
+        path: "withdraw",
+        element: <PrivateRoute component={Withdraw} />,
+      },
+      {
+        path: "profile",
+        element: <PrivateRoute component={Profile} />,
+      },
+      {
+        path: "profit",
+        element: <PrivateRoute component={Profit} />,
+      },
+      {
+        path: "transactions",
+        element: <PrivateRoute component={Transaction} />,
+      },
+      {
+        path: "support",
+        element: <PrivateRoute component={Contact} />,
+      },
+    ],
   },
-  {
-    path: "plans",
-    element: <PrivateRoute component={Plans} />,
-  },
-  {
-    path: "deposit",
-    element: <PrivateRoute component={Deposit} />,
-  },
-  {
-    path: "withdraw",
-    element: <PrivateRoute component={Withdraw} />,
-  },
-  {
-    path: "profile",
-    element: <PrivateRoute component={Profile} />,
-  },
-  {
-    path: "profit",
-    element: <PrivateRoute component={Profit} />,
-  },
-  {
-    path: "transactions",
-    element: <PrivateRoute component={Transaction} />,
-  },
-  {
-    path: "support",
-    element: <PrivateRoute component={Contact} />,
-  },
+
   {
     path: "/reset-password",
     element: <ResetPassword />,

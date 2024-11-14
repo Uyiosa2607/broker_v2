@@ -1,14 +1,12 @@
 import { useRef } from "react";
 import TawkMessengerReact from "@tawk.to/tawk-messenger-react";
 import emailjs from "@emailjs/browser";
-import NavBar from "./Navigation";
-import Footer from "./Footer";
 import { Label } from "../ui/label";
 import { Textarea } from "../ui/textarea";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import { Toaster } from "../ui/toaster";
 import { useToast } from "@/hooks/use-toast";
+import NavBar from "./Navigation";
 
 export default function Contact() {
   const form = useRef();
@@ -73,8 +71,6 @@ export default function Contact() {
           widgetId="1hbrm8s5g"
         />
       </section>
-      <Footer />
-      <Toaster />
     </main>
   );
 }
