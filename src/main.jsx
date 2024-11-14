@@ -17,23 +17,28 @@ import ResetPassword from "./components/system/resetPassword.jsx";
 import ForgetPassword from "./components/system/ForgetPassword.jsx";
 import "./index.css";
 import Layout from "./components/system/Layout.jsx";
+import NotFound from "./components/system/notFound.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <NotFound />,
   },
   {
     path: "/login",
     element: <Login />,
+    errorElement: <NotFound />,
   },
   {
     path: "/register",
     element: <Register />,
+    errorElement: <NotFound />,
   },
   {
     path: "/user",
     element: <Layout />,
+    errorElement: <NotFound />,
     children: [
       {
         path: "dashboard",
@@ -73,10 +78,12 @@ const router = createBrowserRouter([
   {
     path: "/reset-password",
     element: <ResetPassword />,
+    errorElement: <NotFound />,
   },
   {
     path: "/forget-password",
     element: <ForgetPassword />,
+    errorElement: <NotFound />,
   },
 ]);
 
