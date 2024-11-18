@@ -12,12 +12,12 @@ function PrivateRoute({ component: Component }) {
 
   useEffect(() => {
     const getAuth = async () => {
-      const getAuthStatus = await supabase.auth.getSession();
-      if (getAuthStatus.data.session) {
+      const getAuthStatus = await supabase.auth.getUser();
+      if (getAuthStatus.data.user) {
         const getUser = await supabase
           .from("Users")
           .select("*")
-          .eq("id", getAuthStatus.data.session.user.id)
+          .eq("id", getAuthStatus.data.user.id)
           .single();
 
         if (getUser.error) {

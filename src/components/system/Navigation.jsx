@@ -30,13 +30,14 @@ export default function NavBar() {
 
   async function fetchUser() {
     try {
-      const getAuthStatus = await supabase.auth.getSession();
+      const getAuthStatus = await supabase.auth.getUser();
       const { data, error } = await supabase
         .from("Users")
         .select("*")
-        .eq("id", getAuthStatus.data.session.user.id);
+        .eq("id", getAuthStatus.data.user.id)
+        .single();
       if (!error) {
-        setUser(data[0]);
+        setUser(data);
       }
     } catch (error) {
       console.log(error);

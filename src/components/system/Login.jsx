@@ -38,9 +38,8 @@ export default function Login() {
         });
       }
 
-      navigate("/dashboard");
+      navigate("/user/dashboard");
       setLoading(false);
-      return;
     } catch (error) {
       console.log(error);
       setLoading(false);

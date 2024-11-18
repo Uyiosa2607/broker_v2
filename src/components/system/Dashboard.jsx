@@ -86,19 +86,19 @@ export default function Dashboard() {
             ></gecko-coin-price-marquee-widget>
           </div>
           <div className="flex justify-between text-white items-center w-[80%] md:w-[60%] mx-auto pt-3">
-            <Link to="/deposit">
+            <Link to="/user/deposit">
               <div className="flex flex-col items-center">
                 <FaCreditCard className="h-[44px] w-[44px] md:w-[50px] p-2 rounded-md bg-red-500 md:h-[50px]" />
                 <p className="text-zinc-900 mt-2 text-xs">Deposit</p>
               </div>
             </Link>
-            <Link to="/withdraw">
+            <Link to="/user/withdraw">
               <div className="flex flex-col items-center">
                 <IoMdCash className="h-[44px] w-[44px] md:w-[50px] p-2 rounded-md bg-green-500 md:h-[50px]" />
                 <p className="text-zinc-900 mt-2 text-xs">Withdraw</p>
               </div>
             </Link>
-            <Link to="/plans">
+            <Link to="/user/plans">
               <div className="flex flex-col items-center">
                 <MdSavings className="h-[44px] w-[44px] md:w-[50px] p-2 rounded-md bg-zinc-900 md:h-[50px]" />
                 <p className="text-zinc-900 mt-2 text-xs">Buy Plan</p>
@@ -137,9 +137,11 @@ export default function Dashboard() {
         <div className="mt-2 mb-2 flex items-center gap-1">
           <p className="text-blue-600 font-medium text-sm pl-2">
             Referral Code:{" "}
-            <span className="font-semibold uppercase">
-              {user.id.slice(0, 6)}
-            </span>
+            {/* {user && (
+              <span className="font-semibold uppercase">
+                {user.id.slice(0, 6)}
+              </span>
+            )} */}
           </p>
           <Clipboard onClick={copyCode} size={14} />
         </div>
