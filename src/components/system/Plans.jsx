@@ -7,7 +7,6 @@ import { userAtom } from "@/lib/store";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { formatCurrency } from "@/lib/utils";
-import NavBar from "./Navigation";
 
 const plans = [
   { total_profit: "10%", duration: "2 days", maximum: 100, minimum: 50 },

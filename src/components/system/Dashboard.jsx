@@ -10,7 +10,6 @@ import { formatCurrency } from "@/lib/utils";
 import { sumTransactionsByUser } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { Clipboard } from "lucide-react";
-import NavBar from "./Navigation";
 
 export default function Dashboard() {
   const [user] = useAtom(userAtom);

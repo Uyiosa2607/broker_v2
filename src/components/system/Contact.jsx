@@ -6,7 +6,6 @@ import { Textarea } from "../ui/textarea";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { useToast } from "@/hooks/use-toast";
-import NavBar from "./Navigation";
 
 export default function Contact() {
   const form = useRef();

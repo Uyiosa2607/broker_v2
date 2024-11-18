@@ -22,7 +22,6 @@ import { supabase } from "@/lib/supabase";
 import { useAtom } from "jotai";
 import { userAtom } from "@/lib/store";
 import { useToast } from "@/hooks/use-toast";
-import NavBar from "./Navigation";
 
 export default function Deposit() {
   const [method, setMethod] = useState("bitcoin");

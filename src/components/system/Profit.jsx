@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useAtom } from "jotai";
 import { userAtom } from "@/lib/store";
 import { formatCurrency } from "@/lib/utils";
-import NavBar from "./Navigation";
 
 export default function Profit() {
   const [user] = useAtom(userAtom);

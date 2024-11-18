@@ -4,7 +4,6 @@ import { useAtom } from "jotai";
 import { userAtom } from "@/lib/store";
 import { supabase } from "@/lib/supabase";
 import { formatCurrency } from "@/lib/utils";
-import NavBar from "./Navigation";
 
 function formatDateTime(dateString) {
   const date = new Date(dateString);

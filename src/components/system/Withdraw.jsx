@@ -16,7 +16,6 @@ import { Loader2 } from "lucide-react";
 import { formatCurrency } from "@/lib/utils";
 import { ShieldAlert } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import NavBar from "./Navigation";
 
 export default function Withdraw() {
   const [address, setAddress] = useState("");

@@ -21,7 +21,6 @@ import { Popover } from "../ui/popover";
 import { PopoverContent, PopoverTrigger } from "@radix-ui/react-popover";
 import { useToast } from "@/hooks/use-toast";
 import imageCompression from "browser-image-compression";
-import NavBar from "./Navigation";
 
 export default function Profile() {
   const [user] = useAtom(userAtom);
