@@ -79,7 +79,7 @@ export default function Plans() {
 
   return (
     <main className="bg-gray-200">
-      <NavBar />
+      {/* <NavBar /> */}
       <section className="mx-3">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {plans.map((plan, index) => (

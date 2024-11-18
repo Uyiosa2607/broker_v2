@@ -122,7 +122,7 @@ export default function Profile() {
   }
   return (
     <main className="min-h-screen bg-gray-200 w-screen">
-      <NavBar />
+      {/* <NavBar /> */}
       <section className="p-0 min-h-screen">
         <div className="py-2 mb-3 flex flex-col items-center justify-center">
           <img

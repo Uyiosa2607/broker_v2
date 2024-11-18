@@ -88,7 +88,7 @@ export default function Deposit() {
 
   return (
     <main className="bg-gray-200 ">
-      <NavBar />
+      {/* <NavBar /> */}
       <section className="min-h-[90vh] relative flex top-[5vh]  justify-center w-screen">
         <div className="w-[90%] md:w-[600px] p-4 md:p-5 h-fit bg-white rounded-md">
           <h3 className="font-semibold">Deposit</h3>

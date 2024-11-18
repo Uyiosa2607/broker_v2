@@ -41,7 +41,7 @@ export default function Contact() {
 
   return (
     <main className="bg-gray-200 w-screen">
-      <NavBar />
+      {/* <NavBar /> */}
       <section className="min-h-screen">
         <div className=" w-[90%] md:w-[70%] mt-[2rem] p-4 rounded-lg bg-white h-fit mx-auto">
           <form ref={form} onSubmit={sendEmail}>

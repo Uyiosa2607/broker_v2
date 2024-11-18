@@ -45,7 +45,7 @@ export default function Profit() {
 
   return (
     <main className="bg-gray-100">
-      <NavBar />
+      {/* <NavBar /> */}
       <section className="min-h-screen w-[98%] mx-auto">
         <p className="capitalize text-center font-medium text-lg mb-3">
           Profit History

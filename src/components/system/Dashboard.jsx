@@ -58,7 +58,7 @@ export default function Dashboard() {
 
   return (
     <main>
-      <NavBar />
+      {/* <NavBar /> */}
       <div className="flex flex-col mt-2 w-full">
         <div className="w-[98%] mx-auto bg-white p-2 md:p-5 rounded-lg">
           <div className="flex items-center justify-between mb-3">

@@ -67,7 +67,7 @@ export default function Withdraw() {
 
   return (
     <main className="bg-gray-200 w-screen">
-      <NavBar />
+      {/* <NavBar /> */}
       <section className="flex h-screen justify-center">
         <section className="min-h-[90vh] relative flex top-[5vh]  justify-center w-screen">
           <div className=" w-[90%] md:w-[600px] p-4 md:p-5 h-fit bg-white rounded-md">

@@ -55,7 +55,7 @@ export default function Transaction() {
 
   return (
     <main className="bg-gray-100">
-      <NavBar />
+      {/* <NavBar /> */}
       <section className="min-h-screen w-[98%] mx-auto">
         <p className="capitalize font-medium text-lg text-center mb-4">
           Transaction History
