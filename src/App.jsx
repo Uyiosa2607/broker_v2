@@ -5,7 +5,8 @@ import Loading from "./components/system/Loading";
 import { userAtom, authStatus } from "@/lib/store";
 import Home from "./components/system/Home";
 import Dashboard from "./components/system/Dashboard";
-import Layout from "./components/system/Layout";
+import NavBar from "./components/system/Navigation";
+import Footer from "./components/system/Footer";
 
 function App() {
   const [user, setUser] = useAtom(userAtom);
@@ -43,9 +44,9 @@ function App() {
     <>
       {auth ? (
         <>
-          <Layout>
-            <Dashboard />
-          </Layout>
+          <NavBar />
+          <Dashboard />
+          <Footer />
         </>
       ) : (
         <Home />
