@@ -5,6 +5,7 @@ import Loading from "./components/system/Loading";
 import { userAtom, authStatus } from "@/lib/store";
 import Home from "./components/system/Home";
 import Dashboard from "./components/system/Dashboard";
+import Layout from "./components/system/Layout";
 
 function App() {
   const [user, setUser] = useAtom(userAtom);
@@ -38,7 +39,19 @@ function App() {
   }, []);
 
   if (loading) return <Loading />;
-  return <>{auth ? <Dashboard /> : <Home />}</>;
+  return (
+    <>
+      {auth ? (
+        <>
+          <Layout>
+            <Dashboard />
+          </Layout>
+        </>
+      ) : (
+        <Home />
+      )}
+    </>
+  );
 }
 
 export default App;
