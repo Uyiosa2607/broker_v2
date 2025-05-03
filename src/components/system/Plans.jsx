@@ -117,9 +117,9 @@ export default function Plans() {
               <p className="capitalize font-semibold mb-6">
                 Value invest plan {index + 1}
               </p>
-              <div className="flex flex-col gap-5 mb-4">
+              <div className="flex  flex-col gap-5 mb-4">
                 <p>
-                  total profit: <span>{plan.total_profit}</span>
+                  Daily returns: <span>{plan.total_profit}</span>
                 </p>
                 <p>
                   duration: <span>{plan.duration} Days</span>
