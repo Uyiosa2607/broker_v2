@@ -10,6 +10,7 @@ import { formatCurrency } from "@/lib/utils";
 import { sumTransactionsByUser } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { Clipboard } from "lucide-react";
+import ActivePlan from "./ActivePlan";
 
 export default function Dashboard() {
   const [user] = useAtom(userAtom);
@@ -124,6 +125,16 @@ export default function Dashboard() {
           </p>
         </div>
       </div>
+      {/* active plan section */}
+      <div className="mt-2 w-[98%] flex mx-auto gap-2">
+        <div className="flex-1 p-2 py-3 pl-3 md:p-5 font-medium bg-white rounded-lg">
+          <p className="capitalize text-sm text-gray-400 mb-2">Active Plans</p>
+          <div>
+            <ActivePlan />
+          </div>
+        </div>
+      </div>
+      {/* active plan section */}
       <section className="w-[98%] py-2 px-1 bg-white rounded-lg mb-2 mt-2 mx-auto">
         <div>
           <p className="font-medium pl-1 mb-2">Referral Link</p>

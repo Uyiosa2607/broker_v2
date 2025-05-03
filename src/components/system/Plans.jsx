@@ -7,33 +7,50 @@ import { userAtom } from "@/lib/store";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { formatCurrency } from "@/lib/utils";
+import { supabase } from "@/lib/supabase";
 
 const plans = [
-  { total_profit: "10%", duration: "2 days", maximum: 100, minimum: 50 },
-  { total_profit: "15%", duration: "3 days", maximum: 400, minimum: 150 },
   {
+    plan_name: "value invest plan 1",
+    total_profit: "10%",
+    duration: 10,
+    maximum: 100,
+    minimum: 50,
+  },
+  {
+    plan_name: "value invest plan 2",
+    total_profit: "15%",
+    duration: 15,
+    maximum: 400,
+    minimum: 150,
+  },
+  {
+    plan_name: "value invest plan 3",
     total_profit: "20%",
-    duration: "5 days",
+    duration: 20,
     maximum: 1000,
     minimum: 500,
   },
   {
     total_profit: "30%",
-    duration: "7 days",
+    duration: 28,
     maximum: 6000,
     minimum: 1000,
+    plan_name: "value invest plan 4",
   },
   {
     total_profit: "40%",
-    duration: "10 days",
+    duration: 32,
     maximum: 8000,
     minimum: 1500,
+    plan_name: "value invest plan 5",
   },
   {
     total_profit: "60%",
-    duration: "15 days",
+    duration: 40,
     maximum: 25000,
     minimum: 2000,
+    plan_name: "value invest plan 6",
   },
 ];
 
@@ -43,14 +60,14 @@ export default function Plans() {
 
   const { toast } = useToast();
 
-  async function handleBuyPlan(min, max) {
+  async function handleBuyPlan(plan) {
     if (value === 0)
       return toast({
         variant: "destructive",
-        title: "Something went wrong",
+        title: "Amount not provided",
         description: "enter amount to invest",
       });
-    if (value < min || value > max)
+    if (value < plan.minimum || value > plan.maximum)
       return toast({
         variant: "destructive",
         title: "Something went wrong",
@@ -70,10 +87,21 @@ export default function Plans() {
       });
     const updateBalance = await updateUserBalance(user.id, value, user.balance);
     if (updateBalance)
-      return toast({
-        title: "Success",
-        description: "Plan has been activated",
-      });
+      try {
+        await supabase.from("plans").insert({
+          user_id: user.id,
+          plan_name: plan.plan_name,
+          duration: plan.duration,
+          amount: value,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+
+    return toast({
+      title: "Success",
+      description: "Plan has been activated",
+    });
   }
 
   return (
@@ -94,7 +122,7 @@ export default function Plans() {
                   total profit: <span>{plan.total_profit}</span>
                 </p>
                 <p>
-                  duration: <span>{plan.duration}</span>
+                  duration: <span>{plan.duration} Days</span>
                 </p>
                 <p>
                   minimum: <span>{formatCurrency(plan.minimum)}</span>
@@ -115,7 +143,7 @@ export default function Plans() {
               </div>
               <div className="flex items-center justify-between">
                 <Button
-                  onClick={() => handleBuyPlan(plan.minimum, plan.maximum)}
+                  onClick={() => handleBuyPlan(plan)}
                   className="bg-blue-900 text-center w-full rounded-md text-white"
                 >
                   Buy
