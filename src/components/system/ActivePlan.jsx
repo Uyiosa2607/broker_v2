@@ -35,7 +35,6 @@ export default function ActivePlan() {
         .select("*")
         .eq("user_id", user?.id);
       setActivePlans(data, "fetched data");
-      console.log(data);
       if (error) return console.log(error);
     } catch (error) {
       console.log(error);

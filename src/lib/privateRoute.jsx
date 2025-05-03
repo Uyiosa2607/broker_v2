@@ -14,6 +14,7 @@ function PrivateRoute({ component: Component }) {
     const getAuth = async () => {
       const getAuthStatus = await supabase.auth.getUser();
       if (getAuthStatus.data.user) {
+        if (user.length) return setAuth(true);
         const getUser = await supabase
           .from("Users")
           .select("*")
