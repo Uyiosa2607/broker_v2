@@ -15,9 +15,9 @@ import App from "./App.jsx";
 import PrivateRoute from "./lib/privateRoute.jsx";
 import ResetPassword from "./components/system/resetPassword.jsx";
 import ForgetPassword from "./components/system/ForgetPassword.jsx";
-import "./index.css";
 import Layout from "./components/system/Layout.jsx";
 import NotFound from "./components/system/notFound.jsx";
+import "./index.css";
 
 const router = createBrowserRouter([
   {

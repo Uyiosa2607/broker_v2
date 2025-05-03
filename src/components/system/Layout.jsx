@@ -12,7 +12,6 @@ export default function Layout() {
         <Outlet />
         <Footer />
       </>
-
       <Toaster />
     </main>
   );

@@ -145,7 +145,7 @@ export default function Deposit() {
                       : import.meta.env.VITE_BITCOIN_ADDRESS}
                   </span>
                   <span className="mb-5 text-red-500 text-xs">
-                    Tap to Address to copy or scan barcode
+                    Tap to Address to copy or scan the Qr code
                   </span>
                 </div>
                 <form
