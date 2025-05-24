@@ -33,6 +33,13 @@ export default function Withdraw() {
         description: "Not enough balance",
       });
 
+    if (amount < 10000)
+      return toast({
+        variant: "destructive",
+        title: "An Error occured",
+        description: "Minimum withdrawal is $10,000",
+      });
+
     setLoading(true);
 
     try {
