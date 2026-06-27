@@ -20,7 +20,7 @@ export default function Contact() {
         form.current,
         {
           publicKey: "Y3aWmVl31mp5QZBzy",
-        }
+        },
       );
 
       if (request.ok)
@@ -66,8 +66,8 @@ export default function Contact() {
           </form>
         </div>
         <TawkMessengerReact
-          propertyId="64f72647a91e863a5c11c333"
-          widgetId="default"
+          propertyId="6a3fbb057e16581d479c0494"
+          widgetId="1js4f54dq"
         />
       </section>
     </main>
